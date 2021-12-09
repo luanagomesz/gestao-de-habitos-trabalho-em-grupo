@@ -8,37 +8,56 @@ export const ModalContainer = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 30px;
   padding: 12px;
+
+  @media (min-width: 768px) {
+    width: 560px;
+  }
 
   h1 {
     font-size: 1.5rem;
   }
 
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
   .modal-header {
+    min-width: 240px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
   .frequency-container {
-    width: 230px;
+    margin: 0 auto;
+    min-width: 230px;
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+
+    @media (min-width: 768px) {
+      width: 530px;
+    }
   }
 
   .frequency {
-    width: 70px;
+    min-width: 73px;
     height: 40px;
     background-color: var(--red);
     border-radius: 5px;
     color: var(--white);
     font-size: 14px;
+
+    @media (min-width: 768px) {
+      width: 150px;
+    }
   }
 
   input {
-    width: 230px;
+    min-width: 230px;
     height: 40px;
     border-radius: 5px;
     border: solid var(--grey-50) 1px;
@@ -46,6 +65,10 @@ export const ModalContainer = styled.div`
     font-size: 1.2rem;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    @media (min-width: 768px) {
+      width: 530px;
+    }
   }
 
   p {
@@ -53,11 +76,16 @@ export const ModalContainer = styled.div`
   }
 
   .add {
-    width: 230px;
+    min-width: 230px;
     height: 40px;
-    margin-top: 10px;
     background-color: var(--red);
     color: var(--white);
     border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+
+    @media (min-width: 768px) {
+      width: 530px;
+    }
   }
 `;

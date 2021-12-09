@@ -3,6 +3,7 @@ function Activies() {
    <div>
      
    </div>
+  )
 }
 
 export default Activies;

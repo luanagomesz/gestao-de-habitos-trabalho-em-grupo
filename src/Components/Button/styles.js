@@ -8,7 +8,6 @@ export const ButtonStyled = styled.button`
   border-radius: 10px;
   font-size: 24px;
   padding: 5px;
-  margin: ${(props) => props.margin}
   :hover {
     background-color: ${(props) => props.backgroundHover};
   }

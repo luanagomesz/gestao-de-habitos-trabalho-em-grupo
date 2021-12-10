@@ -1,19 +1,15 @@
-// import Activies from "../../Components/Activies/principal";
-// import Goals from "../../Components/Goals";
-// import Groups from "../../Components/Groups";
-// import Habits from "../../Components/Habits";
-
 import DashboardImg from "../../assets/img/dashboard.png";
 import LogoutImg from "../../assets/img/image1.png";
 import userIMG from "../../assets/img/user1.png";
 import vectorDashboard from "../../assets/img/VectorDashboard.png";
 import {
   ContainerContent,
+  Header,
   ContainerPage,
   ContainerImg,
   ContainerFocus,
 } from "./style";
-import Header from "../../Components/Header";
+//import Header from "../../Components/Header";
 import { useContext } from "react";
 import { DashboardContext } from "../../Provider/dashboard/dashboard";
 function Dashboard({ history }) {

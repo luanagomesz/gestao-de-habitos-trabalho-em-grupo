@@ -6,10 +6,11 @@ import HeaderContainer from "./styles";
 const Header = ({backgroundColor}) => {
   return (
     <HeaderContainer backgroundColor={backgroundColor}>
-      <h1>LOGO</h1>
+      <h1>Logo</h1>
       <div>
         <button>
           <AiOutlineMenu />
+
         </button>
         <button>
           <MdOutlineExitToApp />

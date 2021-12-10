@@ -31,7 +31,6 @@ p,span, button, div, input{
 
 h1,h2, h3, h4{
     font-family: 'Fredoka One', cursive;
-    font-weight:bold;
 }
 
 button{

@@ -5,11 +5,12 @@ export const HeaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  span {
+  h2 {
     font-size: 30px;
-    font-weight: bolder;
     color: var(--orange);
-    margin: auto;
+    margin: 0;
+    text-align: center;
+    font-weight: 300px;
   }
 
   header {
@@ -23,13 +24,12 @@ export const HeaderContainer = styled.div`
   }
 
   @media (min-width: 900px) {
-    align-items: flex-start;
+    align-items: center;
+    width: 50%;
 
-    span {
-      padding-top: 80px;
-      margin-left: 20vw;
-      position: absolute;
-      padding-left: 20px;
+    h2 {
+      margin-bottom: -50px;
+      margin-top: 20px;
     }
   }
 `;
@@ -59,7 +59,7 @@ export const RegisterContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: 50%;
+    height: 180px;
   }
 
   input {
@@ -84,20 +84,9 @@ export const RegisterContainer = styled.div`
     color: var(--orange);
   }
 
-  button {
-    background-color: var(--orange);
-    padding: 5px;
-    font-size: 25px;
-    width: 170px;
-    color: var(--grey-0);
-    border-radius: 6px;
-    margin: 10px;
-    font-weight: 500;
-  }
-
   p {
     font-size: 18px;
-    margin: 15px;
+    margin-top: 50px;
     color: var(--grey-50);
   }
 
@@ -135,7 +124,7 @@ export const RegisterContainer = styled.div`
       left: 10;
       border: 2px solid var(--grey-50);
       width: 400px;
-      height: 400px;
+      height: 360px;
       padding: 20px;
       border-radius: 8px;
       justify-content: space-around;
@@ -185,10 +174,6 @@ export const RegisterContainer = styled.div`
     img {
       width: 400px;
       opacity: 1;
-    }
-
-    button {
-      margin: 20px;
     }
   }
 `;

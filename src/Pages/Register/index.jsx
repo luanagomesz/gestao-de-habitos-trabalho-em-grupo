@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Redirect } from "react-router";
+/* import { Redirect } from "react-router"; */
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
 
+import Button from "../../Components/Button";
 import { RegisterContainer, HeaderContainer } from "./style";
 import image1 from "../../assets/img/image-signup.png";
 import image2 from "../../assets/img/vector-signup.png";
 
 function Register({ history }) {
-  const [auth, setAuth] = useState(false);
-  const token = JSON.parse(localStorage.getItem("userToken")); //provavel q o token esteja sendo chamado errado
-
-  useEffect(() => {
-    if (token) {
-      setAuth(true);
-    }
-  }, [auth]); /* ainda precisa arrumar o auth (09/12 -> 19:34) */
-
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -57,9 +48,9 @@ function Register({ history }) {
       .catch((err) => console.log(err));
   };
 
-  if (auth) {
+  /* if (auth) {
     return <Redirect to="/dashboard" />;
-  }
+  } */
 
   return (
     <>
@@ -71,12 +62,12 @@ function Register({ history }) {
             color="var(--orange)"
           />
         </header>
-        <span>Signup</span>
+        <h2>Signup</h2>
       </HeaderContainer>
       <RegisterContainer>
         <div className="flexContainer">
           <aside className="asideRegister">
-            <img src={image1} alt="image-signup" />
+            <img src={image1} alt="img-signup" />
           </aside>
         </div>
         <main>
@@ -101,16 +92,15 @@ function Register({ history }) {
               {...register("confirm_password")}
             />
             <p className="errors">{errors.confirm_password?.message}</p>
-            <button type="submit" className="buttonRegister">
+            <Button background={"var(--orange)"} width={"170px"} type="submit">
               Signup
-            </button>
+            </Button>
           </form>
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
         </main>
         <img className="vector" src={image2} alt="vector-signup" />
-        {/* footer vai ter display none no desktop */}
       </RegisterContainer>
     </>
   );

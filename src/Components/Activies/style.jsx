@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const PrincipalContainer = styled.div`
@@ -5,12 +6,15 @@ export const PrincipalContainer = styled.div`
   margin: 10vh auto;
   display: flex;
   flex-direction: column;
-  max-width: 350px;
-  height: 360px;
+  width: 270px;
+  height: 330px;
+
   border-radius: 20px;
 
-  img {
-    margin-top: 65px;
+
+  @media (min-width: 768px) {
+  
+    max-width: 560px;
   }
 `;
 
@@ -156,3 +160,4 @@ export const FooterContainer = styled.div`
     font-size: 24px;
   }
 `;
+

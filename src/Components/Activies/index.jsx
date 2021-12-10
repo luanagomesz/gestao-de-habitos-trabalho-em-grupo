@@ -1,3 +1,4 @@
+
 import {
   PrincipalContainer,
   PrincipalHeader,
@@ -5,21 +6,21 @@ import {
   Modules,
 } from "./style";
 import { BsClipboardPlus } from "react-icons/bs";
-import Vetor from "../../assets/imgs/vetor.png";
 import Header from "../Header";
+import Modal from "../Modal";
+import { useState } from "react";
+
 
 function Activies() {
-<<<<<<< HEAD
-  return <div></div>;
-=======
+const [openModal, setOpenModal] = useState(false)
+
   return (
-<<<<<<< HEAD
     <>
-    <Header backgroundColor={"8782D6"} />
+      <Header backgroundColor={"var(--ligthblue)"} />
       <PrincipalContainer>
         <PrincipalHeader>
           <h2>Activies</h2>
-          <button>
+          <button onClick={()=> setOpenModal(true)}>
             <BsClipboardPlus />
           </button>
         </PrincipalHeader>
@@ -47,17 +48,15 @@ function Activies() {
             </div>
           </Modules>
         </PrincipalBody>
-        <img src={Vetor} alt="vetor" />
+       
       </PrincipalContainer>
+      {openModal ? <Modal 
+
+        title={"New Activity"}
+        text={"How hard is it to keep this Goal?"}
+      /> : null}
     </>
   );
-=======
-   <div>
-     
-   </div>
-  )
->>>>>>> c276a76cf0954ea31f4b4951fecd6c92c37386fd
->>>>>>> 963ac33877fc3cb7ecee03cb4c3a9dc98c594781
 }
 
 export default Activies;

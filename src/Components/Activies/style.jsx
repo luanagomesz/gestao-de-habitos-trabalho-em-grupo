@@ -5,8 +5,9 @@ export const PrincipalContainer = styled.div`
   margin: 10vh auto;
   display: flex;
   flex-direction: column;
-  max-width: 350px;
-  height: 360px;
+  width: 270px;
+  height: 330px;
+
   border-radius: 20px;
 
 

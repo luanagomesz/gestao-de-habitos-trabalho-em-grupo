@@ -1,3 +1,4 @@
+
 import {
   PrincipalContainer,
   PrincipalHeader,
@@ -8,6 +9,7 @@ import { BsClipboardPlus } from "react-icons/bs";
 import Header from "../Header";
 import Modal from "../Modal";
 import { useState } from "react";
+
 
 function Activies() {
 const [openModal, setOpenModal] = useState(false)

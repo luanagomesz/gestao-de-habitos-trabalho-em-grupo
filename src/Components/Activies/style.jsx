@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const PrincipalContainer = styled.div`
@@ -159,3 +160,4 @@ export const FooterContainer = styled.div`
     font-size: 24px;
   }
 `;
+

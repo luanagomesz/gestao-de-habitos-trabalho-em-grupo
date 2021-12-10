@@ -12,13 +12,13 @@ function Routes() {
       <Route exact path="/">
         <Home history={history} />
       </Route>
-      <Route path="/Login">
+      <Route path="/login">
         <Login history={history} />
       </Route>
-      <Route path="/Register">
+      <Route path="/register">
         <Register history={history} />
       </Route>
-      <Route path="/Dashboard">
+      <Route path="/dashboard">
         <Dashboard history={history} />
       </Route>
     </Switch>

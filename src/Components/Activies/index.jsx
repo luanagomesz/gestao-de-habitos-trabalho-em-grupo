@@ -9,7 +9,11 @@ import Vetor from "../../assets/imgs/vetor.png";
 import Header from "../Header";
 
 function Activies() {
+<<<<<<< HEAD
+  return <div></div>;
+=======
   return (
+<<<<<<< HEAD
     <>
     <Header backgroundColor={"8782D6"} />
       <PrincipalContainer>
@@ -47,6 +51,13 @@ function Activies() {
       </PrincipalContainer>
     </>
   );
+=======
+   <div>
+     
+   </div>
+  )
+>>>>>>> c276a76cf0954ea31f4b4951fecd6c92c37386fd
+>>>>>>> 963ac33877fc3cb7ecee03cb4c3a9dc98c594781
 }
 
 export default Activies;

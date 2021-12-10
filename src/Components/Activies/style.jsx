@@ -9,8 +9,10 @@ export const PrincipalContainer = styled.div`
   height: 360px;
   border-radius: 20px;
 
-  img {
-    margin-top: 65px;
+
+  @media (min-width: 768px) {
+  
+    max-width: 560px;
   }
 `;
 

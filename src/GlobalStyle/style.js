@@ -24,13 +24,12 @@ const GlobalStyle = createGlobalStyle`
 body{
     background: var(---grey-0);
     color: var(---grey-100);
-   
 }
 p,span, button, div, input{
     font-family: 'Lato', sans-serif;  
 } 
 
-h1, h2, h3, h4 {
+h1,h2, h3, h4{
     font-family: 'Fredoka One', cursive;
     font-weight:bold;
 }

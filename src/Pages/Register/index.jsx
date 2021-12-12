@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
-
 import Button from "../../Components/Button";
 import { RegisterContainer, HeaderContainer } from "./style";
 import image1 from "../../assets/img/image-signup.png";

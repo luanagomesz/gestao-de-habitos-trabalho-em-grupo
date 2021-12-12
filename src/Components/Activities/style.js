@@ -1,20 +1,18 @@
-
 import styled from "styled-components";
 
 export const PrincipalContainer = styled.div`
-  border: 1.5px solid var(--grey-50);
-  margin: 10vh auto;
-  display: flex;
-  flex-direction: column;
   width: 270px;
   height: 330px;
-
-  border-radius: 20px;
-
+  border: solid var(--grey-50) 1px;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  padding: 12px;
 
   @media (min-width: 768px) {
-  
-    max-width: 560px;
+    width: 560px;
   }
 `;
 
@@ -52,14 +50,24 @@ export const Modules = styled.div`
     color: var(--white);
     padding: 5px;
     border-radius: 10px;
-    width: 285px;
+    min-width: 230px;
     height: 35px;
+    @media (min-width: 768px) {
+      width: 530px;
+    }
   }
   div {
     display: flex;
-  }
-  h4 {
-    margin: 5px 15px 5px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    h4 {
+      margin: 5px 5px 5px 5px;
+      @media (min-width: 768px) {
+        margin: 5px 50px 5px 50px;
+      }
+    }
   }
 `;
 
@@ -128,7 +136,7 @@ export const ContainerButtons = styled.span`
   display: flex;
   width: 100%;
   margin-top: 15px;
- `
+`;
 
 export const FooterContainer = styled.div`
   display: flex;
@@ -160,4 +168,3 @@ export const FooterContainer = styled.div`
     font-size: 24px;
   }
 `;
-

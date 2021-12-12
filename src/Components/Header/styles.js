@@ -11,6 +11,14 @@ height: 124px;
 width: 100%;
 justify-content: space-around;
 
+span{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  align-content:center;
+}
+
 h1 {
   color: var(--white);
 }

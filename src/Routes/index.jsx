@@ -5,6 +5,8 @@ import Register from "../Pages/Register";
 import Dashboard from "../Pages/Dashboard";
 import Activities from "../Components/Activities";
 import Goals from "../Pages/Goals";
+import Habits from "../Pages/Habits";
+
 
 function Routes() {
   const history = useHistory();
@@ -23,8 +25,11 @@ function Routes() {
       <Route path="/dashboard">
         <Dashboard history={history} />
       </Route>
-      <Route path="/activities">
-        <Activities history={history} />
+      <Route path="/habits">
+        <Habits history={history} />
+      </Route>
+      <Route path="/activies">
+        <Activies history={history} />
       </Route>
       <Route path="/goals">
         <Goals history={history} />

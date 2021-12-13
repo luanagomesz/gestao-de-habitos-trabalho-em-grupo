@@ -1,8 +1,13 @@
 import { ModalContainer } from "./style";
 import { MdOutlineExitToApp } from "react-icons/md";
 
-const Modal = ({ title, text }) => {
+//usar o yup resolver para substituir o uso de states
+//passar o valor da category por props
+//passar uma props sinalizando o tipo do modal
+
+const Modal = ({ title, text, /* type */ }) => {
   return (
+    /* {type === "habits" ? <ModalHabits></ModalHabits> : <ModalGoals></ModalGoals> */
     <ModalContainer>
       <div className="modal-header">
         <h1>{title}</h1>

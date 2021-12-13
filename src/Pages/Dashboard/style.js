@@ -18,14 +18,42 @@ export const Header = styled.header`
   @media (max-width: 900px) {
     height: 70px;
   }
+  .logoContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    .logo {
+      width: 70px;
+      height: auto;
+      margin-bottom: 15px;
+      :hover {
+        cursor: pointer;
+      }
+      @media (max-width: 900px) {
+        width: 50px;
+      }
+    }
+    h1 {
+      margin-left: 10px;
+      font-size: 50px;
+      font-weight: normal;
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      @media (max-width: 900px) {
+        display: none;
+      }
+    }
+  }
+
   h1 {
-    margin-left: 100px;
     font-size: 50px;
     font-weight: normal;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     @media (max-width: 900px) {
       font-size: 30px;
-      margin-left: 20px;
+      margin-left: 0px;
     }
   }
   div {

@@ -2,13 +2,15 @@ import DashboardImg from "../../assets/img/dashboard.png";
 import LogoutImg from "../../assets/img/image1.png";
 import userIMG from "../../assets/img/user1.png";
 import vectorDashboard from "../../assets/img/VectorDashboard.png";
+import Habbit from "../../assets/img/Habbit.png";
 import {
   ContainerContent,
-  Header,
   ContainerPage,
+  Header,
   ContainerImg,
   ContainerFocus,
 } from "./style";
+
 //import Header from "../../Components/Header";
 import { useContext } from "react";
 import { DashboardContext } from "../../Provider/dashboard/dashboard";
@@ -20,7 +22,11 @@ function Dashboard({ history }) {
   return (
     <ContainerPage>
       <Header>
-        <h1>Logo</h1>
+        <div className="logoContainer">
+          <img className="logo" src={Habbit} alt="" srcset="" />
+          <h1>Habbits</h1>
+        </div>
+
         <div>
           <p className="text" onClick={() => history.push("/habits")}>
             Habits

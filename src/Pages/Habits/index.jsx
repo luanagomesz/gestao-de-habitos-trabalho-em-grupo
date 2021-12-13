@@ -41,15 +41,15 @@ function Habits({ history }) {
               <img src={imgWorkout} alt="imgWorkout" />
               <p>Workout</p>
             </div>
-            <div className="button2">
+            <div className="button2" onClick={onClickFunction}>
               <img src={imgGoZen} alt="imgGoZen" />
               <p>Go Zen</p>
             </div>
-            <div className="button3">
+            <div className="button3" onClick={onClickFunction}>
               <img src={imgHobbies} alt="imgHobbies" />
               <span>Hobbies</span>
             </div>
-            <div className="button4">
+            <div className="button4" onClick={onClickFunction}>
               <img src={imgHomeCare} alt="imgHomeCare" />
               <span>Home Care</span>
             </div>

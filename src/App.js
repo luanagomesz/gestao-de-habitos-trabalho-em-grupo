@@ -1,20 +1,23 @@
 import GlobalStyle from "./GlobalStyle/style";
 import { ActivitiesProvider } from "./Provider/Activities/activities";
 import { DashboardProvider } from "./Provider/dashboard/dashboard";
+import { GoalsProvider } from "./Provider/goals/goals";
 import Routes from "./Routes";
 import { LoginProvider } from "./Provider/Login/Login";
 function App() {
   return (
     <>
       {/*<ExemploDeProvider>*/}
-      <LoginProvider>
-        <DashboardProvider>
+     <DashboardProvider>
+       <LoginProvider>
+        <GoalsProvider>
           <ActivitiesProvider>
-            <Routes />
             <GlobalStyle />
+            <Routes />
           </ActivitiesProvider>
-        </DashboardProvider>
+        </GoalsProvider>
       </LoginProvider>
+     </DashboardProvider>
       {/*</ExemploDeProvider>*/}
     </>
   );

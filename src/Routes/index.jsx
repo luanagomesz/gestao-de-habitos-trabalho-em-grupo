@@ -3,8 +3,10 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "../Pages/Dashboard";
+import Activities from "../Components/Activities";
+import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
-import Activies from "../Components/Activities";
+
 
 function Routes() {
   const history = useHistory();
@@ -28,6 +30,12 @@ function Routes() {
       </Route>
       <Route path="/activies">
         <Activies history={history} />
+      </Route>
+      <Route path="/goals">
+        <Goals history={history} />
+      </Route>
+      <Route path="/goals/modal">
+        <Goals history={history} />
       </Route>
     </Switch>
   );

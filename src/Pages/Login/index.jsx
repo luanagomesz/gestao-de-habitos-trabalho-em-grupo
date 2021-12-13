@@ -1,5 +1,5 @@
 import { useHistory } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import image1 from "../../assets/img/image-login.png";
 import image2 from "../../assets/img/Vector-login.png";
@@ -7,39 +7,11 @@ import { LoginContainer, HeaderContainer } from "./style";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button";
-
-const FormLogin = () => {
-  const history = useHistory();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const SubmitLogin = (evt) => {
-    evt.preventDefault();
-
-    const Login = {
-      email: email,
-      password: password,
-    };
-
-    axios
-      .post("https://kenzie-habits.herokuapp.com/sessions/", Login)
-      .then((response) => {
-        localStorage.setItem("authToken", JSON.stringify(response.data.access));
-
-        history.push("/dashboard");
-      })
-      .catch((err) => console.log("Login Fail"));
-  };
-  // const token = JSON.parse(localStorage.getItem("authToken"));
-
-  //   const goTodash = () => {
-
-  //     if (token) {
-
-  //       history.push("/dashboard");
-  //     }
-  // }
+import jwt_decode from "jwt-decode";
+import { LoginContext } from "../../Provider/Login/Login";
+const FormLogin = ({ history }) => {
+  const { submitLogin, setUsername, setPassword, username, password } =
+    useContext(LoginContext);
 
   return (
     <>
@@ -51,7 +23,7 @@ const FormLogin = () => {
             color="var(--ligthblue)"
           />
         </header>
-        <h2>Login</h2>
+        <h1>Login</h1>
       </HeaderContainer>
 
       <LoginContainer>
@@ -61,11 +33,11 @@ const FormLogin = () => {
           </aside>
         </div>
         <main>
-          <form onSubmit={SubmitLogin}>
+          <form onSubmit={(evt) => submitLogin(evt)}>
             <input
-              placeholder="Email"
-              onChange={(evt) => setEmail(evt.target.value)}
-              value={email}
+              placeholder="Username"
+              onChange={(evt) => setUsername(evt.target.value)}
+              value={username}
             />
             <input
               placeholder="Password"

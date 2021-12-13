@@ -3,11 +3,12 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  h2 {
+  h1 {
     color: var(--ligthblue);
     margin: 0;
     text-align: center;
-    font-weight: light;
+    font-weight: 300px;
+    font-size:40px;
   }
   header {
     margin: 10px 0 0 20px;
@@ -22,7 +23,7 @@ export const HeaderContainer = styled.div`
   
   @media (min-width: 900px) {
     align-items: center;
-    h2 {
+    h1 {
     
       margin-left:50%;
       margin-bottom: -50px;

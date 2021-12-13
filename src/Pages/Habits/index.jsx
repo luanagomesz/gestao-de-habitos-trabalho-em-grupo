@@ -13,9 +13,6 @@ import { useState } from "react";
 
 function Habits({ history }) {
   const [newCategory, setNewCategory] = useState({});
-  const teste = [{ name: "Billy" }];
-
-  const newTeste = { ...teste, category: newCategory };
 
   //ao clicar no botão vai setar o obj com o valor category
   //do botão e abrir o modal para terminar de config o obj
@@ -28,9 +25,9 @@ function Habits({ history }) {
   const onClickFunction = (category) => {
     setToggle(true);
     setNewCategory(category);
+    //fazer um spread na array de obj {...arr, category: newCategory} para adicionar o valor
   };
 
-  console.log(newTeste);
   return (
     <>
       <Header backgroundColor={"var(--red)"} />

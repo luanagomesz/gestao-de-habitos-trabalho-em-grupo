@@ -7,28 +7,32 @@ import {LoginContainer, HeaderContainer} from "./style"
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom"
 import Button from "../../Components/Button"
+import jwt_decode from "jwt-decode"
 
 
 const FormLogin = () => {
 
     const history = useHistory()
 
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const SubmitLogin = (evt) => {
+    const submitLogin = (evt) => {
 
         evt.preventDefault()
 
-        const Login = {
-        email: email,
+        const login = {
+
+        username: username,
         password: password
         
         }
+        console.log(login)
+        axios.post("https://kenzie-habits.herokuapp.com/sessions/", login).then((response) => {
+          console.log(response)
+          const jwt = jwt_decode(response.data.access)
 
-        axios.post("https://kenzie-habits.herokuapp.com/sessions/", Login)
-        .then((response) => {
-
+        localStorage.setItem("id", JSON.stringify(jwt.user_id))
         localStorage.setItem("authToken", JSON.stringify(response.data.access))
 
         history.push("/dashboard")
@@ -52,7 +56,7 @@ const FormLogin = () => {
         <header>
           <IoIosArrowBack onClick={() => history.push("/")} size={30} color="var(--ligthblue)"/>
         </header>
-        <h2>Login</h2>
+        <h1>Login</h1>
       </HeaderContainer>
 
 
@@ -64,8 +68,8 @@ const FormLogin = () => {
               </aside>
             </div>
             <main>
-            <form onSubmit={SubmitLogin}> 
-                <input placeholder="Email" onChange={(evt) => setEmail(evt.target.value)} value={email}/>
+            <form onSubmit={(evt) => submitLogin(evt)}> 
+                <input placeholder="Username" onChange={(evt) => setUsername(evt.target.value)} value={username}/>
                 <input placeholder="Password" type="password" onChange={(evt) => setPassword(evt.target.value)} value={password}/>
                 <Button type="submit" background={"var(--ligthblue)"} width={"170px"}>Login</Button>
             </form>

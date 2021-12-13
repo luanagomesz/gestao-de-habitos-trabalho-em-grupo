@@ -17,6 +17,7 @@ span{
   justify-content:center;
   align-items:center;
   align-content:center;
+   
 }
 
 h1 {
@@ -31,6 +32,14 @@ button {
 }
 div {
   display: flex;
+}
+
+.Habbit{
+  margin-left: 10px;
+  @media (max-width: 650px) {
+  
+     display:none;}
+
 }
 `;
 

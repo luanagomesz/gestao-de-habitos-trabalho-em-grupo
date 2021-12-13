@@ -8,8 +8,8 @@ const Header = ({ backgroundColor }) => {
   return (
     <HeaderContainer backgroundColor={backgroundColor}>
       <span>
-        <img src={Rabbit} alt="" />
-        <h1>Habbit</h1>
+        <img src={Rabbit} alt="Habbit-logo" />
+        <h1 className="Habbit">Habbit</h1>
       </span>
       <div>
         <button>

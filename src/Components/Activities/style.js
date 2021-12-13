@@ -1,8 +1,116 @@
 import styled from "styled-components";
 
-export const PrincipalContainer = styled.div`
+const ActivityPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .PrincipalContainer {
+    display: flex;
+    width: 270px;
+    height: 330px;
+    border: solid var(--grey-50) 1px;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 12px;
+  }
+  .PrincipalHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 7px -5px;
+
+    h2 {
+      margin-top: 15px;
+    }
+    button {
+      background: none;
+      font-size: 30px;
+    }
+  }
+
+  .PrincipalBody {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Modules {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    p {
+      background-color: var(--purple);
+      color: var(--white);
+      padding: 5px;
+      border-radius: 10px;
+      min-width: 230px;
+      height: 35px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      h4 {
+        margin: 5px 5px 5px 5px;
+      }
+    }
+  }
+  .Wave {
+    opacity: 1;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .Yoga {
+    display: flex;
+    margin-top: 5px;
+    width: 250px;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+
+    .PrincipalContainer {
+      width: 560px;
+    }
+    .PrincipalBody {
+      width: 560px;
+    }
+    .Modules {
+      p {
+        width: 510px;
+      }
+      h4 {
+        margin: 5px 50px 5px 50px;
+      }
+    }
+
+    .Wave {
+      display: none;
+    }
+  }
+`;
+
+export default ActivityPage;
+
+//////////////////////////////////////////////
+
+export const ModalContainer = styled.div`
   width: 270px;
-  height: 330px;
+  height: 350px;
   border: solid var(--grey-50) 1px;
   border-radius: 10px;
   margin: 0 auto;
@@ -11,160 +119,82 @@ export const PrincipalContainer = styled.div`
   margin-top: 30px;
   padding: 12px;
 
+  img {
+    margin-top: 55px;
+    width: 221px;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  p {
+    margin-top: 1px;
+    color: red;
+  }
+
   @media (min-width: 768px) {
     width: 560px;
   }
-`;
 
-export const PrincipalHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: 7px -5px;
-
-  h2 {
-    margin-top: 15px;
+  h1 {
+    font-size: 1.5rem;
   }
-  button {
-    background: none;
-    font-size: 30px;
+
+  .modal-header {
+    min-width: 240px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    button {
+      background: none;
+      font-size: 30px;
+    }
   }
-`;
 
-export const PrincipalBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: center;
-  justify-content: center;
-`;
-export const Modules = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 15px;
-
-  p {
-    background-color: var(--purple);
-    color: var(--white);
-    padding: 5px;
-    border-radius: 10px;
+  .frequency-container {
+    margin: 0 auto;
     min-width: 230px;
-    height: 35px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+
+    button {
+      font-size: 15px;
+      width: 78px;
+    }
+
+    @media (min-width: 768px) {
+      width: 530px;
+      button {
+        width: 160px;
+      }
+    }
+  }
+
+  input {
+    min-width: 230px;
+    height: 50px;
+    border-radius: 5px;
+    border: solid var(--grey-50) 1px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    margin-top: 10px;
     @media (min-width: 768px) {
       width: 530px;
     }
   }
-  div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    h4 {
-      margin: 5px 5px 5px 5px;
-      @media (min-width: 768px) {
-        margin: 5px 50px 5px 50px;
-      }
-    }
-  }
 `;
 
-export const ActivityContainer = styled.div`
+export const ButtonAdd = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  border: 1.5px solid var(--grey-50);
-  max-width: 600px;
-  height: 360px;
-  border-radius: 20px;
-  margin: 2vh auto;
-
-  input {
-    border-radius: 10px;
-    height: 45px;
-    width: 100%;
-    font-size: 20px;
-    margin-bottom: 15px;
-    padding-left: 15px;
-    border: 1.5px solid var(--grey-50);
-  }
-
-  @media only screen and (max-width: 600px) {
-  }
-`;
-
-export const ContainerModal = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    width: 100%;
-    height: 30vh;
-  }
-
-  @media only screen and (min-width: 600px) {
-  }
-`;
-
-export const TitleContainer = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    margin: 15px 60px 15px 0;
-    font-weight: 500;
-    font-size: 25px;
-  }
   button {
-    background: none;
-    font-size: 30px;
-  }
-`;
-
-export const ContainerButtons = styled.span`
-  display: flex;
-  width: 100%;
-  margin-top: 15px;
-`;
-
-export const FooterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    margin: 5px 10px;
-    text-align: center;
+    width: 500px;
+    margin: 15px auto;
   }
 
-  input {
-    width: 80%;
-    height: 40px;
-    margin: 5px auto;
-    border: 2px solid var(--purple);
-  }
-
-  button {
-    background: var(--purple);
-    border-radius: 10px;
-    color: var(--white);
-    height: 40px;
-    width: 80%;
-    margin: 0 auto;
-    font-size: 24px;
+  @media (min-width: 768px) {
+    width: 530px;
   }
 `;

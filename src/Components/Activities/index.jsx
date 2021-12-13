@@ -1,4 +1,3 @@
-
 import {
   PrincipalContainer,
   PrincipalHeader,
@@ -7,20 +6,20 @@ import {
 } from "./style";
 import { BsClipboardPlus } from "react-icons/bs";
 import Header from "../Header";
-import Modal from "../Modal";
-import { useState } from "react";
+import { useContext } from "react";
+import { ActivitiesContext } from "../../Provider/Activities/activities";
+import MyModal from "./MyModal";
 
-
-function Activies() {
-const [openModal, setOpenModal] = useState(false)
+function Activities() {
+  const { openModal, setOpenModal } = useContext(ActivitiesContext);
 
   return (
     <>
       <Header backgroundColor={"var(--ligthblue)"} />
       <PrincipalContainer>
         <PrincipalHeader>
-          <h2>Activies</h2>
-          <button onClick={()=> setOpenModal(true)}>
+          <h2>Activities</h2>
+          <button onClick={() => setOpenModal(true)}>
             <BsClipboardPlus />
           </button>
         </PrincipalHeader>
@@ -48,15 +47,15 @@ const [openModal, setOpenModal] = useState(false)
             </div>
           </Modules>
         </PrincipalBody>
-       
       </PrincipalContainer>
-      {openModal ? <Modal 
-
-        title={"New Activity"}
-        text={"How hard is it to keep this Goal?"}
-      /> : null}
+      {openModal ? (
+        <MyModal
+          title={"New Activity"}
+          text={"How hard is it to keep this Goal?"}
+        />
+      ) : null}
     </>
   );
 }
 
-export default Activies;
+export default Activities;

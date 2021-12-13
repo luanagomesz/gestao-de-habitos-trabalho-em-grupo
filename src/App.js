@@ -1,6 +1,7 @@
 import GlobalStyle from "./GlobalStyle/style";
 import { ActivitiesProvider } from "./Provider/Activities/activities";
 import { DashboardProvider } from "./Provider/dashboard/dashboard";
+import { GoalsProvider } from "./Provider/goals/goals";
 import Routes from "./Routes";
 
 function App() {
@@ -8,10 +9,12 @@ function App() {
     <>
       {/*<ExemploDeProvider>*/}
       <DashboardProvider>
-        <ActivitiesProvider>
-          <Routes />
-          <GlobalStyle />
-        </ActivitiesProvider>
+        <GoalsProvider>
+          <ActivitiesProvider>
+            <GlobalStyle />
+            <Routes />
+          </ActivitiesProvider>
+        </GoalsProvider>
       </DashboardProvider>
       {/*</ExemploDeProvider>*/}
     </>

@@ -4,7 +4,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "../Pages/Dashboard";
 import Activities from "../Components/Activities";
-
+import Goals from "../Pages/Goals";
 
 function Routes() {
   const history = useHistory();
@@ -25,6 +25,12 @@ function Routes() {
       </Route>
       <Route path="/activities">
         <Activities history={history} />
+      </Route>
+      <Route path="/goals">
+        <Goals history={history} />
+      </Route>
+      <Route path="/goals/modal">
+        <Goals history={history} />
       </Route>
     </Switch>
   );

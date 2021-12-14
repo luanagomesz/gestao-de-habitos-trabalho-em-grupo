@@ -26,7 +26,7 @@ function Routes() {
       <Route path="/habits">
         <Habits history={history} />
       </Route>
-      <Route path="/activies">
+      <Route path="/activities">
         <Activies history={history} />
       </Route>
     </Switch>

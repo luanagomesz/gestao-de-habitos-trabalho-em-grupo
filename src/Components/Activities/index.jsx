@@ -5,10 +5,27 @@ import Header from "../Header";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
 import MyModal from "./MyModal";
+import axios from "axios";
 import Vetor from "../../assets/img/Vector-activities.png";
+import { LoginContext } from "../../Provider/Login/Login";
+
 function Activities() {
-  const { openModal, setOpenModal, level, setLevel } =
-    useContext(ActivitiesContext);
+  const { openModal, setOpenModal } = useContext(ActivitiesContext);
+
+  const { authorization, clearLocalStorage, username } =
+    useContext(LoginContext);
+
+  // const [token] = useState(JSON.parse(localStorage.getItem("@ :token")))
+  // const [user] = useState(JSON.parse(localStorage.getItem("@ :user")))
+
+  const onSubmitActivity = (data) => {
+    axios
+      .get(`https://kenzie-habits.herokuapp.com/groups`, data, authorization)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -45,17 +62,15 @@ function Activities() {
               </div>
             </div>
           </div>
+          <aside>
+            <img className="Yoga" src={Yoga} alt="yoga-girl" />
+          </aside>
         </div>
         {openModal ? (
-          <>
-            <MyModal
-              title={"New Activity"}
-              text={"How hard is it to keep this Goal?"}
-            />
-            <aside>
-              <img className="Yoga" src={Yoga} alt="yoga-girl" />
-            </aside>
-          </>
+          <MyModal
+            title={"New Activity"}
+            text={"How hard is it to keep this Goal?"}
+          />
         ) : (
           <img className="Wave" src={Vetor} alt="vetor" />
         )}

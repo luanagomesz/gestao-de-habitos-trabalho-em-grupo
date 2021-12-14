@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { ModalContainer } from "./style.js";
 import * as yup from "yup";
 import api from "../../Services/api";
+import { MdDataExploration } from "react-icons/md";
 
 //usar o yup resolver para substituir o uso de states
 //passar o valor da category por props
@@ -12,17 +13,18 @@ import api from "../../Services/api";
 //titleModal
 
 const Modal = ({ category = "workout", toggle, setToggle }) => {
-  
+  const token = JSON.parse(localStorage.getItem("authToken:token"));
 
+  let userId = "";
+  /* if (token) {
+    userId = jwtDecode(token, { payload: true });
+  } */
 
   const schema = yup.object().shape({
     title: yup.string(),
     category: yup.string(),
-    frequency: yup.string().nullable().required("campo obrigatorio"),
-    difficulty: yup.string().nullable().required("campo obrigatorio"),
-    achieved: yup.string().default(false),
-    how_much_achieved: yup.string().default(120),
-    user: yup.string()
+    difficulty: yup.string(),
+    frequency: yup.string(),
   });
 
   const {
@@ -33,32 +35,37 @@ const Modal = ({ category = "workout", toggle, setToggle }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = ({
-    title,
-    category,
-    difficulty,
-    frequency
-  }) => {
-   
-    console.log(title);
+  const onSubmitFunction = (data) => {
 
-    api
-      .post("/habits", {title: title, category: category, difficulty: difficulty, frequency: frequency, achieved: false, how_much_achieved: 0, user: userId.user_id})
-      .then((_) => {
-        setToggle(false);
+    const { title, category, difficulty, frequency } = data;
+
+    /* api
+      .post(
+        "/habits",
+        {
+          title: title,
+          category: category,
+          difficulty: difficulty,
+          frequency: frequency,
+          achieved: false,
+          how_much_achieved: 0,
+          user: userId.user_id,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response)
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err)); */
 
-  const functionTeste = () => {
-    console.log("oi")
-  }
+      console.log(data)
+  };
 
   return (
     <ModalContainer>
-      {/* <form onSubmit={handleSubmit(functionTeste)}>
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
         <div className="modalHeader">
-          <h4>New Habit</h4> 
+          <h4>New Habit</h4>
           <span>
             <IoIosArrowForward />
           </span>
@@ -67,7 +74,7 @@ const Modal = ({ category = "workout", toggle, setToggle }) => {
           className="addNewHabit"
           type="text"
           placeholder="add a new habit"
-          {...register("habit")}
+          {...register("title")}
         />
 
         <p>How often?</p>
@@ -155,10 +162,6 @@ const Modal = ({ category = "workout", toggle, setToggle }) => {
         <button type="submit" className="buttonModal">
           Add
         </button>
-      </form> */}
-      <form onSubmit={handleSubmit(functionTeste)}> 
-        <input name="title" {...register("title")}/>
-        <button type="submit">add</button>
       </form>
     </ModalContainer>
   );

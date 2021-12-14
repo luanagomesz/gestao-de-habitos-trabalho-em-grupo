@@ -1,6 +1,6 @@
 import Header from "../../Components/Header";
 import List from "../../Components/List";
-import Modal from "../../Components/Modal";
+import ModalHabits from "../../Components/ModalHabits";
 
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
@@ -30,7 +30,7 @@ function Habits({ history }) {
   return (
     <>
       <Header backgroundColor={"var(--red)"} />
-      {toggle ? <Modal className="modal" category={newCategory} toggle={toggle} setToggle={setToggle}></Modal> : <></>}
+      {toggle && <ModalHabits className="modal" category={newCategory} toggle={toggle} setToggle={setToggle}></ModalHabits>}
 
       <MainContainer>
         <div className="containerLeft">
@@ -39,7 +39,6 @@ function Habits({ history }) {
           <section>
             <div
               className="button1"
-              value="Workout"
               onClick={() => onClickFunction("Workout")}
             >
               <img src={imgWorkout} alt="imgWorkout" />
@@ -64,6 +63,7 @@ function Habits({ history }) {
             </div>
           </section>
         </div>
+
         <div className="containerRight">
           <List
             title={"Habits"}
@@ -72,6 +72,7 @@ function Habits({ history }) {
           ></List>
         </div>
       </MainContainer>
+
       <Footer>
         <img className="vector" src={imgFooter} alt="vector-habits" />
       </Footer>

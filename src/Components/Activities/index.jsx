@@ -5,9 +5,9 @@ import Header from "../Header";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
 import MyModal from "./MyModal";
-import axios from "axios";
 import Vetor from "../../assets/img/Vector-activities.png";
 import { LoginContext } from "../../Provider/Login/Login";
+import axios from "axios";
 
 function Activities() {
   const { openModal, setOpenModal } = useContext(ActivitiesContext);
@@ -15,14 +15,12 @@ function Activities() {
   const { authorization, clearLocalStorage, username } =
     useContext(LoginContext);
 
-  // const [token] = useState(JSON.parse(localStorage.getItem("@ :token")))
-  // const [user] = useState(JSON.parse(localStorage.getItem("@ :user")))
-
-  const onSubmitActivity = (data) => {
+  const onSubmitActivity = () => {
     axios
-      .get(`https://kenzie-habits.herokuapp.com/groups`, data, authorization)
+      .get(`https://kenzie-habits.herokuapp.com/activities/`, "", authorization)
       .then((response) => {
         console.log(response);
+        clearLocalStorage();
       })
       .catch((err) => console.log(err));
   };

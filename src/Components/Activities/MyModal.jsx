@@ -2,21 +2,26 @@ import { ButtonAdd, ModalContainer } from "./MyModal.Style";
 import { MdOutlineExitToApp } from "react-icons/md";
 import Button from "../Button";
 import * as yup from "yup";
-import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import api from "../../Services/api";
+import { LoginContext } from "../../Provider/Login/Login";
 
 const MyModal = ({ history }) => {
   const { openModal, setOpenModal } = useContext(ActivitiesContext);
+  const { authorization } = useContext(LoginContext);
 
   const ActivitySchema = yup.object().shape({
     title: yup.string().required("Type it your new activity"),
     realization_time: yup
       .string()
       .required("Put a deadline to finish the activity"),
-      difficulty: yup.string().nullable().required("Select the difficulty level of the activity"),
+    difficulty: yup
+      .string()
+      .nullable()
+      .required("Select the difficulty level of the activity"),
   });
 
   const {
@@ -27,28 +32,19 @@ const MyModal = ({ history }) => {
     resolver: yupResolver(ActivitySchema),
   });
 
-   const [token] = useState(JSON.parse(localStorage.getItem("authToken:token")))
-   const [user] = useState(JSON.parse(localStorage.getItem("authToken:user")))
-
-  const onSubmitActivity = ({ title, realization_time, difficulty }) => {
-    const data = { title, realization_time, difficulty};
-    axios
-      .post("https://kenzie-habits.herokuapp.com/activities/", data, {
-        headers: {
-          // Authorization: `Bearer ${token}`
-        },
-      })
-      .then((response) => { setOpenModal(false);
-               
+  const onSubmitActivity = ({ title, realization_time, group }) => {
+    const data = { title, realization_time, group };
+    api
+      .post("activities/", data, authorization)
+      .then((response) => {
+        console.log(response);
+        setOpenModal(false);
       })
       .catch((err) => console.log(err));
   };
 
-
-  return (<>
- 
+  return (
     <ModalContainer>
-     
       <div className="modal-header">
         <h1>New Activity</h1>
         <button onClick={() => setOpenModal(false)}>
@@ -64,21 +60,42 @@ const MyModal = ({ history }) => {
         />
         <p>{errors.title?.message}</p>
         <h4>How hard is it to keep this Activity?</h4>
-        <div className="difficulty" >
+        <div className="difficulty">
           <span className="level">
             <label for="easy">
-              <input id ="easy" type="radio" name="level" value="easy" {...register("difficulty")}/>  Easy
+              <input
+                id="easy"
+                type="radio"
+                name="level"
+                value="easy"
+                {...register("difficulty")}
+              />
+                Easy
             </label>
           </span>
           <span className="level">
             <label for="hard">
-              <input id ="hard" type="radio" name="level" value="hard" {...register("difficulty")}/>  Hard
+              <input
+                id="hard"
+                type="radio"
+                name="level"
+                value="hard"
+                {...register("difficulty")}
+              />
+                Hard
             </label>
           </span>
 
           <span className="level">
-            <label for="veryHard" className='level__veryHard'>
-              <input id="veryHard"type="radio" name="level" value="veryHard" {...register("difficulty")}/>  Very Hard
+            <label for="veryHard" className="level__veryHard">
+              <input
+                id="veryHard"
+                type="radio"
+                name="level"
+                value="veryHard"
+                {...register("difficulty")}
+              />
+                Very Hard
             </label>
           </span>
         </div>
@@ -97,7 +114,6 @@ const MyModal = ({ history }) => {
         </ButtonAdd>
       </form>
     </ModalContainer>
-    </>
   );
 };
 

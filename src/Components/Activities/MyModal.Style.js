@@ -60,6 +60,10 @@ export const ModalContainer = styled.div`
     }
   }
 
+  input[type="radio"] {
+    -webkit-appearance: none;
+  }
+
   .title,
   .dateInput {
     height: 50px;
@@ -101,9 +105,6 @@ export const ModalContainer = styled.div`
     background: #702d77;
   }
 
-  input[type="radio"] {
-    -webkit-appearance: none;
-  }
 `;
 
 export const ButtonAdd = styled.div`
@@ -115,6 +116,5 @@ export const ButtonAdd = styled.div`
 
   @media (min-width: 900px) {
     width: 530px;
-  
   }
 `;

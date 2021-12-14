@@ -6,7 +6,7 @@ import Dashboard from "../Pages/Dashboard";
 import Activities from "../Components/Activities";
 import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
-
+import Groups from "../Pages/Groups";
 function Routes() {
   const history = useHistory();
 
@@ -35,6 +35,9 @@ function Routes() {
       </Route>
       <Route path="/goals/modal">
         <Goals history={history} />
+      </Route>
+      <Route path="/groups">
+        <Groups history={history} />
       </Route>
     </Switch>
   );

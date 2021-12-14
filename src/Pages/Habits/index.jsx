@@ -25,13 +25,13 @@ function Habits({ history }) {
   const onClickFunction = (category) => {
     setToggle(true);
     setNewCategory(category);
-    //fazer um spread na array de obj {...arr, category: newCategory} para adicionar o valor
   };
 
   return (
     <>
       <Header backgroundColor={"var(--red)"} />
-      {toggle ? <Modal className="modal" category={newCategory}></Modal> : <></>}
+      {toggle ? <Modal className="modal" category={newCategory} toggle={toggle} setToggle={setToggle}></Modal> : <></>}
+
       <MainContainer>
         <div className="containerLeft">
           <h1>Habits</h1>

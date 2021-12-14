@@ -6,9 +6,24 @@ import { useContext } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
 import MyModal from "./MyModal";
 import Vetor from "../../assets/img/Vector-activities.png";
+import { LoginContext } from "../../Provider/Login/Login";
+import axios from "axios";
+
 function Activities() {
-  const { openModal, setOpenModal, level, setLevel } =
-    useContext(ActivitiesContext);
+  const { openModal, setOpenModal } = useContext(ActivitiesContext);
+
+  const { authorization, clearLocalStorage, username } =
+    useContext(LoginContext);
+
+  const onSubmitActivity = () => {
+    axios
+      .get(`https://kenzie-habits.herokuapp.com/activities/`, "", authorization)
+      .then((response) => {
+        console.log(response);
+        clearLocalStorage();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -45,17 +60,15 @@ function Activities() {
               </div>
             </div>
           </div>
+          <aside>
+            <img className="Yoga" src={Yoga} alt="yoga-girl" />
+          </aside>
         </div>
         {openModal ? (
-          <>
-            <MyModal
-              title={"New Activity"}
-              text={"How hard is it to keep this Goal?"}
-            />
-            <aside>
-              <img className="Yoga" src={Yoga} alt="yoga-girl" />
-            </aside>
-          </>
+          <MyModal
+            title={"New Activity"}
+            text={"How hard is it to keep this Goal?"}
+          />
         ) : (
           <img className="Wave" src={Vetor} alt="vetor" />
         )}

@@ -8,16 +8,16 @@ function App() {
   return (
     <>
       {/*<ExemploDeProvider>*/}
-     <DashboardProvider>
-       <LoginProvider>
-        <GoalsProvider>
-          <ActivitiesProvider>
-            <GlobalStyle />
-            <Routes />
-          </ActivitiesProvider>
-        </GoalsProvider>
-      </LoginProvider>
-     </DashboardProvider>
+      <DashboardProvider>
+        <LoginProvider>
+          <GoalsProvider>
+            <ActivitiesProvider>
+              <GlobalStyle />
+              <Routes />
+            </ActivitiesProvider>
+          </GoalsProvider>
+        </LoginProvider>
+      </DashboardProvider>
       {/*</ExemploDeProvider>*/}
     </>
   );

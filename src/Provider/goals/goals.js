@@ -4,11 +4,11 @@ import axios from "axios";
 export const GoalsContext = createContext([]);
 
 export const GoalsProvider = ({ children }) => {
-  const [goalslist, setGoalslist] = useState([]);
+  const [goalsList, setGoalsList] = useState([]);
 
   useEffect(() => {
-    showList(setGoalslist);
-  }, [goalslist]);
+    showList(setGoalsList);
+  }, [goalsList]);
 
   const [token] = useState(localStorage.getItem("AuthToken") || "");
 
@@ -21,4 +21,10 @@ export const GoalsProvider = ({ children }) => {
         setList(response);
       });
   };
+
+  return (
+    <GoalsContext.Provider value={{ setGoalsList, goalsList, showList }}>
+      {children}
+    </GoalsContext.Provider>
+  );
 };

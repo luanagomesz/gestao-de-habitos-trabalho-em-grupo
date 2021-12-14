@@ -7,7 +7,6 @@ import Activities from "../Components/Activities";
 import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
 
-
 function Routes() {
   const history = useHistory();
 

@@ -8,6 +8,7 @@ import MyModal from "./MyModal";
 import Vetor from "../../assets/img/Vector-activities.png";
 import { LoginContext } from "../../Provider/Login/Login";
 import axios from "axios";
+import Button from "../Button";
 
 function Activities() {
   const { openModal, setOpenModal } = useContext(ActivitiesContext);
@@ -62,6 +63,11 @@ function Activities() {
               </div>
             </div>
           </div>
+          <div className="ButtonCreate">
+          <Button onClick={() => setOpenModal(true)}  background={"var(--purple)"} width={"230px"}>
+            Add a new activity
+          </Button>
+        </div>
         </div>
 
         {openModal ? (

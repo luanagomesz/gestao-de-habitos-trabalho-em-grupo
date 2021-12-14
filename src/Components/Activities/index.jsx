@@ -29,6 +29,9 @@ function Activities() {
     <>
       <Header backgroundColor={"var(--ligthblue)"} />
       <ActivityPage>
+        <div className="Yoga">
+          <img src={Yoga} alt="yoga-girl" />
+        </div>
         <div className="PrincipalContainer">
           <div className="PrincipalHeader">
             <h2>Activities</h2>
@@ -41,29 +44,26 @@ function Activities() {
             <div className="Modules">
               <p>Activity #1</p>
               <div>
-                <h4>Difficulty</h4>
                 <h4>Relization Time</h4>
               </div>
             </div>
+
             <div className="Modules">
               <p>Activity #2</p>
               <div>
-                <h4>Difficulty</h4>
                 <h4>Relization Time</h4>
               </div>
             </div>
+
             <div className="Modules">
               <p>Activity #4</p>
               <div>
-                <h4>Difficulty</h4>
                 <h4>Relization Time</h4>
               </div>
             </div>
           </div>
-          <aside>
-            <img className="Yoga" src={Yoga} alt="yoga-girl" />
-          </aside>
         </div>
+
         {openModal ? (
           <MyModal
             title={"New Activity"}

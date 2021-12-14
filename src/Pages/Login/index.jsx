@@ -1,13 +1,10 @@
-import { useHistory } from "react-router";
-import { useContext, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import image1 from "../../assets/img/image-login.png";
 import image2 from "../../assets/img/Vector-login.png";
 import { LoginContainer, HeaderContainer } from "./style";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button";
-import jwt_decode from "jwt-decode";
 import { LoginContext } from "../../Provider/Login/Login";
 const FormLogin = ({ history }) => {
   const { submitLogin, setUsername, setPassword, username, password } =

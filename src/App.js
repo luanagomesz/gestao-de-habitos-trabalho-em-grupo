@@ -7,14 +7,14 @@ function App() {
   return (
     <>
       {/*<ExemploDeProvider>*/}
-      <LoginProvider>
-        <DashboardProvider>
+      <DashboardProvider>
+        <LoginProvider>
           <ActivitiesProvider>
-            <Routes />
             <GlobalStyle />
+            <Routes />
           </ActivitiesProvider>
-        </DashboardProvider>
-      </LoginProvider>
+        </LoginProvider>
+      </DashboardProvider>
       {/*</ExemploDeProvider>*/}
     </>
   );

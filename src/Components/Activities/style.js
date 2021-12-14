@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 const ActivityPage = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
 
   aside {
     display: none;
-    
   }
 
   .PrincipalContainer {
@@ -80,45 +79,34 @@ const ActivityPage = styled.div`
     left: 0;
   }
   .Yoga {
-    display: flex;
-    margin-top: 126px;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+    display: none;
   }
 
   @media (min-width: 900px) {
     display: flex;
-    flex-direction:row-reverse;
-   
-      aside {
-      display: block;
-      position:absolute;
-      width:300px;
-      top:25vw;
-      right:50vh;
-    }
+    flex-direction: column-reverse;
 
+
+    .Yoga{
+      display:block;
+    }
     .PrincipalContainer {
       width: 700px;
       margin-bottom: 82px;
-      
+      background: var(--grey-0);
     }
-    
+
     .PrincipalBody {
       width: 560px;
       align-items: flex-start;
-      
     }
     .Modules {
       p {
         width: 10px;
-        margin:10px 0;
+        margin: 10px 0;
       }
       h4 {
-        display:none;
-       
+        display: none;
       }
     }
 
@@ -129,3 +117,4 @@ const ActivityPage = styled.div`
 `;
 
 export default ActivityPage;
+

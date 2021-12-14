@@ -7,10 +7,10 @@ import Rabbit from "../../assets/img/Habbit.png";
 const Header = ({ backgroundColor }) => {
   return (
     <HeaderContainer backgroundColor={backgroundColor}>
-      <span>
+      <div clasName="logo-container">
         <img src={Rabbit} alt="Habbit-logo" />
         <h1 className="Habbit">Habbit</h1>
-      </span>
+      </div>
       <div>
         <button>
           <AiOutlineMenu />

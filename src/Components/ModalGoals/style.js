@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.div`
   width: 300px;
-  height: 300px;
+  height: 250px;
   border: solid var(--grey-50) 1px;
   border-radius: 10px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  padding: 12px;
+  padding: 15px;
   position: absolute;
   right: 0;
   left: 0;
@@ -25,8 +25,8 @@ export const ModalContainer = styled.div`
     justify-content: space-between;
   }
 
-  .addNewHabit {
-    margin: 10px 0;
+  .addNewGoal {
+    margin: 10px 0 30px 0;
     width: 100%;
     padding: 5px;
     border-radius: 5px;
@@ -80,9 +80,9 @@ export const ModalContainer = styled.div`
   }
 
   @media (min-width: 900px){
-    width: 350px;
+    width: 400px;
     right: 570px;
-    left: 10px;
-    top: 250px;
+    left: 20px;
+    bottom: 150px;
   }
 `;

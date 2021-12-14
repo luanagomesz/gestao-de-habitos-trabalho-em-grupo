@@ -7,7 +7,7 @@ import { LoginContext } from "../../Provider/Login/Login.js";
 import * as yup from "yup";
 import api from "../../Services/api";
 
-const Modal = ({ category, toggle, setToggle }) => {
+const Modal = () => {
   const { GroupId } = useContext(GroupsContext);
   const { authorization } = useContext(LoginContext);
 
@@ -27,7 +27,7 @@ const Modal = ({ category, toggle, setToggle }) => {
       difficulty: difficulty,
       achieved: false,
       how_much_achieved: 0,
-      group: GroupId,
+      group: 1,
     }; */
     api
       .post(
@@ -37,13 +37,12 @@ const Modal = ({ category, toggle, setToggle }) => {
           difficulty: difficulty,
           achieved: false,
           how_much_achieved: 0,
-          group: /* GroupId */ 1,
+          group: GroupId,
         },
         authorization
       )
-      .then((response) => {
-        console.log(response.data);
-        setToggle(false);
+      .then((_) => {
+        console.log(data)
       })
       .catch((err) => console.log(err));
     //console.log(teste);
@@ -56,7 +55,7 @@ const Modal = ({ category, toggle, setToggle }) => {
           <h3>New Goal</h3>
         </div>
         <input
-          className="addNewHabit"
+          className="addNewGoal"
           type="text"
           placeholder="Title"
           {...register("title")}

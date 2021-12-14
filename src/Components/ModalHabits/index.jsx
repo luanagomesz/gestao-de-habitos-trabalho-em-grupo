@@ -1,19 +1,15 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import jwt_decode from "jwt-decode";
-import { useForm } from "react-hook-form";
 import { ModalContainer } from "./style.js";
+import { LoginContext } from "../../Provider/Login/Login.js";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import jwt_decode from "jwt-decode";
 import * as yup from "yup";
 import api from "../../Services/api";
 
-//usar o yup resolver para substituir o uso de states
-//passar o valor da category por props
-//passar uma props sinalizando o tipo do modal
-//titleModal
+const ModalHabits = ({ category, setToggle }) => {
 
-const Modal = ({ category, toggle, setToggle }) => {
-  /* const token = JSON.parse(localStorage.getItem("authToken:token")); */
-  let token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5OTQwMTc3LCJqdGkiOiI0Njg2YWI2YjVmYzk0ODI4YjRiM2RkYTUxMTVhZDI3NSIsInVzZXJfaWQiOjIzN30.PQB0kwEho-QYbbWaFGtwt7o5uGV2oeScKE5W30aS9mk";
+  const { token, authorization } = useContext(LoginContext)
 
   let decoded = jwt_decode(token);
 
@@ -30,9 +26,9 @@ const Modal = ({ category, toggle, setToggle }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data, category) => {
+  const onSubmitFunction = (data) => {
     const { title, difficulty, frequency } = data;
-    const teste = {
+    /* const teste = {
       title: title,
       category: category,
       difficulty: difficulty,
@@ -40,8 +36,8 @@ const Modal = ({ category, toggle, setToggle }) => {
       achieved: false,
       how_much_achieved: 0,
       user: decoded.user_id,
-    };
-    /* api
+    }; */
+    api
       .post(
         "/habits",
         {
@@ -53,14 +49,14 @@ const Modal = ({ category, toggle, setToggle }) => {
           how_much_achieved: 0,
           user: decoded.user_id,
         },
-        { headers: { Authorization: `Bearer ${token}` } }
+        authorization
       )
       .then((response) => {
         console.log(response)
         setToggle(false)
       })
-      .catch((err) => console.log(err)); */
-    console.log(teste);
+      .catch((err) => console.log(err));
+    /* console.log(teste); */
   };
 
   return (
@@ -166,4 +162,4 @@ const Modal = ({ category, toggle, setToggle }) => {
   );
 };
 
-export default Modal;
+export default ModalHabits;

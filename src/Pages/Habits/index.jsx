@@ -30,11 +30,9 @@ function Habits({ history }) {
 
   return (
     <>
+      <>
       <Header backgroundColor={"var(--red)"} />
-      {/* {toggle ? <Modal className="modal" toggle={toggle} setToggle={setToggle}></Modal> : <></>}
-       */}
-
-       <ModalGoals toggle={toggle} setToggle={setToggle} category={newCategory}/>
+      {toggle ? <Modal className="modal" toggle={toggle} setToggle={setToggle}></Modal> : <></>}
       <MainContainer>
         <div className="containerLeft">
           <h1>Habits</h1>
@@ -80,6 +78,6 @@ function Habits({ history }) {
       </Footer>
     </>
   );
-}
+ }
 
 export default Habits;

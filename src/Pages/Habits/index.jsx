@@ -12,7 +12,7 @@ import { Footer } from "./style";
 import { useState } from "react";
 
 function Habits({ history }) {
-  const [newCategory, setNewCategory] = useState({});
+  const [newCategory, setNewCategory] = useState("");
 
   //ao clicar no botão vai setar o obj com o valor category
   //do botão e abrir o modal para terminar de config o obj
@@ -31,7 +31,7 @@ function Habits({ history }) {
   return (
     <>
       <Header backgroundColor={"var(--red)"} />
-      {toggle ? <Modal className="modal"></Modal> : <></>}
+      {toggle ? <Modal className="modal" category={newCategory}></Modal> : <></>}
       <MainContainer>
         <div className="containerLeft">
           <h1>Habits</h1>
@@ -39,7 +39,7 @@ function Habits({ history }) {
           <section>
             <div
               className="button1"
-              value={"Workout"}
+              value="Workout"
               onClick={() => onClickFunction("Workout")}
             >
               <img src={imgWorkout} alt="imgWorkout" />

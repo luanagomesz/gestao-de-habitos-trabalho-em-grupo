@@ -78,6 +78,7 @@ export const GroupsProvider = ({ children }) => {
         setGroup,
         request,
         setSearch,
+        GroupId,
         setGroupId,
         groups,
         searchGroup,

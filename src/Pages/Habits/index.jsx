@@ -1,6 +1,6 @@
 import Header from "../../Components/Header";
 import List from "../../Components/List";
-import Modal from "../../Components/Modal";
+import ModalGoals from "../../Components/ModalGoals";
 
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
@@ -30,6 +30,7 @@ function Habits({ history }) {
 
   return (
     <>
+      <>
       <Header backgroundColor={"var(--red)"} />
       {toggle ? <Modal className="modal" toggle={toggle} setToggle={setToggle}></Modal> : <></>}
       <MainContainer>
@@ -77,6 +78,6 @@ function Habits({ history }) {
       </Footer>
     </>
   );
-}
+ }
 
 export default Habits;

@@ -31,7 +31,7 @@ function Habits({ history }) {
   return (
     <>
       <Header backgroundColor={"var(--red)"} />
-      {toggle ? <Modal className="modal"></Modal> : <></>}
+      {toggle ? <Modal className="modal" toggle={toggle} setToggle={setToggle}></Modal> : <></>}
       <MainContainer>
         <div className="containerLeft">
           <h1>Habits</h1>

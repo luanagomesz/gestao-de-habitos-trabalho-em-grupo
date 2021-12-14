@@ -27,9 +27,7 @@ function Routes() {
       <Route path="/habits">
         <Habits history={history} />
       </Route>
-      <Route path="/activies">
-        <Activies history={history} />
-      </Route>
+      <Route path="/activies">{/* <Activies history={history} /> */}</Route>
       <Route path="/goals">
         <Goals history={history} />
       </Route>

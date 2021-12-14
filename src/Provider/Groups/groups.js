@@ -82,6 +82,7 @@ export const GroupsProvider = ({ children }) => {
         groups,
         searchGroup,
         handlePage,
+        GroupId,
       }}
     >
       {children}

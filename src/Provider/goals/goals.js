@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+/*  
+
 
 export const GoalsContext = createContext([]);
 
@@ -21,4 +23,8 @@ export const GoalsProvider = ({ children }) => {
         setList(response);
       });
   };
-};
+}; 
+
+Não há nenhum provider sendo exportado.
+
+*/

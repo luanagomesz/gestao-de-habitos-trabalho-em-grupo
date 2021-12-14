@@ -7,7 +7,6 @@ import Activities from "../Components/Activities";
 import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
 
-
 function Routes() {
   const history = useHistory();
 
@@ -29,7 +28,7 @@ function Routes() {
         <Habits history={history} />
       </Route>
       <Route path="/activies">
-        <Activies history={history} />
+        <Activities history={history} />
       </Route>
       <Route path="/goals">
         <Goals history={history} />

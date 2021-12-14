@@ -1,28 +1,24 @@
-import { IoIosArrowForward } from "react-icons/io";
 import { yupResolver } from "@hookform/resolvers/yup";
-/* import { Redirect } from "react-router"; */
+import jwt_decode from "jwt-decode";
 import { useForm } from "react-hook-form";
 import { ModalContainer } from "./style.js";
 import * as yup from "yup";
 import api from "../../Services/api";
-import { MdDataExploration } from "react-icons/md";
 
 //usar o yup resolver para substituir o uso de states
 //passar o valor da category por props
 //passar uma props sinalizando o tipo do modal
 //titleModal
 
-const Modal = ({ category = "workout", toggle, setToggle }) => {
-  const token = JSON.parse(localStorage.getItem("authToken:token"));
+const Modal = ({ category, toggle, setToggle }) => {
+  /* const token = JSON.parse(localStorage.getItem("authToken:token")); */
+  let token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5OTQwMTc3LCJqdGkiOiI0Njg2YWI2YjVmYzk0ODI4YjRiM2RkYTUxMTVhZDI3NSIsInVzZXJfaWQiOjIzN30.PQB0kwEho-QYbbWaFGtwt7o5uGV2oeScKE5W30aS9mk";
 
-  let userId = "";
-  /* if (token) {
-    userId = jwtDecode(token, { payload: true });
-  } */
+  let decoded = jwt_decode(token);
 
   const schema = yup.object().shape({
     title: yup.string(),
-    category: yup.string(),
     difficulty: yup.string(),
     frequency: yup.string(),
   });
@@ -30,15 +26,21 @@ const Modal = ({ category = "workout", toggle, setToggle }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmitFunction = (data) => {
-
-    const { title, category, difficulty, frequency } = data;
-
+  const onSubmitFunction = (data, category) => {
+    const { title, difficulty, frequency } = data;
+    const teste = {
+      title: title,
+      category: category,
+      difficulty: difficulty,
+      frequency: frequency,
+      achieved: false,
+      how_much_achieved: 0,
+      user: decoded.user_id,
+    };
     /* api
       .post(
         "/habits",
@@ -49,31 +51,28 @@ const Modal = ({ category = "workout", toggle, setToggle }) => {
           frequency: frequency,
           achieved: false,
           how_much_achieved: 0,
-          user: userId.user_id,
+          user: decoded.user_id,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
         console.log(response)
+        setToggle(false)
       })
       .catch((err) => console.log(err)); */
-
-      console.log(data)
+    console.log(teste);
   };
 
   return (
     <ModalContainer>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <div className="modalHeader">
-          <h4>New Habit</h4>
-          <span>
-            <IoIosArrowForward />
-          </span>
+          <h3>New Habit</h3>
         </div>
         <input
           className="addNewHabit"
           type="text"
-          placeholder="add a new habit"
+          placeholder="New habit"
           {...register("title")}
         />
 

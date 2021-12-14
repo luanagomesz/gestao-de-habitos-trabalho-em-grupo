@@ -4,15 +4,15 @@ import { useContext } from "react";
 import { GoalsContext } from "../../Provider/goals/goals";
 import List from "../../Components/List";
 
-const Goals = () => {
+function Goals({ history }) {
   const { goalsList, setGoalsList, showList } = useContext(GoalsContext);
   return (
-    <>
-      <Header backgroundColor={"var(--orange"} />
-      <Modal />
+    <div>
+      <Header backgroundColor={"var(--orange)"} />
       <List />
-    </>
+      <Modal />
+    </div>
   );
-};
+}
 
 export default Goals;

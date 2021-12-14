@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory } from "react-router";
+import { Route, Switch, useHistory, Redirect } from "react-router";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
@@ -27,13 +27,13 @@ function Routes() {
       <Route path="/habits">
         <Habits history={history} />
       </Route>
-      <Route path="/activies">{/* <Activies history={history} /> */}</Route>
-      <Route path="/goals">
-        <Goals history={history} />
-      </Route>
-      <Route path="/goals/modal">
-        <Goals history={history} />
-      </Route>
+
+      <Route path="/goals" component={Goals} />
+
+      <Redirect to="/dashboard" />
+      {/* util para redirecionar quando o usuário tentar acessar  */}
+
+      {/* <Route path="/404" component={Teste} /> */}
     </Switch>
   );
 }

@@ -88,6 +88,11 @@ export const LoginContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  span{
+    color:purple;
+    font-weight:600;
+    margin:5px 0 20px 0;
+  }
 
   @media (min-width: 900px) {
 

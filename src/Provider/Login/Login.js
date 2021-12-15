@@ -2,25 +2,36 @@ import { createContext, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
-export const LoginContext = createContext();
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
+export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
   const [authorization, setAuthorization] = useState({});
   const [token, setToken] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const submitLogin = (evt) => {
-    evt.preventDefault();
+  const schema = yup.object().shape({
 
-    const login = {
-      username: username,
-      password: password,
-    };
-    console.log(login);
+    username: yup.string().required("Username Required"),
+    password: yup.string().min(6, "Minimum of 6 characters").required("Password Required")
+
+    })
+
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm({
+      resolver: yupResolver(schema),
+    });
+
+  const submitLogin = ({username, password}) => {
+    const user = {username, password};
+
     axios
-      .post("https://kenzie-habits.herokuapp.com/sessions/", login)
+      .post("https://kenzie-habits.herokuapp.com/sessions/", user)
       .then((response) => {
         const jwt = jwt_decode(response.data.access);
         window.localStorage.clear();
@@ -41,12 +52,11 @@ export const LoginProvider = ({ children }) => {
   return (
     <LoginContext.Provider
       value={{
+        register,
+        handleSubmit,
+        errors,
         submitLogin,
         authorization,
-        username,
-        setUsername,
-        password,
-        setPassword,
         clearLocalStorage,
       }}
     >

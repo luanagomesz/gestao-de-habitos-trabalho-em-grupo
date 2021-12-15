@@ -12,8 +12,12 @@ export const LoginProvider = ({ children }) => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    setAuthorization({ headers: { Authorization: `Bearer ${token}` } });
-  }, [token]);
+    setAuthorization({
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("authToken")}`,
+      },
+    });
+  }, []);
   const submitLogin = (evt) => {
     evt.preventDefault();
 

@@ -1,121 +1,67 @@
-import { ModalContainer } from "./style.js";
-import { LoginContext } from "../../Provider/Login/Login.js";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import jwt_decode from "jwt-decode";
+import { ModalContainer } from "./style.js";
+import { useContext } from "react";
+import { GroupsContext } from "../../Provider/Groups/groups.js";
+import { LoginContext } from "../../Provider/Login/Login.js";
 import * as yup from "yup";
 import api from "../../Services/api";
 
-const ModalHabits = ({ category, setToggle }) => {
-
-  const { token, authorization } = useContext(LoginContext)
-
-  let decoded = jwt_decode(token);
+const Modal = () => {
+  const { GroupId } = useContext(GroupsContext);
+  const { authorization } = useContext(LoginContext);
 
   const schema = yup.object().shape({
     title: yup.string(),
     difficulty: yup.string(),
-    frequency: yup.string(),
   });
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmitFunction = (data) => {
-    const { title, difficulty, frequency } = data;
+    const { title, difficulty } = data;
     /* const teste = {
       title: title,
-      category: category,
       difficulty: difficulty,
-      frequency: frequency,
       achieved: false,
       how_much_achieved: 0,
-      user: decoded.user_id,
+      group: 1,
     }; */
     api
       .post(
-        "/habits",
+        "/goals/",
         {
           title: title,
-          category: category,
           difficulty: difficulty,
-          frequency: frequency,
           achieved: false,
           how_much_achieved: 0,
-          user: decoded.user_id,
+          group: GroupId,
         },
         authorization
       )
-      .then((response) => {
-        console.log(response)
-        setToggle(false)
+      .then((_) => {
+        console.log(data)
       })
       .catch((err) => console.log(err));
-    /* console.log(teste); */
+    //console.log(teste);
   };
 
   return (
     <ModalContainer>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <div className="modalHeader">
-          <h3>New Habit</h3>
+          <h3>New Goal</h3>
         </div>
         <input
-          className="addNewHabit"
+          className="addNewGoal"
           type="text"
-          placeholder="New habit"
+          placeholder="Title"
           {...register("title")}
         />
 
-        <p>How often?</p>
-
-        <div className="frequencyContainer">
-          <div className="frequencyItem">
-            <label for="daily">
-              Daily
-              <input
-                type="radio"
-                className="frequency"
-                name="frequency"
-                id="daily"
-                value="daily"
-                {...register("frequency")}
-              />
-            </label>
-          </div>
-          <div className="frequencyItem">
-            <label for="weekly">
-              Weekly
-              <input
-                type="radio"
-                className="frequency"
-                name="frequency"
-                id="weekly"
-                value="weekly"
-                {...register("frequency")}
-              />
-            </label>
-          </div>
-          <div className="frequencyItem">
-            <label for="monthly">
-              Monthly
-              <input
-                type="radio"
-                className="frequency"
-                name="frequency"
-                id="monthly"
-                value="monthly"
-                {...register("frequency")}
-              />
-            </label>
-          </div>
-        </div>
-        <p>How is the difficulty?</p>
+        <p>How hard is it to keep this Goal?</p>
         <div className="difficultyContainer">
           <div className="difficultyItem">
             <label>
@@ -162,4 +108,4 @@ const ModalHabits = ({ category, setToggle }) => {
   );
 };
 
-export default ModalHabits;
+export default Modal;

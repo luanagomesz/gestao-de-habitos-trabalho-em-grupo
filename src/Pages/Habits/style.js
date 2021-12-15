@@ -5,49 +5,61 @@ export const MainContainer = styled.main`
   justify-content: center;
   align-items: center;
 
-  .containerRight {
-    display: none;
+  button {
+    background: transparent;
   }
 
-  .containerLeft {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 20px;
-    margin: 40px 0;
-    width: 90%;
+  @media (min-width: 900px) {
+    .containerRight {
+      display: inline;
+    }
+  }
+`;
+
+export const Footer = styled.footer`
+  .vector {
+    opacity: 1;
+    width: 270px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 
-  h1 {
-    color: var(--orange);
-    font-weight: 600;
+  @media (min-width: 900px) {
+    .vector {
+      display: none;
+    }
   }
+`;
 
-  h3 {
-    text-align: center;
-    color: var(--orange);
-  }
+export const ContainerMenuCategory = styled.div`
+  position: absolute;
+  background-color: white;
+  top: 150px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
 
   section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 250px;
-    max-width: 300px;
     flex-wrap: wrap;
-    gap: 20px;
+    margin: 10px 0;
   }
 
-  img {
-    box-sizing: border-box;
-    height: 90px;
-    width: 90px;
+  h1 {
+    color: var(--orange);
+    font-weight: 600;
+    margin-bottom: 20px;
   }
 
-  button {
-    background: transparent;
+  h3 {
+    text-align: center;
+    color: var(--orange);
   }
 
   .button1,
@@ -72,29 +84,16 @@ export const MainContainer = styled.main`
     border-radius: 3px;
   }
 
-  @media (min-width: 900px) {
-    .containerRight {
-      display: inline;
-    }
-
-    section {
-      max-width: 60%;
-    }
-  }
-`;
-
-export const Footer = styled.footer`
-  .vector {
-    opacity: 1;
-    width: 323px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  img {
+    box-sizing: border-box;
+    height: 90px;
+    width: 90px;
   }
 
   @media (min-width: 900px) {
-    .vector {
-      display: none;
-    }
+    height: 100%;
+    gap: 20px;
+    margin: 40px 0;
+    width: 90%;
   }
 `;

@@ -35,14 +35,13 @@ const ActivityPage = styled.div`
     button {
       background: none;
       font-size: 30px;
-      
     }
   }
 
   .PrincipalBody {
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
+    align-content: center;
     align-items: center;
     justify-content: center;
   }
@@ -51,26 +50,18 @@ const ActivityPage = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 15px;
 
     p {
       background-color: var(--purple);
       color: var(--white);
       padding: 5px;
       border-radius: 10px;
-      min-width: 230px;
+      width: 230px;
       height: 35px;
     }
 
-    div {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: nowrap;
-      h4 {
-        margin: 5px 5px 5px 5px;
-      }
+    h4 {
+      margin-bottom: 20px;
     }
   }
   .Wave {
@@ -113,12 +104,15 @@ const ActivityPage = styled.div`
       align-items: flex-start;
     }
     .Modules {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+
       p {
-        width: 10px;
-        margin: 10px 0;
-      }
-      h4 {
-        display: none;
+        width:295px;
+       font-size:20px;
+       margin: 15px 20px 15px 20px;
       }
     }
 
@@ -128,7 +122,7 @@ const ActivityPage = styled.div`
 
     .ButtonCreate {
       display: flex;
-    
+
       button {
         width: 300px;
       }

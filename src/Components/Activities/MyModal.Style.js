@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const ModalContainer = styled.div`
   width: 270px;
-  height: 411px;
+  height: 35vh;
   border: solid var(--grey-50) 1px;
   border-radius: 10px;
   margin: 0 auto;
@@ -34,13 +34,16 @@ const ModalContainer = styled.div`
     margin: 0 auto;
     font-size: 1.2rem;
     margin-top: 10px;
+    width:242px;
+    
   }
 
   .ButtonAdd {
     display: flex;
+    margin-bottom:15px;
     button {
       width: 500px;
-      margin: 15px auto;
+      margin: 3px auto;
     }
   }
 
@@ -49,6 +52,7 @@ const ModalContainer = styled.div`
 
     input {
       width: 530px;
+      margin
     }
 
     .ButtonAdd {

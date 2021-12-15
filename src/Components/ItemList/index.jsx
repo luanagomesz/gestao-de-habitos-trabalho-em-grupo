@@ -1,24 +1,41 @@
 import { ListContainer } from "./style";
 
-const itemList = ({ spanText, name, category, realizationTime, isVisible }) => {
-
+const itemList = ({
+  requirementTitle,
+  name,
+  category,
+  realizationTime,
+  isVisible,
+  difficultyValue,
+  requirementValue,
+  color
+}) => {
   return (
-    <ListContainer>
-      {/* essa section vai ser criada com o map da lista de Goals/habits ou activities */}
+    <ListContainer color={color}>
       <div className="headerItem">
+        <p>{name}</p>
+        <p>{category}</p>
+      </div>
+
+      <div className="requirementContainer">
+        {isVisible ? (
+          <p>{requirementTitle}</p>
+        ) : (
+          <>
+            <span>Difficulty</span>
+            <span>{requirementTitle}</span>
+          </>
+        )}
+      </div>
+      <div className="valueContainer">
         {isVisible ? (
           <p>{realizationTime}</p>
         ) : (
           <>
-            <p>{name}</p>
-            <p>{category}</p>
+            <span>{difficultyValue}</span>
+            <span>{requirementValue}</span>
           </>
         )}
-      </div>
-
-      <div className="info-container-text">
-        <span>{spanText}</span>
-        <span>{spanText}</span>
       </div>
     </ListContainer>
   );

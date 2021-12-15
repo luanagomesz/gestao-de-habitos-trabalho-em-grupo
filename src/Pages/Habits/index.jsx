@@ -30,7 +30,7 @@ function Habits({ history }) {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  })
+  });
 
   return (
     <>
@@ -89,7 +89,15 @@ function Habits({ history }) {
         {toggleList && (
           <ContainerList>
             <ul>
-              <ItemList></ItemList>
+
+              <ItemList
+                name={"Habit #1"}
+                requirementTitle={'Realization time'}
+                realizationTime={'10hours'}
+                isVisible={true}
+                color={"var(--orange)"}
+              ></ItemList>
+              
               <button onClick={() => setToggleMenu(true)}>Add</button>
             </ul>
           </ContainerList>

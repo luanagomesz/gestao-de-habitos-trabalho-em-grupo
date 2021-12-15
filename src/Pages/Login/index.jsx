@@ -1,6 +1,4 @@
-import { useHistory } from "react-router";
-import { useContext, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import image1 from "../../assets/img/image-login.png";
 import image2 from "../../assets/img/Vector-login.png";
 import { LoginContainer, HeaderContainer } from "./style";

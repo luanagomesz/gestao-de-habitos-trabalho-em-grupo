@@ -1,26 +1,31 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState, useEffect, useContext } from "react";
+import api from "../../Services/api";
+import { LoginContext } from "../Login/Login";
 
 export const GoalsContext = createContext([]);
 
 export const GoalsProvider = ({ children }) => {
   const [goalsList, setGoalsList] = useState([]);
+  const { authorization } = useContext(LoginContext);
 
   useEffect(() => {
     showList(setGoalsList);
   }, [goalsList]);
 
-  const [token] = useState(localStorage.getItem("AuthToken") || "");
+  // const [token] = useState(localStorage.getItem("AuthToken") || "");
 
   const showList = (item, setList) => {
-    axios
-      .get(`https://kenzie-habits.herokuapp.com/goals/${item.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+    api
+      .get(`/goals/${item.id}`, {
+        authorization,
       })
       .then((response) => {
-        setList(response);
+        console.log(response);
+        setList(response.results);
       });
   };
+
+  console.log(goalsList);
 
   return (
     <GoalsContext.Provider value={{ setGoalsList, goalsList, showList }}>

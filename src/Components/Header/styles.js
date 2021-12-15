@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.div`
-  heigth: 30px;
   background-color: ${(props) => props.backgroundColor};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   align-items: center;
-  height: 124px;
+  height: 80px;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 20px;
 
-  border: solid green 3px;
-
-  span {
+  .logo-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -22,8 +20,26 @@ const HeaderContainer = styled.div`
     align-content: center;
   }
 
+  .user-info {
+    color: var(--white);
+    font-size: 24px;
+  }
+
+  .pages-container button {
+    display: none;
+    @media (min-width: 900px) {
+      font-size: 24px;
+      margin: 10px;
+    }
+  }
+
+  img {
+    width: 70px;
+  }
+
   h1 {
     color: var(--white);
+    margin-top: 30px;
   }
 
   button {
@@ -31,7 +47,6 @@ const HeaderContainer = styled.div`
     font-size: 40px;
     margin-left: 5px;
     color: var(--white);
-    border: solid green 2px;
   }
   div {
     display: flex;

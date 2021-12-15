@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
@@ -11,6 +11,9 @@ export const LoginProvider = ({ children }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    setAuthorization({ headers: { Authorization: `Bearer ${token}` } });
+  }, [token]);
   const submitLogin = (evt) => {
     evt.preventDefault();
 
@@ -27,7 +30,7 @@ export const LoginProvider = ({ children }) => {
         window.localStorage.setItem("id", JSON.stringify(jwt.user_id));
         window.localStorage.setItem("authToken", response.data.access);
         setToken(response.data.access);
-        setAuthorization({ headers: { Authorization: `Bearer ${token}` } });
+
         history.push("/dashboard");
         console.log(authorization);
       })

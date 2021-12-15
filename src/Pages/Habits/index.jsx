@@ -1,5 +1,4 @@
 import Header from "../../Components/Header";
-import List from "../../Components/List";
 import ModalHabits from "../../Components/ModalHabits";
 
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
@@ -26,7 +25,7 @@ function Habits({ history }) {
 
   return (
     <>
-      <Header backgroundColor={"var(--red)"} />
+      {/* <Header backgroundColor={"var(--red)"} /> */}
       {toggle && (
         <ModalHabits
           className="modal"
@@ -92,7 +91,7 @@ function Habits({ history }) {
             <button onClick={setToggle(true)}></button>
           </ul>
         </div>
-        
+
       </MainContainer>
 
       <Footer>

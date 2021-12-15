@@ -1,30 +1,32 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
-/*  
-
+import { createContext, useState, useEffect, useContext } from "react";
+import api from "../../Services/api";
+import { LoginContext } from "../Login/Login";
+import { GroupsContext } from "../../Provider/Groups/groups";
 
 export const GoalsContext = createContext([]);
 
 export const GoalsProvider = ({ children }) => {
-  const [goalslist, setGoalslist] = useState([]);
+  const [goalsList, setGoalsList] = useState([]);
+  const { authorization } = useContext(LoginContext);
+  const { GroupId, groups } = useContext(GroupsContext);
 
   useEffect(() => {
-    showList(setGoalslist);
-  }, [goalslist]);
+    showList();
+  }, []);
 
-  const [token] = useState(localStorage.getItem("AuthToken") || "");
+  // const [token] = useState(localStorage.getItem("AuthToken") || "");
 
-  const showList = (item, setList) => {
-    axios
-      .get(`https://kenzie-habits.herokuapp.com/goals/${item.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setList(response);
-      });
+  const showList = () => {
+    api.get(`/goals/?group=${GroupId}`, "", authorization).then((response) => {
+      setGoalsList(response.data.results);
+    });
   };
-}; 
 
-Não há nenhum provider sendo exportado.
+  console.log(goalsList);
 
-*/
+  return (
+    <GoalsContext.Provider value={{ setGoalsList, goalsList, showList }}>
+      {children}
+    </GoalsContext.Provider>
+  );
+};

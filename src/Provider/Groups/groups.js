@@ -21,7 +21,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -33,7 +33,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });

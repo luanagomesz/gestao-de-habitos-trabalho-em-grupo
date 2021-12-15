@@ -4,6 +4,7 @@ import { DashboardProvider } from "./Provider/dashboard/dashboard";
 import Routes from "./Routes";
 import { LoginProvider } from "./Provider/Login/Login";
 import { GroupsProvider } from "./Provider/Groups/groups";
+import { GoalsProvider } from "./Provider/goals/goals";
 function App() {
   return (
     <>
@@ -12,8 +13,10 @@ function App() {
         <GroupsProvider>
           <DashboardProvider>
             <ActivitiesProvider>
-              <GlobalStyle />
-              <Routes />
+              <GoalsProvider>
+                <GlobalStyle />
+                <Routes />
+              </GoalsProvider>
             </ActivitiesProvider>
           </DashboardProvider>
         </GroupsProvider>

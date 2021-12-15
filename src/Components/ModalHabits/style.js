@@ -13,7 +13,9 @@ export const ModalContainer = styled.div`
   position: absolute;
   right: 0;
   left: 0;
+  top: 130px;
   background: white;
+  z-index: 2;
 
   h3{
     color: var(--grey-100);

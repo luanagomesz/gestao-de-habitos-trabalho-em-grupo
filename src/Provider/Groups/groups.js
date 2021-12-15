@@ -11,7 +11,7 @@ export const GroupsProvider = ({ children }) => {
   const [searchGroup, setSearch] = useState("");
   const [GroupId, setGroupId] = useState(""); // valor a ser usado para requisições como group_id no activities e goals
   const { authorization, username } = useContext(LoginContext);
-
+  const [next, setNext] = useState(true);
   const request = (action) => {
     if (searchGroup.length > 0) {
       axios
@@ -23,6 +23,7 @@ export const GroupsProvider = ({ children }) => {
         .then((response) => {
           console.log(response);
           setgroups(response.data.results);
+          setNext(response.data.next);
         });
     } else {
       axios
@@ -34,14 +35,16 @@ export const GroupsProvider = ({ children }) => {
         .then((response) => {
           console.log(response);
           setgroups(response.data.results);
+          setNext(response.data.next);
         });
     }
   };
 
   const handlePage = (value) => {
-    if (value === "next") {
+    if (value === "next" && next !== null) {
       setPage(page + 1);
-    } else {
+    }
+    if (value === "previous") {
       if (page > 1) {
         setPage(page - 1);
       }
@@ -84,6 +87,7 @@ export const GroupsProvider = ({ children }) => {
         searchGroup,
         handlePage,
         GroupId,
+        page,
       }}
     >
       {children}

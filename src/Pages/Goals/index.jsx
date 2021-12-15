@@ -1,13 +1,15 @@
 import Header from "../../Components/Header";
-/* import Modal from "../../Components/Modal"; */
-import { useContext } from "react";
 
 const Goals = () => {
-  const { goalsList, setGoalsList, showList } = useContext();
   return (
     <>
-      <Header backgroundColor={"var(--orange"} />
-      {/* <Modal /> */}
+      <Header
+        backgroundColor={"var(--orange)"}
+        page1={"Dashboard"}
+        history1={"dashboard"}
+        page2={"Habits"}
+        history2={"habits"}
+      />
     </>
   );
 };

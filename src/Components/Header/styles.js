@@ -20,6 +20,11 @@ const HeaderContainer = styled.div`
     align-content: center;
   }
 
+  .pages-container button {
+    font-size: 24px;
+    margin: 10px;
+  }
+
   img {
     width: 70px;
   }

@@ -4,7 +4,7 @@ import { FaUserCircle } from "react-icons/fa";
 import HeaderContainer from "./styles";
 import Rabbit from "../../assets/img/Habbit.png";
 import { useHistory } from "react-router-dom";
-import { useRouteMatch } from "react-router-dom";
+import { useState } from "react";
 
 const Header = ({
   backgroundColor,
@@ -14,8 +14,11 @@ const Header = ({
   history1,
   history2,
   history3,
+  user,
 }) => {
   const history = useHistory();
+  const [userInfo, setUserInfo] = useState(false);
+
   return (
     <HeaderContainer backgroundColor={backgroundColor}>
       <div clasName="logo-container">
@@ -27,6 +30,14 @@ const Header = ({
         <button onClick={() => history.push(`/${history2}`)}>{page2}</button>
         <button onClick={() => history.push(`/${history3}`)}>{page3}</button>
       </div>
+
+      {userInfo ? (
+        <div className="user-info">
+          <p>Welcome, {user}!</p>
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div>
         <button>

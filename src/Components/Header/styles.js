@@ -20,9 +20,17 @@ const HeaderContainer = styled.div`
     align-content: center;
   }
 
-  .pages-container button {
+  .user-info {
+    color: var(--white);
     font-size: 24px;
-    margin: 10px;
+  }
+
+  .pages-container button {
+    display: none;
+    @media (min-width: 900px) {
+      font-size: 24px;
+      margin: 10px;
+    }
   }
 
   img {

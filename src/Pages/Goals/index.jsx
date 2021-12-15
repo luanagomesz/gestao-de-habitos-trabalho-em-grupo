@@ -1,5 +1,5 @@
 import Header from "../../Components/Header";
-import Modal from "../../Components/Modal";
+/* import Modal from "../../Components/Modal"; */
 import { useContext } from "react";
 
 const Goals = () => {
@@ -7,7 +7,7 @@ const Goals = () => {
   return (
     <>
       <Header backgroundColor={"var(--orange"} />
-      <Modal />
+      {/* <Modal /> */}
     </>
   );
 };

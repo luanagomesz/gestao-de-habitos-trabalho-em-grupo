@@ -20,6 +20,7 @@ const ActivityPage = styled.div`
     flex-direction: column;
     margin-top: 30px;
     padding: 12px;
+    background: var(--grey-0);
   }
   .PrincipalHeader {
     display: flex;
@@ -34,6 +35,7 @@ const ActivityPage = styled.div`
     button {
       background: none;
       font-size: 30px;
+      
     }
   }
 
@@ -82,13 +84,23 @@ const ActivityPage = styled.div`
     display: none;
   }
 
+  .ButtonCreate {
+    display: none;
+    button {
+      width: 500px;
+      margin: 15px auto;
+    }
+  }
+
   @media (min-width: 900px) {
     display: flex;
     flex-direction: column-reverse;
+    .PrincipalHeader {
+      display: none;
+    }
 
-
-    .Yoga{
-      display:block;
+    .Yoga {
+      display: block;
     }
     .PrincipalContainer {
       width: 700px;
@@ -113,8 +125,15 @@ const ActivityPage = styled.div`
     .Wave {
       display: none;
     }
+
+    .ButtonCreate {
+      display: flex;
+    
+      button {
+        width: 300px;
+      }
+    }
   }
 `;
 
 export default ActivityPage;
-

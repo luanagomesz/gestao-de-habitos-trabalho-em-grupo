@@ -9,12 +9,15 @@ import Vetor from "../../assets/img/Vector-activities.png";
 import { LoginContext } from "../../Provider/Login/Login";
 import axios from "axios";
 import Button from "../Button";
+import { GroupsContext } from "../../Provider/Groups/groups";
 
 function Activities() {
   const { openModal, setOpenModal } = useContext(ActivitiesContext);
 
   const { authorization, clearLocalStorage, username } =
     useContext(LoginContext);
+
+    const {GroupId} = useContext(GroupsContext)
 
   const onSubmitActivity = () => {
     axios

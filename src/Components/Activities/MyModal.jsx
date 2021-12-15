@@ -8,10 +8,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../Services/api";
 import { LoginContext } from "../../Provider/Login/Login";
+import { GroupsContext } from "../../Provider/Groups/groups";
+import axios from "axios";
 
 const MyModal = ({ history }) => {
   const { setOpenModal } = useContext(ActivitiesContext);
   const { authorization } = useContext(LoginContext);
+  const { GroupId } = useContext(GroupsContext);
 
   const ActivitySchema = yup.object().shape({
     title: yup.string().required("Type it your new activity"),
@@ -28,10 +31,21 @@ const MyModal = ({ history }) => {
     resolver: yupResolver(ActivitySchema),
   });
 
-  const onSubmitActivity = ({ title, realization_time, group }) => {
-    const data = { title, realization_time, group };
-    api
-      .post("activities/", data, authorization)
+  const onSubmitActivity = (data) => {
+    console.log(data);
+    console.log(GroupId);
+    const { title, realization_time } = data;
+  
+    axios
+      .post(
+        "https://kenzie-habits.herokuapp.com/activities/",
+        {
+          title: title,
+          realization_time: realization_time,
+          group: GroupId,
+        },
+        authorization
+      )
       .then((response) => {
         console.log(response);
         setOpenModal(false);

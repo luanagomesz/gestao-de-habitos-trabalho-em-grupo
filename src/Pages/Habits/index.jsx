@@ -1,5 +1,6 @@
 import Header from "../../Components/Header";
 import ModalHabits from "../../Components/ModalHabits";
+import ItemList from "../../Components/ItemList";
 
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
@@ -29,7 +30,7 @@ function Habits({ history }) {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  })
+  });
 
   return (
     <>
@@ -88,7 +89,15 @@ function Habits({ history }) {
         {toggleList && (
           <ContainerList>
             <ul>
-              <li>item 1</li>
+
+              <ItemList
+                name={"Habit #1"}
+                requirementTitle={'Realization time'}
+                realizationTime={'10hours'}
+                isVisible={true}
+                color={"var(--orange)"}
+              ></ItemList>
+              
               <button onClick={() => setToggleMenu(true)}>Add</button>
             </ul>
           </ContainerList>

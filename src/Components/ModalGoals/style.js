@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
   left: 0;
   background: white;
 
-  h3{
+  h3 {
     color: var(--grey-100);
     font-weight: 500;
   }
@@ -33,7 +33,7 @@ export const ModalContainer = styled.div`
     border: 1px solid var(--grey-50);
   }
 
-  p{
+  p {
     color: var(--grey-50);
   }
 
@@ -75,11 +75,12 @@ export const ModalContainer = styled.div`
     color: white;
   }
 
-  .difficultyItem:active, .frequencyItem:active{
+  .difficultyItem:active,
+  .frequencyItem:active {
     background-color: var(--orange);
   }
 
-  @media (min-width: 900px){
+  @media (min-width: 900px) {
     width: 400px;
     right: 570px;
     left: 20px;

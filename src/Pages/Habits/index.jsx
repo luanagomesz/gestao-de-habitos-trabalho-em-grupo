@@ -29,7 +29,7 @@ function Habits({ history }) {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  })
+  });
 
   return (
     <>

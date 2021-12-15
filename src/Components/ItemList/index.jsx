@@ -1,6 +1,6 @@
 import { ListContainer } from "./style";
 
-const itemList = ({
+const ItemList = ({
   requirementTitle,
   name,
   category,
@@ -41,4 +41,4 @@ const itemList = ({
   );
 };
 
-export default itemList;
+export default ItemList;

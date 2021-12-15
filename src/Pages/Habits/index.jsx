@@ -1,5 +1,6 @@
 import Header from "../../Components/Header";
 import ModalHabits from "../../Components/ModalHabits";
+import ItemList from "../../Components/ItemList";
 
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
@@ -88,7 +89,7 @@ function Habits({ history }) {
         {toggleList && (
           <ContainerList>
             <ul>
-              <li>item 1</li>
+              <ItemList></ItemList>
               <button onClick={() => setToggleMenu(true)}>Add</button>
             </ul>
           </ContainerList>

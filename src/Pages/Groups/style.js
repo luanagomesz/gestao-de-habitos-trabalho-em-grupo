@@ -21,7 +21,7 @@ export const ContainerCreate = styled.div`
   width: 50%;
   justify-content: center;
   background-color: #e5e3ff;
-  form {
+  div {
     display: flex;
     flex-direction: column;
     input {
@@ -161,9 +161,17 @@ export const ContainerGroups = styled.div`
         color: var(--grey-50);
       }
     }
-    img {
-      margin-left: 20px;
-      width: 50px;
+    button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: var(--white);
+      background-color: var(--purple);
+      cursor: pointer;
+      :hover {
+        color: var(--purple);
+        background-color: var(--white);
+      }
     }
   }
 `;

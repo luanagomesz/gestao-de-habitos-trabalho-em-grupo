@@ -30,6 +30,7 @@ const HeaderContainer = styled.div`
     @media (min-width: 900px) {
       font-size: 24px;
       margin: 10px;
+      display: block;
     }
   }
 

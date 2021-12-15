@@ -32,22 +32,20 @@ const MyModal = ({ history }) => {
   });
 
   const onSubmitActivity = (data) => {
-    console.log(data);
     console.log(GroupId);
-    const { title, realization_time } = data;
-  
+    console.log(data);
     axios
       .post(
         "https://kenzie-habits.herokuapp.com/activities/",
         {
-          title: title,
-          realization_time: realization_time,
+          title: data.title,
+          realization_time: data.realization_time,
           group: GroupId,
         },
         authorization
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         setOpenModal(false);
       })
       .catch((err) => console.log(err));

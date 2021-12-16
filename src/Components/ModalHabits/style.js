@@ -16,8 +16,13 @@ export const ModalContainer = styled.div`
   top: 130px;
   background: white;
   z-index: 2;
-
-  h3{
+  .close {
+    cursor: pointer;
+    :hover {
+      color: var(--orange);
+    }
+  }
+  h3 {
     color: var(--grey-100);
     font-weight: 400;
   }
@@ -35,7 +40,7 @@ export const ModalContainer = styled.div`
     border: 1px solid var(--grey-50);
   }
 
-  p{
+  p {
     color: var(--grey-50);
   }
 
@@ -77,11 +82,12 @@ export const ModalContainer = styled.div`
     color: white;
   }
 
-  .difficultyItem:active, .frequencyItem:active{
+  .difficultyItem:active,
+  .frequencyItem:active {
     background-color: var(--red);
   }
 
-  @media (min-width: 900px){
+  @media (min-width: 900px) {
     width: 350px;
     right: 570px;
     left: 10px;

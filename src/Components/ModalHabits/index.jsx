@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import api from "../../Services/api";
-
+import { AiOutlineClose } from "react-icons/ai";
 const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
   const { authorization } = useContext(LoginContext);
   const { habitsControl, setHabitsControl } = useContext(HabitsContext);
@@ -60,6 +60,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <div className="modalHeader">
           <h3>New Habit</h3>
+          <AiOutlineClose className="close" onClick={() => setToggle(false)} />
         </div>
         <input
           className="addNewHabit"

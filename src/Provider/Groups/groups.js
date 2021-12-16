@@ -12,6 +12,15 @@ export const GroupsProvider = ({ children }) => {
   const [GroupId, setGroupId] = useState(""); // valor a ser usado para requisições como group_id no activities e goals
   const { authorization, username } = useContext(LoginContext);
   const [next, setNext] = useState(true);
+
+  const [userInput, setuserInput] = useState({
+    name: "",
+    description: "",
+    category: "",
+  });
+
+  const [userGroups, setuserGroups] = useState([]);
+
   const request = (action) => {
     if (searchGroup.length > 0) {
       axios
@@ -21,7 +30,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -33,7 +42,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -55,7 +64,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const joinGroup = (group, id) => {
-    console.log(authorization);
+    //console.log(authorization);
     axios
       .post(
         `https://kenzie-habits.herokuapp.com/groups/${id}/subscribe/`,
@@ -63,7 +72,7 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        console.log(response);
+        //console.log(response);
 
         toast(`${username} Joined ${group}`);
       })
@@ -73,6 +82,50 @@ export const GroupsProvider = ({ children }) => {
   useEffect(() => {
     request();
   }, [page, searchGroup]);
+
+  const createGroup = () => {
+    axios
+      .post(
+        `https://kenzie-habits.herokuapp.com/groups/`,
+        userInput,
+        authorization
+      )
+      .then((response) => {
+        console.log(response);
+
+        toast(`${userInput.name} created`);
+      })
+      .catch((err) => toast(`error `));
+  };
+
+  const getuserGroups = () => {
+    axios
+      .get(
+        `https://kenzie-habits.herokuapp.com/groups/subscriptions/`,
+        authorization
+      )
+      .then((response) => {
+        console.log(response);
+        setuserGroups(response.data);
+      })
+      .catch((err) => toast(`error `));
+  };
+
+  const exitGroup = (groupName, id) => {
+    axios
+      .delete(
+        `https://kenzie-habits.herokuapp.com/groups/${id}/unsubscribe/`,
+        authorization
+      )
+      .then((response) => {
+        console.log(id);
+        console.log(response);
+        toast(`You have left ${groupName}`);
+      })
+      .catch((err) => toast(`error `));
+  };
+
+  const [list, setList] = useState(true);
 
   return (
     <GroupsContext.Provider
@@ -87,6 +140,15 @@ export const GroupsProvider = ({ children }) => {
         searchGroup,
         handlePage,
         page,
+        userInput,
+        setuserInput,
+        list,
+        setList,
+        exitGroup,
+        getuserGroups,
+        createGroup,
+        userGroups,
+        setuserGroups,
       }}
     >
       {children}

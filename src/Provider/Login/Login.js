@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
@@ -46,9 +47,10 @@ export const LoginProvider = ({ children }) => {
       .then((response) => {
         const jwt = jwt_decode(response.data.access);
         window.localStorage.clear();
-        window.localStorage.setItem("id", JSON.stringify(jwt.user_id));
+        window.localStorage.setItem("id", jwt.user_id);
         window.localStorage.setItem("authToken", response.data.access);
         window.localStorage.setItem("user", user.username);
+        window.localStorage.setItem("user_id", jwt.user_id);
         setToken(response.data.access);
         setAuthorization({
           headers: {
@@ -58,7 +60,7 @@ export const LoginProvider = ({ children }) => {
         history.push("/dashboard");
         console.log(authorization);
       })
-      .catch((err) => console.log("Login Fail"));
+      .catch((err) => toast.error("Invalid email or password"));
   };
 
   const clearLocalStorage = () => {

@@ -15,9 +15,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { set } from "react-hook-form";
+import GroupsMobileContent from "../../Components/GroupsMobileRender";
 
 function Groups({ history }) {
-  const { authorization, username } = useContext(LoginContext);
   const {
     setSearch,
     setGroupId,
@@ -27,59 +27,17 @@ function Groups({ history }) {
     handlePage,
     request,
     page,
+    setuserInput,
+    createGroup,
+    userInput,
+    list,
+    exitGroup,
+    getuserGroups,
+    setList,
+    userGroups,
+    setuserGroups,
   } = useContext(GroupsContext);
 
-  const [userInput, setuserInput] = useState({
-    name: "",
-    description: "",
-    category: "",
-  });
-
-  const createGroup = () => {
-    axios
-      .post(
-        `https://kenzie-habits.herokuapp.com/groups/`,
-        userInput,
-        authorization
-      )
-      .then((response) => {
-        console.log(response);
-
-        toast(`${userInput.name} created`);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const [userGroups, setuserGroups] = useState([]);
-
-  const getuserGroups = () => {
-    axios
-      .get(
-        `https://kenzie-habits.herokuapp.com/groups/subscriptions/`,
-        authorization
-      )
-      .then((response) => {
-        console.log(response);
-        setuserGroups(response.data);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const exitGroup = (groupName, id) => {
-    axios
-      .delete(
-        `https://kenzie-habits.herokuapp.com/groups/${id}/unsubscribe/`,
-        authorization
-      )
-      .then((response) => {
-        console.log(id);
-        console.log(response);
-        toast(`You have left ${groupName}`);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const [list, setList] = useState(true);
   return (
     <ContainerPage>
       <ToastContainer
@@ -253,6 +211,7 @@ function Groups({ history }) {
             </div>
           </div>
         </ContainerGroups>
+        <GroupsMobileContent history={history}></GroupsMobileContent>
       </ContainerContent>
     </ContainerPage>
   );

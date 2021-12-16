@@ -46,9 +46,10 @@ export const LoginProvider = ({ children }) => {
       .then((response) => {
         const jwt = jwt_decode(response.data.access);
         window.localStorage.clear();
-        window.localStorage.setItem("id", JSON.stringify(jwt.user_id));
+        window.localStorage.setItem("id", jwt.user_id);
         window.localStorage.setItem("authToken", response.data.access);
         window.localStorage.setItem("user", user.username);
+        window.localStorage.setItem("user_id", jwt.user_id);
         setToken(response.data.access);
         setAuthorization({
           headers: {

@@ -5,13 +5,12 @@ import api from "../../Services/api";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-
   const { authorization } = useContext(LoginContext);
   const [habitsList, setHabitsList] = useState([]);
 
   const showHabits = () => {
     api
-      .get("/habits/personal/", "", authorization)
+      .get("/habits/personal/", authorization)
       .then((response) => {
         setHabitsList(response.data);
       })
@@ -21,16 +20,16 @@ export const HabitsProvider = ({ children }) => {
   useEffect(() => {
     showHabits();
     // eslint-disable-next-line
-  }, []);
+  }, [authorization]);
 
   return (
     <HabitsContext.Provider
       value={{
         habitsList,
-        setHabitsList
+        setHabitsList,
       }}
     >
       {children}
     </HabitsContext.Provider>
   );
-}
+};

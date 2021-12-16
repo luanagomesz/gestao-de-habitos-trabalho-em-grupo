@@ -1,5 +1,5 @@
 import { ListContainer } from "./style";
-
+import { AiOutlineClose } from "react-icons/ai";
 const ItemList = ({
   requirementTitle,
   name,
@@ -8,7 +8,7 @@ const ItemList = ({
   isVisible,
   difficultyValue,
   requirementValue,
-  color
+  color,
 }) => {
   return (
     <ListContainer color={color}>
@@ -37,6 +37,7 @@ const ItemList = ({
           </>
         )}
       </div>
+      <AiOutlineClose className="close" />
     </ListContainer>
   );
 };

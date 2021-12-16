@@ -16,11 +16,11 @@ export const ContainerList = styled.div`
   justify-content: center;
   width: 50%;
 
-  .list{
+  .list {
     background-color: red;
   }
 
-  .imgRight{
+  .imgRight {
     display: none;
   }
 

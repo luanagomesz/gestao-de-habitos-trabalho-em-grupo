@@ -4,8 +4,8 @@ import { DashboardProvider } from "./Provider/dashboard/dashboard";
 import { HabitsProvider } from "./Provider/Habits/habits";
 import { GroupsProvider } from "./Provider/Groups/groups";
 import { LoginProvider } from "./Provider/Login/Login";
-
 import Routes from "./Routes";
+import { GoalsProvider } from "./Provider/goals/goals";
 function App() {
   return (
     <>
@@ -15,8 +15,10 @@ function App() {
           <HabitsProvider>
             <DashboardProvider>
               <ActivitiesProvider>
-                <GlobalStyle />
-                <Routes />
+                <GoalsProvider>
+                  <GlobalStyle />
+                  <Routes />
+                </GoalsProvider>
               </ActivitiesProvider>
             </DashboardProvider>
           </HabitsProvider>

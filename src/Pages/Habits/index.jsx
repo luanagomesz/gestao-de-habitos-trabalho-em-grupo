@@ -117,7 +117,7 @@ function Habits() {
               <button onClick={() => setToggleMenu(true)}>add</button>
             </>
           )}
-          <img src={imgWorkout} alt="imgWorkout" className="imgRight"/>
+          <img src={imgWorkout} alt="imgWorkout" className="imgRight" />
         </ContainerList>
         <Footer>
           <img className="vector" src={imgFooter} alt="vector-habits" />

@@ -29,6 +29,7 @@ const Modal = () => {
       how_much_achieved: 0,
       group: 1,
     }; */
+    console.log(data);
     api
       .post(
         "/goals/",
@@ -42,7 +43,7 @@ const Modal = () => {
         authorization
       )
       .then((_) => {
-        console.log(data)
+        console.log(data);
       })
       .catch((err) => console.log(err));
     //console.log(teste);

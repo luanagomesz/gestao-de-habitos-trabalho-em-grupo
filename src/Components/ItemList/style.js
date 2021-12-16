@@ -4,7 +4,11 @@ export const ListContainer = styled.li`
   width: 300px;
   height: 90px;
   list-style: none;
-
+  .close {
+    position: absolute;
+    right: 110px;
+    margin-top: 6px;
+  }
   .headerItem {
     display: flex;
     justify-content: space-between;
@@ -28,14 +32,16 @@ export const ListContainer = styled.li`
     gap: 90px;
   }
 
-  .requirementContainer span, .requirementContainer p {
+  .requirementContainer span,
+  .requirementContainer p {
     font-weight: bolder;
     font-size: 18px;
     margin: 5px 0;
     color: var(--grey-100);
   }
 
-  .valueContainer span, .valueContainer p {
+  .valueContainer span,
+  .valueContainer p {
     font-weight: bold;
     color: ${(props) => props.color};
   }

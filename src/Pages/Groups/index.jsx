@@ -97,7 +97,8 @@ function Groups({ history }) {
         backgroundColor={"var(--purple)"}
         page1={"Dashboard"}
         page2={"Habits"}
-        user={true}
+        history1={"dashboard"}
+        history2={"habits"}
       ></Header>
       <ContainerContent>
         <ContainerCreate>

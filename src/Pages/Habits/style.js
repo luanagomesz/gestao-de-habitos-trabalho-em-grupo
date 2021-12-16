@@ -15,18 +15,18 @@ export const ContainerList = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+
+  
+
   .close {
     position: relative;
     left: 300px;
     top: -85px;
+
     cursor: pointer;
     :hover {
       color: var(--orange);
     }
-  }
-
-  .list {
-    background-color: red;
   }
 
   .imgRight {
@@ -42,6 +42,14 @@ export const ContainerList = styled.div`
     right: 0;
     height: 700px;
     top: 80px;
+
+    .list{
+    background-color: black;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    
+  }
 
     .imgRight {
       display: block;
@@ -143,6 +151,7 @@ export const ContainerMenuCategory = styled.div`
     box-sizing: border-box;
     height: 90px;
     width: 90px;
+    z-index: 0;
   }
 
   @media (min-width: 900px) {

@@ -36,6 +36,7 @@ export const GoalsContainer = styled.div`
 
     @media(min:900px){
       width:50%;
+      border: solid red 1px;
     }
 
   }

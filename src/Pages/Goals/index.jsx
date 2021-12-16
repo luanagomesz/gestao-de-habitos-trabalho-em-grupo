@@ -33,7 +33,6 @@ const Goals = ({ history }) => {
     <>
       <Header backgroundColor={"var(--orange)"} />
       <GoalsContainer>
-        <h1>Goals</h1>
         {toggleModal && (
           <>
             <Modal />
@@ -41,6 +40,7 @@ const Goals = ({ history }) => {
         )}
         {toggle && (
           <div className="list-container">
+            <h1>Goals</h1>
             <ul>
               {goalsList.map((item) => (
                 <ItemList
@@ -52,11 +52,10 @@ const Goals = ({ history }) => {
                   requirementValue={item.achieved}
                 />
               ))}
+              <button onClick={addGoal}>teste</button>
             </ul>
           </div>
         )}
-
-        <button onClick={addGoal}>teste</button>
       </GoalsContainer>
     </>
   );

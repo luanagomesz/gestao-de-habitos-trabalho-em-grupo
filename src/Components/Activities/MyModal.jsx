@@ -9,10 +9,9 @@ import { useForm } from "react-hook-form";
 import api from "../../Services/api";
 import { LoginContext } from "../../Provider/Login/Login";
 import { GroupsContext } from "../../Provider/Groups/groups";
-import axios from "axios";
 
 const MyModal = ({ history }) => {
-  const { setOpenModal } = useContext(ActivitiesContext);
+  const { openModal, setOpenModal, activity, setActivity} = useContext(ActivitiesContext);
   const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
 
@@ -32,21 +31,21 @@ const MyModal = ({ history }) => {
   });
 
   const onSubmitActivity = (data) => {
-    console.log(GroupId);
-    console.log(data);
-    axios
+    const { title, realization_time } = data;
+    api
       .post(
-        "https://kenzie-habits.herokuapp.com/activities/",
+        "/activities/",
         {
-          title: data.title,
-          realization_time: data.realization_time,
+          title: title,
+          realization_time:`${realization_time}T15:00:00Z`,
           group: GroupId,
         },
         authorization
       )
       .then((response) => {
-        console.log(response.data);
-        setOpenModal(false);
+        setOpenModal(false)
+        setActivity([...activity, response.data]);
+         ;
       })
       .catch((err) => console.log(err));
   };

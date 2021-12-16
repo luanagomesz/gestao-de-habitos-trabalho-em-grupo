@@ -4,6 +4,7 @@ const ActivityPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
   aside {
     display: none;
@@ -11,8 +12,8 @@ const ActivityPage = styled.div`
 
   .PrincipalContainer {
     display: flex;
-    width: 270px;
-    height: 330px;
+    width: 305px;
+    height:350px;
     border: solid var(--grey-50) 1px;
     border-radius: 10px;
     margin: 0 auto;
@@ -21,6 +22,12 @@ const ActivityPage = styled.div`
     margin-top: 30px;
     padding: 12px;
     background: var(--grey-0);
+    overflow:auto; 
+
+    li{
+      width: 270px;
+    height: 70px;
+    }
   }
   .PrincipalHeader {
     display: flex;
@@ -47,24 +54,7 @@ const ActivityPage = styled.div`
     
   }
 
-  .Modules {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    p {
-      background-color: var(--purple);
-      color: var(--white);
-      padding: 5px;
-      border-radius: 10px;
-      width: 230px;
-      height: 35px;
-    }
-
-    h4 {
-      margin-bottom: 20px;
-    }
-  }
+ 
   .Wave {
     opacity: 1;
     width: 100vw;

@@ -10,17 +10,17 @@ import { LoginContext } from "../../Provider/Login/Login";
 import Button from "../Button";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import api from "../../Services/api";
-
+import ItemList from "../ItemList";
 
 function Activities() {
   const { openModal, setOpenModal, activity, setActivity } =
     useContext(ActivitiesContext);
 
-  const { authorization, username } = useContext(LoginContext);
+  const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
 
   useEffect(() => {
-     api
+    api
       .get(`/activities/?group=${GroupId}`, authorization)
       .then((response) => {
         setActivity(response.data.results);
@@ -28,10 +28,10 @@ function Activities() {
       .catch((err) => console.log(err));
   }, []);
 
-  
   return (
     <>
       <Header backgroundColor={"var(--ligthblue)"} />
+
       <ActivityPage>
         <div className="Yoga">
           <img src={Yoga} alt="yoga-girl" />
@@ -43,21 +43,19 @@ function Activities() {
               <BsClipboardPlus />
             </button>
           </div>
-
           <div className="PrincipalBody">
-             { activity.length > 0 ? 
-             (activity.map((item, index) => (
-              <div className="Modules" key={index}>
-                <span>
-                  <p>{item.title}</p>
-                </span>
-                <span>
-                  <p>{item.realization_time}</p>
-                </span>
-              </div>
-            ))) : ("")
-          }
-              
+            {activity.length > 0
+              ? activity.map((item, index) => (
+                  <ItemList
+                  
+                    key={index}
+                    color={"var(--purple)"}
+                    name={item.title}
+                    realizationTime={item.realization_time}
+                    isVisible={"false"}
+                  ></ItemList>
+                ))
+              : ""}
           </div>
           <div className="ButtonCreate">
             <Button

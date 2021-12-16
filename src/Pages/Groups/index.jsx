@@ -8,7 +8,7 @@ import {
 import searchImg from "../../assets/img/PesquisaGroups.png";
 import GroupsImg from "../../assets/img/GroupsImg.png";
 import { LoginContext } from "../../Provider/Login/Login";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
@@ -93,7 +93,12 @@ function Groups({ history }) {
         draggable
         pauseOnHover
       />
-      <Header backgroundColor={"var(--purple)"}></Header>
+      <Header
+        backgroundColor={"var(--purple)"}
+        page1={"Dashboard"}
+        page2={"Habits"}
+        user={true}
+      ></Header>
       <ContainerContent>
         <ContainerCreate>
           <img src={GroupsImg} alt="" srcset="" />
@@ -167,7 +172,7 @@ function Groups({ history }) {
                       creator={item.creator.id}
                     >
                       <p>{item.name}</p>
-                      <p>{item.category}</p>
+                      <p className="category">{item.category}</p>
                       <button
                         onClick={() => {
                           setGroupId(item.id);
@@ -196,7 +201,7 @@ function Groups({ history }) {
                 : userGroups.map((item) => (
                     <div className="groups">
                       <p>{item.name}</p>
-                      <p>{item.category}</p>
+                      <p className="category">{item.category}</p>
                       <button
                         onClick={() => {
                           setGroupId(item.id);
@@ -243,7 +248,7 @@ function Groups({ history }) {
                   handlePage("next");
                 }}
               />
-              <p>{page}</p>
+              <p display={list === true ? "block" : "none"}>{page}</p>
             </div>
           </div>
         </ContainerGroups>

@@ -4,50 +4,82 @@ export const MainContainer = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
 
-  .containerRight {
-    display: none;
+export const ContainerList = styled.div`
+  position: absolute;
+  background-color: white;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+
+  button {
+    border: 2px solid black;
+    width: 100px;
   }
 
-  .containerLeft {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 20px;
-    margin: 40px 0;
-    width: 90%;
+  @media (min-width: 900px) {
+    right: 0;
+    height: 88vh;
+    top: 80px;
+
+    button{
+      display: none;
+    }
+  }
+`;
+
+export const Footer = styled.footer`
+  .vector {
+    opacity: 1;
+    width: 270px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 
-  h1 {
-    color: var(--orange);
-    font-weight: 600;
+  @media (min-width: 900px) {
+    .vector {
+      display: none;
+    }
   }
+`;
 
-  h3 {
-    text-align: center;
-    color: var(--orange);
+export const ContainerMenuCategory = styled.div`
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+
+  button {
+    background: transparent;
   }
 
   section {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 250px;
-    max-width: 300px;
     flex-wrap: wrap;
-    gap: 20px;
+    margin: 10px 0;
   }
 
-  img {
-    box-sizing: border-box;
-    height: 90px;
-    width: 90px;
+  h1 {
+    color: var(--orange);
+    font-weight: 600;
+    margin-bottom: 20px;
   }
 
-  button {
-    background: transparent;
+  h3 {
+    text-align: center;
+    color: var(--orange);
   }
 
   .button1,
@@ -60,7 +92,6 @@ export const MainContainer = styled.main`
     flex-direction: column;
     height: 130px;
     width: 115px;
-    border: 2px solid transparent;
     cursor: pointer;
   }
 
@@ -72,29 +103,33 @@ export const MainContainer = styled.main`
     border-radius: 3px;
   }
 
+  img {
+    box-sizing: border-box;
+    height: 90px;
+    width: 90px;
+  }
+
   @media (min-width: 900px) {
-    .containerRight {
-      display: inline;
-    }
+    width: 50%;
+    height: 88vh;
+    left: 0;
+    top: 80px;
+    background-color: #fdf0f0;
 
     section {
-      max-width: 60%;
+      width: 400px;
+      height: 400px;
+      gap: 40px;
+      justify-content: space-around;
     }
-  }
-`;
 
-export const Footer = styled.footer`
-  .vector {
-    opacity: 1;
-    width: 323px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+    img {
+      width: 150px;
+      height: 150px;
+    }
 
-  @media (min-width: 900px) {
-    .vector {
-      display: none;
+    button {
+      margin: 0 30px;
     }
   }
 `;

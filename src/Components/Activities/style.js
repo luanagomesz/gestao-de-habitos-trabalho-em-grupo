@@ -44,6 +44,7 @@ const ActivityPage = styled.div`
     align-content: center;
     align-items: center;
     justify-content: center;
+    
   }
 
   .Modules {

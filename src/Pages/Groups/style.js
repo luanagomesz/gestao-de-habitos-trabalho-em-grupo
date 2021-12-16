@@ -12,6 +12,10 @@ export const ContainerContent = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  @media (max-width: 900px) {
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const ContainerCreate = styled.div`
@@ -21,9 +25,22 @@ export const ContainerCreate = styled.div`
   width: 50%;
   justify-content: center;
   background-color: #e5e3ff;
+  @media (max-width: 900px) {
+    display: none;
+  }
+  img {
+    width: 300px;
+  }
+  h1 {
+    color: var(--purple);
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
   div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     input {
       margin-bottom: 20px;
       border: 1px solid var(--grey-50);
@@ -41,10 +58,20 @@ export const ContainerCreate = styled.div`
       border-radius: 5px;
       font-size: 15px;
       padding: 10px 0px 40px 5px;
+      width: 100%;
       ::placeholder {
         color: var(--grey-50);
         font-size: 25px;
       }
+    }
+    button {
+      color: var(--white);
+      background-color: var(--purple);
+      border-radius: 5px;
+      font-size: 25px;
+      padding: 10px;
+      width: 70%;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -56,6 +83,11 @@ export const ContainerGroups = styled.div`
   align-items: center;
   justify-content: center;
 
+  h1 {
+    color: var(--purple);
+    font-weight: normal;
+    margin-bottom: 20px;
+  }
   .containerLista {
     display: flex;
     flex-direction: column;
@@ -63,10 +95,11 @@ export const ContainerGroups = styled.div`
 
     border: 2px solid var(--grey-50);
     border-radius: 10px;
-    width: 80%;
+    width: 97%;
     max-height: 550px;
     max-width: 550px;
     min-height: 500px;
+    min-width: 320px;
     .page {
       width: 80%;
       display: flex;
@@ -92,6 +125,9 @@ export const ContainerGroups = styled.div`
       margin-bottom: 0px;
       padding: 0 0px 5px 0px;
       border-bottom: 1px solid var(--grey-0);
+      @media (max-width: 900px) {
+        display: none;
+      }
 
       p:first-child {
         width: 20%;
@@ -132,10 +168,16 @@ export const ContainerGroups = styled.div`
           margin-top: 7px;
           color: var(--grey-100);
         }
+        .category {
+          display: block;
+          @media (max-width: 900px) {
+            display: none;
+          }
+        }
         button {
           background-color: var(--ligthpurple);
           color: var(--white);
-          padding: 3px 10px;
+          padding: 3px 5px;
           border-radius: 5px;
         }
       }

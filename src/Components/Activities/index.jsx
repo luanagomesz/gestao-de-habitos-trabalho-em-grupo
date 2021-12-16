@@ -23,8 +23,6 @@ function Activities() {
      api
       .get(`/activities/?group=${GroupId}`, authorization)
       .then((response) => {
-        console.log(response)
-        console.log(activity)
         setActivity(response.data.results);
       })
       .catch((err) => console.log(err));

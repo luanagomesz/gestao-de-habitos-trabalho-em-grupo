@@ -15,9 +15,10 @@ const Header = ({
   history2,
   history3,
   user,
+  userState,
 }) => {
   const history = useHistory();
-  const [userInfo, setUserInfo] = useState(false);
+  const [userInfo, setUserInfo] = useState(userState);
 
   return (
     <HeaderContainer backgroundColor={backgroundColor}>

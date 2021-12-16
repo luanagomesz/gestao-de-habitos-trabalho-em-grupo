@@ -1,12 +1,10 @@
 import Header from "../../Components/Header";
-import Modal from "../../Components/ModalGoals/index";
 import { GoalsContainer } from "./style";
 import ItemList from "../../Components/ItemList";
 import { GoalsContext } from "../../Provider/goals/goals";
 import { useContext, useEffect, useState } from "react";
-import { MdOutlineLteMobiledata } from "react-icons/md";
 import Button from "../../Components/Button/index";
-import { useHistory } from "react-router-dom";
+import vector from "../../assets/img/image-goals/Vector 1.png";
 
 const Goals = ({ history }) => {
   const { goalsList } = useContext(GoalsContext);
@@ -43,8 +41,20 @@ const Goals = ({ history }) => {
             />
           ))}
         </ul>
-        {toggle ? <Button onClick={onClick} /> : <Button onClick={addGoal} />}
+        {toggle ? (
+          <Button
+            onClick={onClick}
+            width={`${322}px`}
+            // backgroundHover={backgroundHover}
+            // width={"200px"}
+            // margin={margin}
+            // type={type}
+          />
+        ) : (
+          <Button onClick={addGoal} />
+        )}
       </GoalsContainer>
+      <img src={vector} alt="goals-footer" />
     </>
   );
 };

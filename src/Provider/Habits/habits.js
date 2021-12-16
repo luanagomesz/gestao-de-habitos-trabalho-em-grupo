@@ -7,11 +7,12 @@ export const HabitsContext = createContext();
 export const HabitsProvider = ({ children }) => {
 
   const { authorization } = useContext(LoginContext);
+  const [ habitsControl, setHabitsControl ] = useState(false)
   const [habitsList, setHabitsList] = useState([]);
 
   const showHabits = () => {
     api
-      .get("/habits/personal/", "", authorization)
+      .get("/habits/personal/", authorization)
       .then((response) => {
         setHabitsList(response.data);
       })
@@ -21,13 +22,20 @@ export const HabitsProvider = ({ children }) => {
   useEffect(() => {
     showHabits();
     // eslint-disable-next-line
-  }, []);
+  }, [authorization]);
+
+  useEffect(() => {
+    showHabits();
+    // eslint-disable-next-line
+  }, [habitsControl]);
 
   return (
     <HabitsContext.Provider
       value={{
         habitsList,
-        setHabitsList
+        setHabitsList,
+        habitsControl,
+        setHabitsControl
       }}
     >
       {children}

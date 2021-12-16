@@ -30,52 +30,57 @@ function Activities() {
 
   return (
     <>
-      <Header backgroundColor={"var(--ligthblue)"} />
+      <Header
+        backgroundColor={"var(--ligthblue)"}
+        page1={"Groups"}
+        page2={"Goals"}
+        page3={"Habits"}
+        history1={"groups"}
+        history2={"goals"}
+        history3={"habits"}
+      />
 
       <ActivityPage>
-        <div className="Yoga">
-          <img src={Yoga} alt="yoga-girl" />
-        </div>
-        <div className="PrincipalContainer">
-          <div className="PrincipalHeader">
-            <h2>Activities</h2>
-            <button onClick={() => setOpenModal(true)}>
-              <BsClipboardPlus />
-            </button>
-          </div>
-          <div className="PrincipalBody">
-            {activity.length > 0
-              ? activity.map((item, index) => (
-                  <ItemList
-                  
-                    key={index}
-                    color={"var(--purple)"}
-                    name={item.title}
-                    realizationTime={item.realization_time}
-                    isVisible={"false"}
-                  ></ItemList>
-                ))
-              : ""}
-          </div>
-          <div className="ButtonCreate">
-            <Button
-              onClick={() => setOpenModal(true)}
-              background={"var(--purple)"}
-              width={"230px"}
-            >
-              Add a new activity
-            </Button>
-          </div>
-        </div>
+         <div className="modalContainer">
+          {openModal && <MyModal title={"New Activity"} />}
+        </div> 
 
-        {openModal ? (
-          <MyModal
-            title={"New Activity"}
-            text={"How hard is it to keep this Goal?"}
-          />
-        ) : (
+        <div className="listContainer">
+          <img src={Yoga} alt="yoga-girl" />
+
+          <div className="activitiesContainer">
+            <div className="activitiesHeader">
+              <h2>Activities</h2>
+              <button onClick={() => setOpenModal(true)}>
+                <BsClipboardPlus />
+              </button>
+            </div>
+
+            {activity.length > 0 &&
+              activity.map((item, index) => (
+                <ItemList
+                  key={index}
+                  color={"var(--purple)"}
+                  name={item.title}
+                  realizationTime={item.realization_time}
+                  isVisible={"false"}
+                  requirementTitle={"Realization Time"}
+                />
+              ))}
+            <div className="ButtonCreate">
+              <Button
+                onClick={() => setOpenModal(true)}
+                background={"var(--purple)"}
+                width={"230px"}
+              >
+                Add a new activity
+              </Button>
+            </div>
+          </div>
+        </div>
+        <footer>
           <img className="Wave" src={Vetor} alt="vetor" />
-        )}
+        </footer>
       </ActivityPage>
     </>
   );

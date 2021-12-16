@@ -1,19 +1,17 @@
 import styled from "styled-components";
 
 const ActivityPage = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
+  width:100vw;
+
   
 
-  aside {
-    display: none;
-  }
-
-  .PrincipalContainer {
+  /* .PrincipalContainer {
     display: flex;
     width: 305px;
-    height:350px;
+    height: 350px;
     border: solid var(--grey-50) 1px;
     border-radius: 10px;
     margin: 0 auto;
@@ -22,68 +20,100 @@ const ActivityPage = styled.div`
     margin-top: 30px;
     padding: 12px;
     background: var(--grey-0);
-    overflow:auto; 
+    overflow: auto;
 
-    li{
+    li {
       width: 270px;
-    height: 70px;
+      height: 70px;
+    }
+  
+  } */
+
+  .listContainer {
+    position: absolute;
+    border: 2px solid black;
+
+    @media (min-width: 900px) {
+      right: 0;
     }
   }
-  .PrincipalHeader {
+
+  .listContainer img {
+    display: none;
+  }
+
+  .modalContainer {
+    position: absolute;
+    border: 2px solid black;
+    @media (min-width: 900px) {
+      left: 0;
+    }
+  }
+
+  .mainContainer {
+    border: 2px solid black;
+  }
+
+  .activitiesHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin: 7px -5px;
+    margin:10px;
+    width:300px;
 
     h2 {
       margin-top: 15px;
+      color:var(--grey-100);
     }
     button {
       background: none;
-      font-size: 30px;
+      font-size: 25px;
+      margin-top:20px;
     }
   }
 
+  .activitiesContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  /* 
   .PrincipalBody {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
-    
-  }
+  } */
 
- 
   .Wave {
     opacity: 1;
-    width: 100vw;
+    width: 250px;
     position: absolute;
     bottom: 0;
     left: 0;
   }
-  .Yoga {
-    display: none;
-  }
 
   .ButtonCreate {
     display: none;
-    button {
+
       width: 500px;
       margin: 15px auto;
-    }
+    
   }
 
   @media (min-width: 900px) {
     display: flex;
     flex-direction: column-reverse;
-    .PrincipalHeader {
+
+    .activitiesHeader {
       display: none;
     }
 
-    .Yoga {
-      display: block;
-    }
+  
     .PrincipalContainer {
       width: 700px;
       margin-bottom: 82px;
@@ -101,9 +131,9 @@ const ActivityPage = styled.div`
       align-items: flex-start;
 
       p {
-        width:295px;
-       font-size:20px;
-       margin: 15px 20px 15px 20px;
+        width: 295px;
+        font-size: 20px;
+        margin: 15px 20px 15px 20px;
       }
     }
 

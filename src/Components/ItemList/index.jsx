@@ -8,34 +8,38 @@ const ItemList = ({
   isVisible,
   difficultyValue,
   requirementValue,
-  color
+  color,
 }) => {
   return (
     <ListContainer color={color}>
-      <div className="headerItem">
-        <p>{name}</p>
-        <p>{category}</p>
+      <div className="containerLeft">
+        <div className="headerItem">
+          <p>{name}</p>
+          <p>{category}</p>
+        </div>
       </div>
 
-      <div className="requirementContainer">
-        {isVisible ? (
-          <p>{requirementTitle}</p>
-        ) : (
-          <>
-            <span>Difficulty</span>
-            <span>{requirementTitle}</span>
-          </>
-        )}
-      </div>
-      <div className="valueContainer">
-        {isVisible ? (
-          <p>{realizationTime}</p>
-        ) : (
-          <>
-            <span>{difficultyValue}</span>
-            <span>{requirementValue}</span>
-          </>
-        )}
+      <div className="containerRight">
+        <div className="requirementContainer">
+          {isVisible ? (
+            <p>{requirementTitle}</p>
+          ) : (
+            <>
+              <span>Difficulty</span>
+              <span>{requirementTitle}</span>
+            </>
+          )}
+        </div>
+        <div className="valueContainer">
+          {isVisible ? (
+            <p>{realizationTime}</p>
+          ) : (
+            <>
+              <span>{difficultyValue}</span>
+              <span>{requirementValue}</span>
+            </>
+          )}
+        </div>
       </div>
     </ListContainer>
   );

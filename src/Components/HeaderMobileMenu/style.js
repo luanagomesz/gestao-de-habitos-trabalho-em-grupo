@@ -22,8 +22,12 @@ export const ContainerMenu = styled.div`
       margin-top: 0px;
       color: ${(props) => props.backgroundColor};
     }
-    40% {
+    20% {
       z-index: -1;
+    }
+    40% {
+      z-index: 2;
+      color: ${(props) => props.backgroundColor};
     }
     100% {
       z-index: 2;

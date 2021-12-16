@@ -35,7 +35,7 @@ const Header = ({
 
       <div className="icons">
         <button>
-          <FaUserCircle />
+          <FaUserCircle className="userLogo" />
         </button>
         <button className="menuMobile">
           <AiOutlineMenu

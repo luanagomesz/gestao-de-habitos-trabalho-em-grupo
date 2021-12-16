@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import Button from "../../Components/Button/index";
 import vector from "../../assets/img/image-goals/Vector 1.png";
 import Modal from "../../Components/ModalGoals/index";
+import goalsImg from "../../assets/img/image-goals/Personal goals-amico 1.png";
 
 const Goals = ({ history }) => {
   const { goalsList } = useContext(GoalsContext);
@@ -17,11 +18,9 @@ const Goals = ({ history }) => {
 
   useEffect(() => {
     if (width > 900) {
-      console.log(width);
       setToggleModal(true);
     } else {
       setToggleModal(false);
-      console.log(width);
     }
   }, [width]);
 
@@ -34,9 +33,9 @@ const Goals = ({ history }) => {
       <Header backgroundColor={"var(--orange)"} />
       <GoalsContainer>
         {toggleModal && (
-          <>
+          <div className="modal-container">
             <Modal />
-          </>
+          </div>
         )}
         {toggle && (
           <div className="list-container">
@@ -52,8 +51,11 @@ const Goals = ({ history }) => {
                   requirementValue={item.achieved}
                 />
               ))}
-              <button onClick={addGoal}>teste</button>
             </ul>
+            <button onClick={addGoal}>teste</button>
+            <div className="img-container">
+              <img src={goalsImg} alt="goals" />
+            </div>
           </div>
         )}
       </GoalsContainer>

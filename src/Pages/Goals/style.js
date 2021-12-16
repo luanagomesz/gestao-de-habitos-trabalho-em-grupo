@@ -5,7 +5,6 @@ export const GoalsContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;
@@ -13,12 +12,9 @@ export const GoalsContainer = styled.div`
     .footer {
       position: absolute;
 
-
-      @media(min-width: 900px){
+      @media (min-width: 900px) {
         display: none;
-
       }
-      
     }
   }
 
@@ -28,28 +24,48 @@ export const GoalsContainer = styled.div`
   }
   .modal-container {
     width: 50%;
-    
   }
 
-  .list-container {
-    text-align: center;
+  .modal-container {
+  display: flex;
+  justify-content: center;
+  border: solid red 2px;
+  height: 100vh;
 
-    @media(min:900px){
-      width:50%;
-      border: solid red 1px;
+  
     }
 
-  }
+    .img-container {
+      display: none;
 
-  ul {
-    max-width: 400px;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
+      @media (min-width: 900px) {
+        display: block;
+      }
+    }
 
+    .list-container {
+      text-align: center;
 
+      @media (min-width: 900px) {
+        width: 50%;
+        height: 100vh;
+        background-color: #fbece2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    ul {
+      overflow-y: auto;
+      max-width: 400px;
+      height: 420px;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
   }
   img {
     width: 250px;

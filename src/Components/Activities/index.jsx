@@ -46,7 +46,7 @@ function Activities() {
         </div>
 
         <div className="listContainer">
-          <img src={Yoga} alt="yoga-girl" />
+          {/* <img src={Yoga} alt="yoga-girl" /> */}
 
           <div className="activitiesContainer">
             <div className="activitiesHeader">
@@ -77,6 +77,9 @@ function Activities() {
           >
             Add a new activity
           </Button>
+        </div>
+        <div className="img-container">
+          <img src={Yoga} alt={"activities-img"} />
         </div>
         <footer>
           <img className="Wave" src={Vetor} alt="vetor" />

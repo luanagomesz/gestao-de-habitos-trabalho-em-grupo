@@ -10,6 +10,14 @@ const ActivityPage = styled.div`
   align-items: center;
   justify-content: center;
 
+  border: solid green 2px;
+
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: row;
+    border: solid red 2px;
+  }
+
   /* .PrincipalContainer {
     display: flex;
     width: 305px;
@@ -55,6 +63,11 @@ const ActivityPage = styled.div`
     @media (min-width: 900px) {
       left: 0;
     }
+  }
+
+  .img-container {
+    width: 50%;
+    border: solid orange 2px;
   }
 
   .mainContainer {

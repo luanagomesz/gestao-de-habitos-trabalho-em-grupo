@@ -10,12 +10,9 @@ const ActivityPage = styled.div`
   align-items: center;
   justify-content: center;
 
-  border: solid green 2px;
-
   @media (min-width: 900px) {
     display: flex;
     flex-direction: row;
-    border: solid red 2px;
   }
 
   /* .PrincipalContainer {
@@ -58,8 +55,6 @@ const ActivityPage = styled.div`
   }
 
   .modalContainer {
-    position: absolute;
-
     @media (min-width: 900px) {
       left: 0;
     }

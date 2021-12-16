@@ -18,6 +18,18 @@ function Activities() {
 
   const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [toggleModal, setToggleModal] = useState(false);
+
+  window.addEventListener("resize", () => setWidth(window.innerWidth));
+
+  useEffect(() => {
+    if (width > 900) {
+      setToggleModal(true);
+    } else {
+      setToggleModal(false);
+    }
+  }, [width]);
 
   useEffect(() => {
     api
@@ -42,45 +54,48 @@ function Activities() {
 
       <ActivityPage>
         <div className="modalContainer">
-          {openModal && <MyModal title={"New Activity"} />}
+          {toggleModal && <MyModal title={"New Activity"} />}
         </div>
+        <div className="test">
+          <div className="listContainer">
+            {/* <img src={Yoga} alt="yoga-girl" /> */}
 
-        <div className="listContainer">
-          {/* <img src={Yoga} alt="yoga-girl" /> */}
+            <div className="activitiesContainer">
+              <div className="activitiesHeader">
+                <h2>Activities</h2>
+                <button onClick={() => setOpenModal(true)}>
+                  <BsClipboardPlus />
+                </button>
+              </div>
 
-          <div className="activitiesContainer">
-            <div className="activitiesHeader">
-              <h2>Activities</h2>
-              <button onClick={() => setOpenModal(true)}>
-                <BsClipboardPlus />
-              </button>
+              {activity.length > 0 &&
+                activity.map((item, index) => (
+                  <ItemList
+                    key={index}
+                    color={"var(--purple)"}
+                    name={item.title}
+                    realizationTime={item.realization_time}
+                    isVisible={"false"}
+                    requirementTitle={"Realization Time"}
+                  />
+                ))}
             </div>
+          </div>
 
-            {activity.length > 0 &&
-              activity.map((item, index) => (
-                <ItemList
-                  key={index}
-                  color={"var(--purple)"}
-                  name={item.title}
-                  realizationTime={item.realization_time}
-                  isVisible={"false"}
-                  requirementTitle={"Realization Time"}
-                />
-              ))}
+          <div className="btn-container">
+            <Button
+              onClick={() => setOpenModal(true)}
+              background={"var(--purple)"}
+              width={"230px"}
+            >
+              Add a new activity
+            </Button>
+            {/* <div className="img-container">
+              <img src={Yoga} alt={"activities-img"} />
+            </div> */}
           </div>
         </div>
-        <div className="btn-container">
-          <Button
-            onClick={() => setOpenModal(true)}
-            background={"var(--purple)"}
-            width={"230px"}
-          >
-            Add a new activity
-          </Button>
-        </div>
-        <div className="img-container">
-          <img src={Yoga} alt={"activities-img"} />
-        </div>
+
         <footer>
           <img className="Wave" src={Vetor} alt="vetor" />
         </footer>

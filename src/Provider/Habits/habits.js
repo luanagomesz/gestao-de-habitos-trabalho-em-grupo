@@ -11,7 +11,7 @@ export const HabitsProvider = ({ children }) => {
 
   const showHabits = () => {
     api
-      .get("/habits/personal/", authorization)
+      .get("/habits/personal/", "", authorization)
       .then((response) => {
         setHabitsList(response.data);
       })

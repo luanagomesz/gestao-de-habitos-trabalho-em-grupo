@@ -37,7 +37,15 @@ function Habits() {
 
   return (
     <>
-      {<Header backgroundColor={"var(--red)"} />}
+      {
+        <Header
+          backgroundColor={"var(--red)"}
+          page1={"Dashboard"}
+          page2={"Groups"}
+          history1={"dashboard"}
+          history2={"groups"}
+        />
+      }
       {toggle && (
         <ModalHabits
           className="modal"
@@ -76,41 +84,46 @@ function Habits() {
                   onClick={() => onClickFunction("Hobbies")}
                 >
                   <img src={imgHobbies} alt="imgHobbies" />
-                  <span>Hobbies</span>
+                  <p>Hobbies</p>
                 </div>
                 <div
                   className="button4"
                   onClick={() => onClickFunction("Home Care")}
                 >
                   <img src={imgHomeCare} alt="imgHomeCare" />
-                  <span>Home Care</span>
+                  <p>Home Care</p>
                 </div>
               </section>
             </ContainerMenuCategory>
           </>
         )}
-        {toggleList && (
-          <ContainerList>
-            {habitsList.map((habit) => {
-              console.log(habit);
-              return (
-                <ItemList
-                  name={habit.title}
-                  requirementTitle={"Frequency"}
-                  requirementValue={habit.frequency}
-                  difficultyValue={habit.difficulty}
-                  category={habit.category}
-                  color={"var(--orange)"}
-                ></ItemList>
-              );
-            })}
-          </ContainerList>
-        )}
-      </MainContainer>
 
-      <Footer>
-        <img className="vector" src={imgFooter} alt="vector-habits" />
-      </Footer>
+        <ContainerList>
+          {toggleList && (
+            <>
+              {habitsList.map((habit) => {
+                console.log(habit);
+                return (
+                  <ItemList
+                    name={habit.title}
+                    requirementTitle={"Frequency"}
+                    requirementValue={habit.frequency}
+                    difficultyValue={habit.difficulty}
+                    category={habit.category}
+                    color={"var(--orange)"}
+                  ></ItemList>
+                );
+              })}
+              <li>teste</li>
+              <button onClick={() => setToggleMenu(true)}>add</button>
+            </>
+          )}
+          <img src={imgWorkout} alt="imgWorkout" className="imgRight"/>
+        </ContainerList>
+        <Footer>
+          <img className="vector" src={imgFooter} alt="vector-habits" />
+        </Footer>
+      </MainContainer>
     </>
   );
 }

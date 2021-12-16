@@ -16,6 +16,10 @@ export const ContainerList = styled.div`
   justify-content: center;
   width: 50%;
 
+  .imgRight{
+    display: none;
+  }
+
   button {
     border: 2px solid black;
     width: 100px;
@@ -23,10 +27,21 @@ export const ContainerList = styled.div`
 
   @media (min-width: 900px) {
     right: 0;
-    height: 88vh;
+    height: 700px;
     top: 80px;
 
-    button{
+    .imgRight {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0 50px 20px 0;
+      width: 300px;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    button {
       display: none;
     }
   }
@@ -39,6 +54,7 @@ export const Footer = styled.footer`
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 1;
   }
 
   @media (min-width: 900px) {
@@ -52,7 +68,7 @@ export const ContainerMenuCategory = styled.div`
   position: absolute;
   z-index: 1;
   background-color: white;
-  top: 150px;
+  top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,18 +84,23 @@ export const ContainerMenuCategory = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10px 0;
+  }
+
+  p {
+    color: var(--grey-50);
+    font-weight: 600;
   }
 
   h1 {
     color: var(--orange);
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 20px;
   }
 
   h3 {
     text-align: center;
     color: var(--orange);
+    margin-bottom: 20px;
   }
 
   .button1,
@@ -90,9 +111,10 @@ export const ContainerMenuCategory = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 130px;
-    width: 115px;
+    height: 100px;
+    width: 100px;
     cursor: pointer;
+    margin: 10px;
   }
 
   .button1:hover,
@@ -111,21 +133,44 @@ export const ContainerMenuCategory = styled.div`
 
   @media (min-width: 900px) {
     width: 50%;
-    height: 88vh;
+    height: 700px;
     left: 0;
     top: 80px;
     background-color: #fdf0f0;
 
+    .button1,
+    .button2,
+    .button3,
+    .button4 {
+      height: 200px;
+      margin: 10px 50px;
+      width: 170px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: 25px;
+      font-weight: lighter;
+    }
+
     section {
-      width: 400px;
-      height: 400px;
+      width: 600px;
       gap: 40px;
       justify-content: space-around;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 20px;
     }
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 170px;
+      height: 170px;
     }
 
     button {

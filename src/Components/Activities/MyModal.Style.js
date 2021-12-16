@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const ModalContainer = styled.div`
-  width: 270px;
-  height: 35vh;
+  width: 305px;
+  height: auto;
   border: solid var(--grey-50) 1px;
   border-radius: 10px;
   margin: 0 auto;
@@ -11,9 +11,35 @@ const ModalContainer = styled.div`
   margin-top: 30px;
   padding: 12px;
 
+
+  input {
+    height: 40px;
+    border-radius: 10px;
+    border: solid var(--purple) 3px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width:280px;
+  }
   p {
     margin-top: 1px;
     color: red;
+  }
+  .modalBody{
+    height:28vh;
+
+    h4{
+      margin-top:7px;
+    }
+  }
+
+  .ButtonAdd {
+    display: flex;
+  
+ 
+    button {
+     width: 280px;
+  }
   }
 
   .modal-header {
@@ -26,26 +52,8 @@ const ModalContainer = styled.div`
       font-size: 30px;
     }
   }
+ 
 
-  input {
-    height: 50px;
-    border-radius: 10px;
-    border: solid var(--purple) 3px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    margin-top: 10px;
-    width:242px;
-    
-  }
-
-  .ButtonAdd {
-    display: flex;
-    margin-bottom:15px;
-    button {
-      width: 500px;
-      margin: 3px auto;
-    }
-  }
 
   @media (min-width: 900px) {
     width: 560px;

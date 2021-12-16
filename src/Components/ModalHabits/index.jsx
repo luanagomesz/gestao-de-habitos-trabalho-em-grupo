@@ -13,7 +13,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
   const { habitsControl, setHabitsControl } = useContext(HabitsContext);
   const userId = window.localStorage.getItem("id");
 
-  console.log(authorization)
+  console.log(authorization);
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -46,7 +46,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
         setToggle(false);
       })
       .catch((err) => console.log(err));
-      setHabitsControl(!habitsControl)
+    setHabitsControl(!habitsControl);
   };
 
   useEffect(() => {

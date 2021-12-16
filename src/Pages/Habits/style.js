@@ -15,12 +15,21 @@ export const ContainerList = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+  .close {
+    position: relative;
+    left: 300px;
+    top: -85px;
+    cursor: pointer;
+    :hover {
+      color: var(--orange);
+    }
+  }
 
-  .list{
+  .list {
     background-color: red;
   }
 
-  .imgRight{
+  .imgRight {
     display: none;
   }
 

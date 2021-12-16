@@ -1,20 +1,26 @@
 import Header from "../../Components/Header";
 import Modal from "../../Components/ModalGoals/index";
-import imgGoals from "../../assets/img/image-goals/Personal goals-amico 1.png";
 import { GoalsContainer } from "./style";
 import ItemList from "../../Components/ItemList";
 import { GoalsContext } from "../../Provider/goals/goals";
 import { useContext } from "react";
 import { MdOutlineLteMobiledata } from "react-icons/md";
+import Button from "../../Components/Button/index";
+import { useHistory } from "react-router-dom";
 
-const Goals = (setToggle) => {
+const Goals = ({ history }) => {
   const { goalsList } = useContext(GoalsContext);
+  // const history = useHistory();
 
-  console.log(goalsList);
+  const onClick = () => {
+    history.push("/goals/modal");
+  };
+
   return (
     <>
       <Header backgroundColor={"var(--orange)"} />
       <GoalsContainer>
+        <h1>Goals</h1>
         <ul>
           {goalsList.map((item) => (
             <ItemList
@@ -27,11 +33,7 @@ const Goals = (setToggle) => {
             />
           ))}
         </ul>
-
-        <div className="modal-container">MODAL</div>
-        <div className="img-container">
-          <img src={imgGoals} alt="Goals" />
-        </div>
+        <Button onClick={onClick} />
       </GoalsContainer>
     </>
   );

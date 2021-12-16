@@ -13,8 +13,6 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
   const { habitsControl, setHabitsControl } = useContext(HabitsContext);
   const userId = window.localStorage.getItem("id");
 
-  console.log(authorization);
-
   const schema = yup.object().shape({
     title: yup.string(),
     difficulty: yup.string(),

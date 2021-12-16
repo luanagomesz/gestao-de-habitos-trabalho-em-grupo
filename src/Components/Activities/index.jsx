@@ -41,9 +41,9 @@ function Activities() {
       />
 
       <ActivityPage>
-         <div className="modalContainer">
+        <div className="modalContainer">
           {openModal && <MyModal title={"New Activity"} />}
-        </div> 
+        </div>
 
         <div className="listContainer">
           <img src={Yoga} alt="yoga-girl" />
@@ -67,16 +67,16 @@ function Activities() {
                   requirementTitle={"Realization Time"}
                 />
               ))}
-            <div className="ButtonCreate">
-              <Button
-                onClick={() => setOpenModal(true)}
-                background={"var(--purple)"}
-                width={"230px"}
-              >
-                Add a new activity
-              </Button>
-            </div>
           </div>
+        </div>
+        <div className="btn-container">
+          <Button
+            onClick={() => setOpenModal(true)}
+            background={"var(--purple)"}
+            width={"230px"}
+          >
+            Add a new activity
+          </Button>
         </div>
         <footer>
           <img className="Wave" src={Vetor} alt="vetor" />

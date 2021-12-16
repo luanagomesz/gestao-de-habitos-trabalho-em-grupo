@@ -4,9 +4,11 @@ const ActivityPage = styled.div`
   /* display: flex;
   flex-direction: column;
   align-items: center; */
-  width:100vw;
-
-  
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   /* .PrincipalContainer {
     display: flex;
@@ -30,8 +32,13 @@ const ActivityPage = styled.div`
   } */
 
   .listContainer {
-    position: absolute;
-    border: 2px solid black;
+    height: 420px;
+    margin-top: 20px;
+    /* position: absolute; */
+    overflow-y: auto;
+    background-color: var(--grey-0);
+    border: none;
+    border-radius: 10px;
 
     @media (min-width: 900px) {
       right: 0;
@@ -44,7 +51,7 @@ const ActivityPage = styled.div`
 
   .modalContainer {
     position: absolute;
-    border: 2px solid black;
+
     @media (min-width: 900px) {
       left: 0;
     }
@@ -59,21 +66,21 @@ const ActivityPage = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin:10px;
-    width:300px;
+    margin: 10px;
+    width: 300px;
 
     h2 {
       margin-top: 15px;
-      color:var(--grey-100);
+      color: var(--grey-100);
     }
     button {
       background: none;
       font-size: 25px;
-      margin-top:20px;
+      margin-top: 20px;
     }
   }
 
-  .activitiesContainer{
+  .activitiesContainer {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -97,12 +104,15 @@ const ActivityPage = styled.div`
     left: 0;
   }
 
+  .btn-container {
+    margin-top: 20px;
+  }
+
   .ButtonCreate {
     display: none;
 
-      width: 500px;
-      margin: 15px auto;
-    
+    width: 500px;
+    margin: 15px auto;
   }
 
   @media (min-width: 900px) {
@@ -113,7 +123,6 @@ const ActivityPage = styled.div`
       display: none;
     }
 
-  
     .PrincipalContainer {
       width: 700px;
       margin-bottom: 82px;

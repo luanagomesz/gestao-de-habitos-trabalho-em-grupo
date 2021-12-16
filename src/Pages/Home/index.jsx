@@ -8,7 +8,7 @@ function Home({ history }) {
   return (
     <>
     <HeaderHome>
-      <div className="Logo">
+      <div className="Logo" onClick={() => history.push("/")}>
         <img src={Habbit} alt="logoimg"/>
         <h1>Habbits</h1>
       </div>
@@ -56,7 +56,7 @@ function Home({ history }) {
         <li>Quality Assurance</li>
       </ul>
       <ul>
-        <li>Jonatas Helderich</li>
+        <li>Jonatas Heiderich</li>
         <li>Quality Assurance</li>
       </ul>
       

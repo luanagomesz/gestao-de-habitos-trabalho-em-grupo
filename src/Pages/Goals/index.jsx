@@ -42,7 +42,15 @@ const Goals = ({ history }) => {
 
   return (
     <>
-      <Header backgroundColor={"var(--orange)"} />
+      <Header
+        backgroundColor={"var(--orange)"}
+        page1={"Habits"}
+        page2={"Dashboard"}
+        page3={"Groups"}
+        history1={"habits"}
+        history2={"dashboard"}
+        history3={"groups"}
+      />
       <GoalsContainer>
         {toggleModal && (
           <div className="modal-container">
@@ -70,7 +78,9 @@ const Goals = ({ history }) => {
                 </div>
               ))}
             </ul>
-            <button onClick={() => addGoal}>Add New Goal</button>
+            <button className="btn-add" onClick={addGoal}>
+              Add New Goal
+            </button>
             <div className="img-container">
               <img src={goalsImg} alt="goals" />
             </div>

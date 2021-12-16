@@ -18,6 +18,7 @@ export const LoginProvider = ({ children }) => {
         Authorization: `Bearer ${window.localStorage.getItem("authToken")}`,
       },
     });
+    setUserName(window.localStorage.getItem("user"));
   }, []);
 
   const schema = yup.object().shape({
@@ -47,6 +48,7 @@ export const LoginProvider = ({ children }) => {
         window.localStorage.clear();
         window.localStorage.setItem("id", JSON.stringify(jwt.user_id));
         window.localStorage.setItem("authToken", response.data.access);
+        window.localStorage.setItem("user", user.username);
         setToken(response.data.access);
         setAuthorization({
           headers: {

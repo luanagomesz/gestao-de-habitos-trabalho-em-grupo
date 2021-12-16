@@ -33,7 +33,7 @@ function Habits() {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  });
+  }, []);
 
   return (
     <>
@@ -102,7 +102,6 @@ function Habits() {
           {toggleList && (
             <>
               {habitsList.map((habit) => {
-                console.log(habit);
                 return (
                   <ItemList
                     name={habit.title}
@@ -111,10 +110,10 @@ function Habits() {
                     difficultyValue={habit.difficulty}
                     category={habit.category}
                     color={"var(--orange)"}
+                    className="list"
                   ></ItemList>
                 );
               })}
-              <li>teste</li>
               <button onClick={() => setToggleMenu(true)}>add</button>
             </>
           )}

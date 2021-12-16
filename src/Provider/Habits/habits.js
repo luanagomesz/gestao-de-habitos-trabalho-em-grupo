@@ -6,6 +6,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const { authorization } = useContext(LoginContext);
+  const [habitsControl, setHabitsControl] = useState(false);
   const [habitsList, setHabitsList] = useState([]);
 
   const showHabits = () => {
@@ -22,11 +23,18 @@ export const HabitsProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [authorization]);
 
+  useEffect(() => {
+    showHabits();
+    // eslint-disable-next-line
+  }, [habitsControl]);
+
   return (
     <HabitsContext.Provider
       value={{
         habitsList,
         setHabitsList,
+        habitsControl,
+        setHabitsControl,
       }}
     >
       {children}

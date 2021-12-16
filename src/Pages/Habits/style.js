@@ -16,6 +16,10 @@ export const ContainerList = styled.div`
   justify-content: center;
   width: 50%;
 
+  .list{
+    background-color: red;
+  }
+
   .imgRight{
     display: none;
   }
@@ -73,7 +77,7 @@ export const ContainerMenuCategory = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 270px;
+  width: 100%;
 
   button {
     background: transparent;
@@ -84,6 +88,7 @@ export const ContainerMenuCategory = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    width: 270px;
   }
 
   p {

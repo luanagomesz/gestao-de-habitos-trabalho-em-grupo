@@ -1,7 +1,6 @@
 import Header from "../../Components/Header";
 import ModalHabits from "../../Components/ModalHabits";
 import ItemList from "../../Components/ItemList";
-
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
 import imgHobbies from "../../assets/img/image-habits/image-habits-hobbies.png";
@@ -14,12 +13,19 @@ import {
   Footer,
 } from "./style";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { LoginContext } from "../../Provider/Login/Login";
+import api from "../../Services/api";
 
 function Habits({ history }) {
   const [newCategory, setNewCategory] = useState("");
   const [toggle, setToggle] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleList, setToggleList] = useState(true);
+
+  const [habitsList, setHabitsList] = useState([]);
+
+  const { authorization } = useContext(LoginContext)
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -31,6 +37,21 @@ function Habits({ history }) {
       setToggleMenu(true);
     }
   });
+
+  const showHabits = () => {
+    api
+      .get("/habits/personal/", authorization)
+      .then((response) => {
+        console.log(response.data);
+        setHabitsList(response.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    showHabits();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -89,19 +110,17 @@ function Habits({ history }) {
         {toggleList && (
           <ContainerList>
             <ul>
-
-              <ItemList
-                name={"Habit #1"}
-                requirementTitle={'Realization time'}
-                realizationTime={'10hours'}
-                isVisible={true}
-                color={"var(--orange)"}
-              ></ItemList>
-              
+              <li>item 1</li>
               <button onClick={() => setToggleMenu(true)}>Add</button>
             </ul>
           </ContainerList>
         )}
+        {habitsList?.map((habit) => {
+          console.log(habit);
+          return (
+            <li>{habit.frequency}</li>
+          )
+        })}
       </MainContainer>
 
       <Footer>

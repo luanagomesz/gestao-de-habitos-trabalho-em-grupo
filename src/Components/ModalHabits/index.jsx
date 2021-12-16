@@ -44,6 +44,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
       .then((response) => {
         console.log(response.data);
         setToggle(false);
+        setToggleMenu(false);
       })
       .catch((err) => console.log(err));
     setHabitsControl(!habitsControl);
@@ -60,7 +61,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <div className="modalHeader">
           <h3>New Habit</h3>
-          <AiOutlineClose onClick={() => setToggle(false)} className="close" />
+          <AiOutlineClose className="close" onClick={() => setToggle(false)} />
         </div>
         <input
           className="addNewHabit"

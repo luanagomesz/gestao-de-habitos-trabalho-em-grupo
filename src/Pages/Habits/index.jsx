@@ -15,14 +15,16 @@ import {
   ContainerList,
   Footer,
 } from "./style";
-
+import { AiOutlineClose } from "react-icons/ai";
+import api from "../../Services/api";
+import { LoginContext } from "../../Provider/Login/Login";
 function Habits() {
   const [newCategory, setNewCategory] = useState("");
   const [toggle, setToggle] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleList, setToggleList] = useState(true);
-
-  const { habitsList } = useContext(HabitsContext);
+  const { authorization } = useContext(LoginContext);
+  const { habitsList, showHabits } = useContext(HabitsContext);
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -33,7 +35,17 @@ function Habits() {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  }, []);
+  });
+
+  const deleteHabit = (id) => {
+    api
+      .delete(`/habits/${id}/`, authorization)
+      .then((response) => {
+        console.log(response);
+        showHabits();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -103,15 +115,22 @@ function Habits() {
             <>
               {habitsList.map((habit) => {
                 return (
-                  <ItemList
-                    name={habit.title}
-                    requirementTitle={"Frequency"}
-                    requirementValue={habit.frequency}
-                    difficultyValue={habit.difficulty}
-                    category={habit.category}
-                    color={"var(--orange)"}
-                    className="list"
-                  ></ItemList>
+                  <div>
+                    <ItemList
+                      name={habit.title}
+                      requirementTitle={"Frequency"}
+                      requirementValue={habit.frequency}
+                      difficultyValue={habit.difficulty}
+                      category={habit.category}
+                      color={"var(--orange)"}
+                      className="list"
+                    ></ItemList>
+                    <AiOutlineClose
+                      className="close"
+                      id={habit.id}
+                      onClick={() => deleteHabit(habit.id)}
+                    />
+                  </div>
                 );
               })}
               <button onClick={() => setToggleMenu(true)}>add</button>

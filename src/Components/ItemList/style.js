@@ -4,11 +4,17 @@ export const ListContainer = styled.li`
   width: 300px;
   height: 90px;
   list-style: none;
+<<<<<<< HEAD
   .close {
     position: absolute;
     right: 110px;
     margin-top: 6px;
   }
+=======
+  background-color: var(--grey-0);
+  align-items: center;
+
+>>>>>>> 57fd86c5c0b81d6089330dea94971170f21bde03
   .headerItem {
     display: flex;
     justify-content: space-between;
@@ -44,5 +50,26 @@ export const ListContainer = styled.li`
   .valueContainer p {
     font-weight: bold;
     color: ${(props) => props.color};
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    gap: 20px;
+    height: 77px;
+    z-index: 1;
+
+    .headerItem {
+      width: 300px;
+      height: 30px;
+    }
+
+    .containerLeft {
+    }
+
+    .containerRight {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--grey-0);
+    }
   }
 `;

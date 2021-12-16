@@ -16,6 +16,7 @@ export const GoalsProvider = ({ children }) => {
 
   const showList = () => {
     api.get(`/goals/?group=${GroupId}`, "", authorization).then((response) => {
+      console.log(response);
       setGoalsList(response.data.results);
     });
   };

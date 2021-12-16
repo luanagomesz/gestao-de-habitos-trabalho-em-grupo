@@ -5,9 +5,8 @@ import api from "../../Services/api";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-
   const { authorization } = useContext(LoginContext);
-  const [ habitsControl, setHabitsControl ] = useState(false)
+  const [habitsControl, setHabitsControl] = useState(false);
   const [habitsList, setHabitsList] = useState([]);
 
   const showHabits = () => {
@@ -35,10 +34,11 @@ export const HabitsProvider = ({ children }) => {
         habitsList,
         setHabitsList,
         habitsControl,
-        setHabitsControl
+        setHabitsControl,
+        showHabits,
       }}
     >
       {children}
     </HabitsContext.Provider>
   );
-}
+};

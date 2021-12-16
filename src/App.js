@@ -3,9 +3,9 @@ import { ActivitiesProvider } from "./Provider/Activities/activities";
 import { DashboardProvider } from "./Provider/dashboard/dashboard";
 import { HabitsProvider } from "./Provider/Habits/habits";
 import { GroupsProvider } from "./Provider/Groups/groups";
+import { GoalsProvider } from "./Provider/goals/goals";
 import { LoginProvider } from "./Provider/Login/Login";
 import Routes from "./Routes";
-import { GoalsProvider } from "./Provider/goals/goals";
 function App() {
   return (
     <>
@@ -14,12 +14,12 @@ function App() {
         <GroupsProvider>
           <HabitsProvider>
             <DashboardProvider>
-              <ActivitiesProvider>
-                <GoalsProvider>
+              <GoalsProvider>
+                <ActivitiesProvider>
                   <GlobalStyle />
                   <Routes />
-                </GoalsProvider>
-              </ActivitiesProvider>
+                </ActivitiesProvider>
+              </GoalsProvider>
             </DashboardProvider>
           </HabitsProvider>
         </GroupsProvider>

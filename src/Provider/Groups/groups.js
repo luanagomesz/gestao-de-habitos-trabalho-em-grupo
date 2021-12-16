@@ -148,6 +148,7 @@ export const GroupsProvider = ({ children }) => {
         getuserGroups,
         createGroup,
         userGroups,
+        setuserGroups,
       }}
     >
       {children}

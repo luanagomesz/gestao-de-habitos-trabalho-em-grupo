@@ -163,12 +163,17 @@ export const ContainerGroups = styled.div`
         border-bottom: 1px solid var(--grey-0);
 
         p {
-          width: 90px;
+          width: 80px;
           overflow-x: hidden;
           text-overflow: ellipsis;
           margin-bottom: 7px;
           margin-top: 7px;
           color: var(--grey-100);
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .category {
           display: block;

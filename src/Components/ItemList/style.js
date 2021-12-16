@@ -4,6 +4,8 @@ export const ListContainer = styled.li`
   width: 300px;
   height: 90px;
   list-style: none;
+  background-color: var(--grey-0);
+  align-items: center;
 
   .headerItem {
     display: flex;
@@ -28,15 +30,38 @@ export const ListContainer = styled.li`
     gap: 90px;
   }
 
-  .requirementContainer span, .requirementContainer p {
+  .requirementContainer span,
+  .requirementContainer p {
     font-weight: bolder;
     font-size: 18px;
     margin: 5px 0;
     color: var(--grey-100);
   }
 
-  .valueContainer span, .valueContainer p {
+  .valueContainer span,
+  .valueContainer p {
     font-weight: bold;
     color: ${(props) => props.color};
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    gap: 20px;
+    height: 77px;
+    z-index: 1;
+
+    .headerItem {
+      width: 300px;
+      height: 30px;
+    }
+
+    .containerLeft {
+    }
+
+    .containerRight {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--grey-0);
+    }
   }
 `;

@@ -58,23 +58,33 @@ export const GoalsContainer = styled.div`
 
     ul {
       overflow-y: auto;
-      max-width: 400px;
+      width: 300px;
       height: 420px;
       background-color: #f5f5f5;
       padding: 10px;
       border-radius: 10px;
       margin-bottom: 20px;
+
+      @media (min-width:900px){
+        width: 500px;
+    
+      }
+    
     }
   }
   img {
     width: 250px;
   }
 
-  button{
+  .btn-add{
     width: 322px;
     height: 50px;
     background-color: var(--red);
     border-radius: 10px;
     color: var(--white);
+
+    @media (min-width: 900px){
+      display: none;
+    }
   }
 `;

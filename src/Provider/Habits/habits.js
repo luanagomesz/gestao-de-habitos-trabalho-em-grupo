@@ -35,6 +35,7 @@ export const HabitsProvider = ({ children }) => {
         setHabitsList,
         habitsControl,
         setHabitsControl,
+        showHabits,
       }}
     >
       {children}

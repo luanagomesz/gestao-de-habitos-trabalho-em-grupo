@@ -4,12 +4,11 @@ import userIMG from "../../assets/img/user1.png";
 import vectorDashboard from "../../assets/img/VectorDashboard.png";
 import {
   ContainerContent,
-  Header,
   ContainerPage,
   ContainerImg,
   ContainerFocus,
 } from "./style";
-//import Header from "../../Components/Header";
+import Header from "../../Components/Header";
 import { useContext } from "react";
 import { DashboardContext } from "../../Provider/dashboard/dashboard";
 function Dashboard({ history }) {
@@ -19,25 +18,13 @@ function Dashboard({ history }) {
 
   return (
     <ContainerPage>
-      <Header>
-        <h1>Logo</h1>
-        <div>
-          <p className="text" onClick={() => history.push("/habits")}>
-            Habits
-          </p>
-          <p className="text" onClick={() => history.push("/groups")}>
-            Groups
-          </p>
-          <p className="text"> Welcome, {Response.username}</p>
-          <img className="userImg" src={userIMG} alt="" srcset="" />
-          <img
-            onClick={() => history.push("/")}
-            src={LogoutImg}
-            alt=""
-            srcset=""
-          />
-        </div>
-      </Header>
+      <Header
+        backgroundColor={"var(--purple)"}
+        page1={"Habits"}
+        page2={"Groups"}
+        history1={"habits"}
+        history2={"groups"}
+      ></Header>
 
       <ContainerContent>
         <ContainerFocus>

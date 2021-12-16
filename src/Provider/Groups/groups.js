@@ -30,7 +30,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -42,7 +42,7 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -64,7 +64,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const joinGroup = (group, id) => {
-    console.log(authorization);
+    //console.log(authorization);
     axios
       .post(
         `https://kenzie-habits.herokuapp.com/groups/${id}/subscribe/`,
@@ -72,7 +72,7 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        console.log(response);
+        //console.log(response);
 
         toast(`${username} Joined ${group}`);
       })

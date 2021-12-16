@@ -1,17 +1,19 @@
 import { ModalContainer } from "./style.js";
 import { LoginContext } from "../../Provider/Login/Login.js";
+import { HabitsContext } from "../../Provider/Habits/habits";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import jwt_decode from "jwt-decode";
 import * as yup from "yup";
 import api from "../../Services/api";
-import { useEffect } from "react";
-import userEvent from "@testing-library/user-event";
 
 const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
-  const { token, authorization } = useContext(LoginContext);
+  const { authorization } = useContext(LoginContext);
+  const { habitsControl, setHabitsControl } = useContext(HabitsContext);
   const userId = window.localStorage.getItem("id");
+
+  console.log(authorization)
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -25,15 +27,6 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
 
   const onSubmitFunction = (data) => {
     const { title, difficulty, frequency } = data;
-    /* const teste = {
-      title: title,
-      category: category,
-      difficulty: difficulty,
-      frequency: frequency,
-      achieved: false,
-      how_much_achieved: 0,
-      user: 1,
-    }; */
     api
       .post(
         "/habits/",
@@ -49,14 +42,11 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
         authorization
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         setToggle(false);
-        setToggleMenu(false);
       })
       .catch((err) => console.log(err));
-    /* setToggle(false);
-    setToggleMenu(false)
-    console.log(teste); */
+      setHabitsControl(!habitsControl)
   };
 
   useEffect(() => {

@@ -25,7 +25,9 @@ function Habits({ history }) {
 
   const [habitsList, setHabitsList] = useState([]);
 
-  const { authorization } = useContext(LoginContext)
+  const { authorization } = useContext(LoginContext);
+
+  const userId = window.localStorage.getItem("id");
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -40,10 +42,10 @@ function Habits({ history }) {
 
   const showHabits = () => {
     api
-      .get("/habits/personal/", authorization)
+      .get(`/habits/personal/`, authorization)
       .then((response) => {
-        console.log(response.data);
-        setHabitsList(response.data);
+        console.log(response);
+        setHabitsList(response);
       })
       .catch((err) => console.log(err));
   };
@@ -117,9 +119,7 @@ function Habits({ history }) {
         )}
         {habitsList?.map((habit) => {
           console.log(habit);
-          return (
-            <li>{habit.frequency}</li>
-          )
+          return <li>{habit.frequency}</li>;
         })}
       </MainContainer>
 

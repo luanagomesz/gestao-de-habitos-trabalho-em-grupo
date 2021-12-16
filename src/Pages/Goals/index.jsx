@@ -3,7 +3,6 @@ import { GoalsContainer } from "./style";
 import ItemList from "../../Components/ItemList";
 import { GoalsContext } from "../../Provider/goals/goals";
 import { useContext, useEffect, useState } from "react";
-import Button from "../../Components/Button/index";
 import vector from "../../assets/img/image-goals/Vector 1.png";
 import Modal from "../../Components/ModalGoals/index";
 import goalsImg from "../../assets/img/image-goals/Personal goals-amico 1.png";
@@ -44,7 +43,7 @@ const Goals = ({ history }) => {
               {goalsList.map((item) => (
                 <ItemList
                   key={item.id}
-                  color={"var(--orange)"}
+                  color={"var(--red)"}
                   name={item.title}
                   requirementTitle={"Status"}
                   difficultyValue={item.difficulty}
@@ -52,7 +51,7 @@ const Goals = ({ history }) => {
                 />
               ))}
             </ul>
-            <button onClick={addGoal}>teste</button>
+            <button onClick={addGoal}>Add New Goal</button>
             <div className="img-container">
               <img src={goalsImg} alt="goals" />
             </div>

@@ -19,7 +19,7 @@ export const GoalsContainer = styled.div`
   }
 
   h1 {
-    color: var(--orange);
+    color: var(--red);
     margin: 10px;
   }
   .modal-container {
@@ -27,13 +27,11 @@ export const GoalsContainer = styled.div`
   }
 
   .modal-container {
-  display: flex;
-  justify-content: center;
-  border: solid red 2px;
-  height: 100vh;
-
-  
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
     .img-container {
       display: none;
@@ -45,6 +43,7 @@ export const GoalsContainer = styled.div`
 
     .list-container {
       text-align: center;
+  
 
       @media (min-width: 900px) {
         width: 50%;
@@ -69,5 +68,13 @@ export const GoalsContainer = styled.div`
   }
   img {
     width: 250px;
+  }
+
+  button{
+    width: 322px;
+    height: 50px;
+    background-color: var(--red);
+    border-radius: 10px;
+    color: var(--white);
   }
 `;

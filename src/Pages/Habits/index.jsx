@@ -6,26 +6,23 @@ import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
 import imgHobbies from "../../assets/img/image-habits/image-habits-hobbies.png";
 import imgHomeCare from "../../assets/img/image-habits/image-habits-homeCare.png";
 import imgFooter from "../../assets/img/image-habits/vector-habits.png";
+import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { HabitsContext } from "../../Provider/Habits/habits";
 import {
   MainContainer,
   ContainerMenuCategory,
   ContainerList,
   Footer,
 } from "./style";
-import { useState, useEffect } from "react";
-import { useContext } from "react";
-import { LoginContext } from "../../Provider/Login/Login";
-import api from "../../Services/api";
 
-function Habits({ history }) {
+function Habits() {
   const [newCategory, setNewCategory] = useState("");
   const [toggle, setToggle] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleList, setToggleList] = useState(true);
 
-  const [habitsList, setHabitsList] = useState([]);
-
-  const { authorization } = useContext(LoginContext)
+  const { habitsList } = useContext(HabitsContext);
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -37,21 +34,6 @@ function Habits({ history }) {
       setToggleMenu(true);
     }
   });
-
-  const showHabits = () => {
-    api
-      .get("/habits/personal/", authorization)
-      .then((response) => {
-        console.log(response.data);
-        setHabitsList(response.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    showHabits();
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <>
@@ -109,18 +91,21 @@ function Habits({ history }) {
         )}
         {toggleList && (
           <ContainerList>
-            <ul>
-              <li>item 1</li>
-              <button onClick={() => setToggleMenu(true)}>Add</button>
-            </ul>
+            {habitsList.map((habit) => {
+              console.log(habit);
+              return (
+                <ItemList
+                  name={habit.title}
+                  requirementTitle={"Frequency"}
+                  requirementValue={habit.frequency}
+                  difficultyValue={habit.difficulty}
+                  category={habit.category}
+                  color={"var(--orange)"}
+                ></ItemList>
+              );
+            })}
           </ContainerList>
         )}
-        {habitsList?.map((habit) => {
-          console.log(habit);
-          return (
-            <li>{habit.frequency}</li>
-          )
-        })}
       </MainContainer>
 
       <Footer>

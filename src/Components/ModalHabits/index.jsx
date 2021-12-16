@@ -44,6 +44,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
       .then((response) => {
         console.log(response.data);
         setToggle(false);
+        setToggleMenu(false);
       })
       .catch((err) => console.log(err));
     setHabitsControl(!habitsControl);

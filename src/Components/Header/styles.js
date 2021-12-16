@@ -24,6 +24,7 @@ const HeaderContainer = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+
     @media (max-width: 900px) {
       margin-left: 5px;
     }
@@ -34,6 +35,10 @@ const HeaderContainer = styled.div`
   }
   .icons {
     margin-right: 30px;
+    z-index: 4;
+    button {
+      z-index: 4;
+    }
     @media (max-width: 900px) {
       margin-right: 5px;
     }

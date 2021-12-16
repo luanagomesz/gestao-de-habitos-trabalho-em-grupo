@@ -7,12 +7,18 @@ import jwt_decode from "jwt-decode";
 import * as yup from "yup";
 import api from "../../Services/api";
 import { useEffect } from "react";
+import userEvent from "@testing-library/user-event";
 
 
 const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
+<<<<<<< HEAD
   /*   const { token, authorization } = useContext(LoginContext)
 
   let decoded = jwt_decode(token); */
+=======
+  const { token, authorization } = useContext(LoginContext);
+  const userId = window.localStorage.getItem("id");
+>>>>>>> 11cad9473975fc8011a82e21e28f57ea9abd06f1
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -37,7 +43,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
     };
     /* api
       .post(
-        "/habits",
+        "/habits/",
         {
           title: title,
           category: category,
@@ -45,7 +51,7 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
           frequency: frequency,
           achieved: false,
           how_much_achieved: 0,
-          user: decoded.user_id,
+          user: userId,
         },
         authorization
       )

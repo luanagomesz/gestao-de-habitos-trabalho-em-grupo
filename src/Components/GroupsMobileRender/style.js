@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const ContainerPage = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
 export const ContainerContent = styled.div`
   width: 100%;
   display: flex;
@@ -19,33 +12,59 @@ export const ContainerContent = styled.div`
 `;
 
 export const ContainerCreate = styled.div`
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
   background-color: #e5e3ff;
   @media (max-width: 900px) {
+    display: flex;
+  }
+  .stateButton {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    :hover {
+      background-color: var(--white);
+      border: 1px solid var(--purple);
+      color: var(--purple);
+    }
+  }
+  .vector {
+    position: fixed;
+    float: left;
+    left: 0px;
+    bottom: 0px;
     display: none;
   }
   img {
-    width: 300px;
+    width: 200px;
   }
   h1 {
     color: var(--purple);
     font-weight: normal;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
   }
   div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 20px 0px 20px;
+    border: 1px solid var(--grey-50);
+    border-radius: 8px;
     input {
       margin-bottom: 20px;
       border: 1px solid var(--grey-50);
       border-radius: 5px;
-      font-size: 25px;
+      font-size: 20px;
       padding: 5px 5px;
 
       ::placeholder {
@@ -57,38 +76,60 @@ export const ContainerCreate = styled.div`
       border: 1px solid var(--grey-50);
       border-radius: 5px;
       font-size: 15px;
-      padding: 10px 0px 40px 5px;
+      padding: 10px 0px 20px 5px;
       width: 100%;
       ::placeholder {
         color: var(--grey-50);
-        font-size: 25px;
+        font-size: 20px;
       }
     }
     button {
       color: var(--white);
       background-color: var(--purple);
       border-radius: 5px;
-      font-size: 25px;
-      padding: 10px;
+      font-size: 20px;
+      padding: 5px 10px;
       width: 70%;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 `;
 
 export const ContainerGroups = styled.div`
-  display: flex;
-  width: 50%;
+  display: none;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-top: 20px;
   @media (max-width: 900px) {
-    display: none;
+    display: flex;
+  }
+  .stateButton {
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 5px 25px;
+    border-radius: 5px;
+    margin-top: 10px;
+    z-index: 5;
+    cursor: pointer;
+    :hover {
+      background-color: var(--white);
+      border: 1px solid var(--purple);
+      color: var(--purple);
+    }
+  }
+  .vector {
+    position: fixed;
+    float: left;
+    left: 0px;
+    bottom: 0px;
+    width: 300px;
   }
   h1 {
     color: var(--purple);
     font-weight: normal;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .containerLista {
     display: flex;
@@ -97,10 +138,10 @@ export const ContainerGroups = styled.div`
 
     border: 2px solid var(--grey-50);
     border-radius: 10px;
-    width: 97%;
+    width: 70%;
     max-height: 550px;
     max-width: 550px;
-    min-height: 500px;
+
     min-width: 320px;
     .page {
       width: 80%;
@@ -149,11 +190,12 @@ export const ContainerGroups = styled.div`
       display: flex;
       flex-direction: column;
       width: 90%;
-      height: 500px;
+      height: 250px;
       align-items: center;
       justify-content: baseline;
       max-height: 500px;
       overflow-y: auto;
+
       .groups {
         display: flex;
         width: 100%;
@@ -181,6 +223,10 @@ export const ContainerGroups = styled.div`
           color: var(--white);
           padding: 3px 5px;
           border-radius: 5px;
+          @media (max-width: 900px) {
+            font-size: 14px;
+            padding: 3px 3px;
+          }
         }
       }
     }
@@ -198,7 +244,7 @@ export const ContainerGroups = styled.div`
     input {
       font-size: 20px;
       padding: 5px 5px;
-      width: 70%;
+      width: 60%;
       border-radius: 10px;
       border: 1px solid var(--grey-50);
       ::placeholder {
@@ -207,10 +253,11 @@ export const ContainerGroups = styled.div`
     }
     button {
       margin-left: 10px;
-      padding: 5px 10px;
+      padding: 5px 5px;
       border-radius: 5px;
       color: var(--white);
       background-color: var(--purple);
+      font-size: 15px;
       cursor: pointer;
       :hover {
         color: var(--purple);

@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
     margin: 0;
     text-align: center;
     font-weight: 300px;
-    font-size:40px;
+    font-size:50px;
   }
   header {
     margin: 10px 0 0 20px;
@@ -153,7 +153,7 @@ export const LoginContainer = styled.div`
       flex-direction: row;
     }
     img {
-      width: 700px;
+      width: 550px;
       opacity: 1;
     }
   }

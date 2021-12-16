@@ -10,17 +10,17 @@ import { LoginContext } from "../../Provider/Login/Login";
 import Button from "../Button";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import api from "../../Services/api";
-
+import ItemList from "../ItemList";
 
 function Activities() {
   const { openModal, setOpenModal, activity, setActivity } =
     useContext(ActivitiesContext);
 
-  const { authorization, username } = useContext(LoginContext);
+  const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
 
   useEffect(() => {
-     api
+    api
       .get(`/activities/?group=${GroupId}`, authorization)
       .then((response) => {
         setActivity(response.data.results);
@@ -28,56 +28,59 @@ function Activities() {
       .catch((err) => console.log(err));
   }, []);
 
-  
   return (
     <>
-      <Header backgroundColor={"var(--ligthblue)"} />
+      <Header
+        backgroundColor={"var(--ligthblue)"}
+        page1={"Groups"}
+        page2={"Goals"}
+        page3={"Habits"}
+        history1={"groups"}
+        history2={"goals"}
+        history3={"habits"}
+      />
+
       <ActivityPage>
-        <div className="Yoga">
+         <div className="modalContainer">
+          {openModal && <MyModal title={"New Activity"} />}
+        </div> 
+
+        <div className="listContainer">
           <img src={Yoga} alt="yoga-girl" />
-        </div>
-        <div className="PrincipalContainer">
-          <div className="PrincipalHeader">
-            <h2>Activities</h2>
-            <button onClick={() => setOpenModal(true)}>
-              <BsClipboardPlus />
-            </button>
-          </div>
 
-          <div className="PrincipalBody">
-             { activity.length > 0 ? 
-             (activity.map((item, index) => (
-              <div className="Modules" key={index}>
-                <span>
-                  <p>{item.title}</p>
-                </span>
-                <span>
-                  <p>{item.realization_time}</p>
-                </span>
-              </div>
-            ))) : ("")
-          }
-              
-          </div>
-          <div className="ButtonCreate">
-            <Button
-              onClick={() => setOpenModal(true)}
-              background={"var(--purple)"}
-              width={"230px"}
-            >
-              Add a new activity
-            </Button>
+          <div className="activitiesContainer">
+            <div className="activitiesHeader">
+              <h2>Activities</h2>
+              <button onClick={() => setOpenModal(true)}>
+                <BsClipboardPlus />
+              </button>
+            </div>
+
+            {activity.length > 0 &&
+              activity.map((item, index) => (
+                <ItemList
+                  key={index}
+                  color={"var(--purple)"}
+                  name={item.title}
+                  realizationTime={item.realization_time}
+                  isVisible={"false"}
+                  requirementTitle={"Realization Time"}
+                />
+              ))}
+            <div className="ButtonCreate">
+              <Button
+                onClick={() => setOpenModal(true)}
+                background={"var(--purple)"}
+                width={"230px"}
+              >
+                Add a new activity
+              </Button>
+            </div>
           </div>
         </div>
-
-        {openModal ? (
-          <MyModal
-            title={"New Activity"}
-            text={"How hard is it to keep this Goal?"}
-          />
-        ) : (
+        <footer>
           <img className="Wave" src={Vetor} alt="vetor" />
-        )}
+        </footer>
       </ActivityPage>
     </>
   );

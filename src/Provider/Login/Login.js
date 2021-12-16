@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { toast } from "react-toastify";
 
 export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
@@ -59,7 +60,7 @@ export const LoginProvider = ({ children }) => {
         history.push("/dashboard");
         console.log(authorization);
       })
-      .catch((err) => console.log("Login Fail"));
+      .catch((err) => toast.error("Invalid email or password"));
   };
 
   const clearLocalStorage = () => {

@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
 export const GoalsModalPageContainer = styled.div`
-  .img-container {
-    width: 50%;
-    height: 100vh;
-    background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    @media (min-width: 900px) {
-      background-color: #fbece2;
-    }
+  img.goals-img {
+    position: absolute;
+    margin-top: 380px;
+    width: 40%;
+  }
+
+  img.goals-footer {
+    position: absolute;
+    bottom: 0;
   }
 `;

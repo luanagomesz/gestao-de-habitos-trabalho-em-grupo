@@ -37,7 +37,6 @@ const ItemList = ({
           </>
         )}
       </div>
-      <AiOutlineClose className="close" />
     </ListContainer>
   );
 };

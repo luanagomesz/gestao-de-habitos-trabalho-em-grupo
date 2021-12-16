@@ -7,10 +7,11 @@ export const HeaderHome = styled.header`
   align-items: center;
   background-color: var(--ligthblue);
   color: var(--white);
-  height: 100px;
+  height: 70px;
 
   @media (max-width: 900px) {
     height: 70px;
+
   }
   
   aside{
@@ -21,7 +22,7 @@ export const HeaderHome = styled.header`
       margin-right:100px;
       background-color: var(--ligthblue);
       color: var(--white);
-      font-size: 24px;
+      font-size: 20px;
   }
   .Logo{
       display:flex;
@@ -29,20 +30,28 @@ export const HeaderHome = styled.header`
       margin:100px;
   }
   .Logo img{
-    height:100px;
+    height:70px;
 
   }
   h1{
       margin-left:10px;
-      font-size:40px;
+      font-size:30px;
       font-weight:lighter;
   }
   `
 
   export const BodyHome = styled.body`
 
+  height:85.2vh;
+  padding:50px;
   
-  .ul{
+  .intros{
+    width:50%;
+    display:flex;
+    
+  }
+  ul{
+    list-style:none;
     display:flex;
     flex-wrap:wrap;
   }
@@ -66,6 +75,7 @@ export const HeaderHome = styled.header`
       padding:40px;
       font-weight:bold;
       opacity:50%;
+      margin:30px 0 0 200px;
       
   }
   .li2{
@@ -79,6 +89,8 @@ export const HeaderHome = styled.header`
       padding:10px;
       font-weight:bold;
       opacity:60%;
+      margin:0 0 0 30px;
+      
       
   }
   .li3{
@@ -91,19 +103,19 @@ export const HeaderHome = styled.header`
     padding:10px;
     font-weight:bold;
     opacity:60%;
+    margin: 20px 0 0 650px;
 }
   `
 
   export const FooterHome = styled.footer`
   
   width: 100%;
-  height:81px;
+  height:70px;
   display: flex;
   justify-content:center;
   background-color: var(--grey-50);
   flex-wrap:wrap;
-  position:fixed;
-  bottom:0;
+  
   
   ul{
       list-style:none;

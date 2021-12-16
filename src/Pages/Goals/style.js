@@ -4,7 +4,16 @@ export const GoalsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  .close {
+    position: relative;
+    left: 0px;
+    right: 0px;
+    top: -85px;
+    cursor: pointer;
+    :hover {
+      color: var(--orange);
+    }
+  }
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;

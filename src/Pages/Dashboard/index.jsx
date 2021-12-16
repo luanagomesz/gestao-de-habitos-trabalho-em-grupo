@@ -12,7 +12,6 @@ import Header from "../../Components/Header";
 import { useContext } from "react";
 import { DashboardContext } from "../../Provider/dashboard/dashboard";
 function Dashboard({ history }) {
-  const Response = { username: "Luana", email: "luanateste@gmail.com" };
   const { setInput, addToDo, setLength, todolength } =
     useContext(DashboardContext);
 

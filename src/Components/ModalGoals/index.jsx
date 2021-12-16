@@ -34,6 +34,7 @@ const Modal = () => {
       how_much_achieved: 0,
       group: 1,
     }; */
+    console.log(data);
     api
       .post(
         "/goals/",

@@ -8,16 +8,16 @@ import {
 import searchImg from "../../assets/img/PesquisaGroups.png";
 import GroupsImg from "../../assets/img/GroupsImg.png";
 import { LoginContext } from "../../Provider/Login/Login";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { set } from "react-hook-form";
+import GroupsMobileContent from "../../Components/GroupsMobileRender";
 
 function Groups({ history }) {
-  const { authorization, username } = useContext(LoginContext);
   const {
     setSearch,
     setGroupId,
@@ -27,59 +27,17 @@ function Groups({ history }) {
     handlePage,
     request,
     page,
+    setuserInput,
+    createGroup,
+    userInput,
+    list,
+    exitGroup,
+    getuserGroups,
+    setList,
+    userGroups,
+    setuserGroups,
   } = useContext(GroupsContext);
 
-  const [userInput, setuserInput] = useState({
-    name: "",
-    description: "",
-    category: "",
-  });
-
-  const createGroup = () => {
-    axios
-      .post(
-        `https://kenzie-habits.herokuapp.com/groups/`,
-        userInput,
-        authorization
-      )
-      .then((response) => {
-        console.log(response);
-
-        toast(`${userInput.name} created`);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const [userGroups, setuserGroups] = useState([]);
-
-  const getuserGroups = () => {
-    axios
-      .get(
-        `https://kenzie-habits.herokuapp.com/groups/subscriptions/`,
-        authorization
-      )
-      .then((response) => {
-        console.log(response);
-        setuserGroups(response.data);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const exitGroup = (groupName, id) => {
-    axios
-      .delete(
-        `https://kenzie-habits.herokuapp.com/groups/${id}/unsubscribe/`,
-        authorization
-      )
-      .then((response) => {
-        console.log(id);
-        console.log(response);
-        toast(`You have left ${groupName}`);
-      })
-      .catch((err) => toast(`error `));
-  };
-
-  const [list, setList] = useState(true);
   return (
     <ContainerPage>
       <ToastContainer
@@ -93,7 +51,13 @@ function Groups({ history }) {
         draggable
         pauseOnHover
       />
-      <Header backgroundColor={"var(--purple)"}></Header>
+      <Header
+        backgroundColor={"var(--purple)"}
+        page1={"Dashboard"}
+        page2={"Habits"}
+        history1={"dashboard"}
+        history2={"habits"}
+      ></Header>
       <ContainerContent>
         <ContainerCreate>
           <img src={GroupsImg} alt="" srcset="" />
@@ -167,7 +131,7 @@ function Groups({ history }) {
                       creator={item.creator.id}
                     >
                       <p>{item.name}</p>
-                      <p>{item.category}</p>
+                      <p className="category">{item.category}</p>
                       <button
                         onClick={() => {
                           setGroupId(item.id);
@@ -196,7 +160,7 @@ function Groups({ history }) {
                 : userGroups.map((item) => (
                     <div className="groups">
                       <p>{item.name}</p>
-                      <p>{item.category}</p>
+                      <p className="category">{item.category}</p>
                       <button
                         onClick={() => {
                           setGroupId(item.id);
@@ -243,10 +207,11 @@ function Groups({ history }) {
                   handlePage("next");
                 }}
               />
-              <p>{page}</p>
+              <p display={list === true ? "block" : "none"}>{page}</p>
             </div>
           </div>
         </ContainerGroups>
+        <GroupsMobileContent history={history}></GroupsMobileContent>
       </ContainerContent>
     </ContainerPage>
   );

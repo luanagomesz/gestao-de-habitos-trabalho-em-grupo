@@ -2,33 +2,33 @@ import ActivityPage from "./style";
 import Yoga from "../../assets/img/Yoga.png";
 import { BsClipboardPlus } from "react-icons/bs";
 import Header from "../Header";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
 import MyModal from "./MyModal";
 import Vetor from "../../assets/img/Vector-activities.png";
 import { LoginContext } from "../../Provider/Login/Login";
-import axios from "axios";
 import Button from "../Button";
 import { GroupsContext } from "../../Provider/Groups/groups";
+import api from "../../Services/api";
+
 
 function Activities() {
-  const { openModal, setOpenModal } = useContext(ActivitiesContext);
+  const { openModal, setOpenModal, activity, setActivity } =
+    useContext(ActivitiesContext);
 
-  const { authorization, clearLocalStorage, username } =
-    useContext(LoginContext);
+  const { authorization, username } = useContext(LoginContext);
+  const { GroupId } = useContext(GroupsContext);
 
-    const {GroupId} = useContext(GroupsContext)
-
-  const onSubmitActivity = () => {
-    axios
-      .get(`https://kenzie-habits.herokuapp.com/activities/`, "", authorization)
+  useEffect(() => {
+     api
+      .get(`/activities/?group=${GroupId}`, authorization)
       .then((response) => {
-        console.log(response);
-        clearLocalStorage();
+        setActivity(response.data.results);
       })
       .catch((err) => console.log(err));
-  };
+  }, []);
 
+  
   return (
     <>
       <Header backgroundColor={"var(--ligthblue)"} />
@@ -45,32 +45,29 @@ function Activities() {
           </div>
 
           <div className="PrincipalBody">
-            <div className="Modules">
-              <p>Activity #1</p>
-              <div>
-                <h4>Relization Time</h4>
+             { activity.length > 0 ? 
+             (activity.map((item, index) => (
+              <div className="Modules" key={index}>
+                <span>
+                  <p>{item.title}</p>
+                </span>
+                <span>
+                  <p>{item.realization_time}</p>
+                </span>
               </div>
-            </div>
-
-            <div className="Modules">
-              <p>Activity #2</p>
-              <div>
-                <h4>Relization Time</h4>
-              </div>
-            </div>
-
-            <div className="Modules">
-              <p>Activity #4</p>
-              <div>
-                <h4>Relization Time</h4>
-              </div>
-            </div>
+            ))) : ("")
+          }
+              
           </div>
           <div className="ButtonCreate">
-          <Button onClick={() => setOpenModal(true)}  background={"var(--purple)"} width={"230px"}>
-            Add a new activity
-          </Button>
-        </div>
+            <Button
+              onClick={() => setOpenModal(true)}
+              background={"var(--purple)"}
+              width={"230px"}
+            >
+              Add a new activity
+            </Button>
+          </div>
         </div>
 
         {openModal ? (

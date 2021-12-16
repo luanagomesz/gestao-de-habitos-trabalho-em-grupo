@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import image1 from "../../assets/img/image-login.png";
 import image2 from "../../assets/img/Vector-login.png";
 import { LoginContainer, HeaderContainer } from "./style";
@@ -6,8 +6,10 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button";
 import { LoginContext } from "../../Provider/Login/Login";
+
+
 const FormLogin = ({ history }) => {
-  const { submitLogin, setUsername, setPassword, username, password } =
+  const { errors, register, handleSubmit, submitLogin} =
     useContext(LoginContext);
 
   return (
@@ -30,18 +32,19 @@ const FormLogin = ({ history }) => {
           </aside>
         </div>
         <main>
-          <form onSubmit={(evt) => submitLogin(evt)}>
+          <form onSubmit={handleSubmit(submitLogin)}>
             <input
               placeholder="Username"
-              onChange={(evt) => setUsername(evt.target.value)}
-              value={username}
+              type="text"
+              {...register("username")}
             />
+            <span className="errors">{errors.username?.message}</span>
             <input
               placeholder="Password"
               type="password"
-              onChange={(evt) => setPassword(evt.target.value)}
-              value={password}
+              {...register("password")}
             />
+            <span className="errors">{errors.password?.message}</span>
             <Button
               type="submit"
               background={"var(--ligthblue)"}

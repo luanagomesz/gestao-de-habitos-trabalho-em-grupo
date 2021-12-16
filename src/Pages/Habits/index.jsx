@@ -1,24 +1,28 @@
 import Header from "../../Components/Header";
 import ModalHabits from "../../Components/ModalHabits";
-
+import ItemList from "../../Components/ItemList";
 import imgWorkout from "../../assets/img/image-habits/image-habits-workout.png";
 import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
 import imgHobbies from "../../assets/img/image-habits/image-habits-hobbies.png";
 import imgHomeCare from "../../assets/img/image-habits/image-habits-homeCare.png";
 import imgFooter from "../../assets/img/image-habits/vector-habits.png";
+import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { HabitsContext } from "../../Provider/Habits/habits";
 import {
   MainContainer,
   ContainerMenuCategory,
   ContainerList,
   Footer,
 } from "./style";
-import { useState, useEffect } from "react";
 
-function Habits({ history }) {
+function Habits() {
   const [newCategory, setNewCategory] = useState("");
   const [toggle, setToggle] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleList, setToggleList] = useState(true);
+
+  const { habitsList } = useContext(HabitsContext);
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -29,11 +33,19 @@ function Habits({ history }) {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
     }
-  })
+  }, []);
 
   return (
     <>
-      {<Header backgroundColor={"var(--red)"} />}
+      {
+        <Header
+          backgroundColor={"var(--red)"}
+          page1={"Dashboard"}
+          page2={"Groups"}
+          history1={"dashboard"}
+          history2={"groups"}
+        />
+      }
       {toggle && (
         <ModalHabits
           className="modal"
@@ -72,32 +84,45 @@ function Habits({ history }) {
                   onClick={() => onClickFunction("Hobbies")}
                 >
                   <img src={imgHobbies} alt="imgHobbies" />
-                  <span>Hobbies</span>
+                  <p>Hobbies</p>
                 </div>
                 <div
                   className="button4"
                   onClick={() => onClickFunction("Home Care")}
                 >
                   <img src={imgHomeCare} alt="imgHomeCare" />
-                  <span>Home Care</span>
+                  <p>Home Care</p>
                 </div>
               </section>
             </ContainerMenuCategory>
           </>
         )}
-        {toggleList && (
-          <ContainerList>
-            <ul>
-              <li>item 1</li>
-              <button onClick={() => setToggleMenu(true)}>Add</button>
-            </ul>
-          </ContainerList>
-        )}
-      </MainContainer>
 
-      <Footer>
-        <img className="vector" src={imgFooter} alt="vector-habits" />
-      </Footer>
+        <ContainerList>
+          {toggleList && (
+            <>
+              {habitsList.map((habit) => {
+                return (
+                  <ItemList
+                    name={habit.title}
+                    requirementTitle={"Frequency"}
+                    requirementValue={habit.frequency}
+                    difficultyValue={habit.difficulty}
+                    category={habit.category}
+                    color={"var(--orange)"}
+                    className="list"
+                  ></ItemList>
+                );
+              })}
+              <button onClick={() => setToggleMenu(true)}>add</button>
+            </>
+          )}
+          <img src={imgWorkout} alt="imgWorkout" className="imgRight"/>
+        </ContainerList>
+        <Footer>
+          <img className="vector" src={imgFooter} alt="vector-habits" />
+        </Footer>
+      </MainContainer>
     </>
   );
 }

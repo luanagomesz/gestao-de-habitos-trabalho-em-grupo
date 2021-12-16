@@ -5,12 +5,20 @@ export const GoalsContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
+
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;
 
     .footer {
-      display: none;
+      position: absolute;
+
+
+      @media(min-width: 900px){
+        display: none;
+
+      }
+      
     }
   }
 
@@ -19,20 +27,21 @@ export const GoalsContainer = styled.div`
     margin: 10px;
   }
   .modal-container {
-    width: 500px;
-    border: solid blie 2px;
+    width: 50%;
+    
   }
 
   .list-container {
-   
+    text-align: center;
 
     @media(min:900px){
-      width:50vw;
+      width:50%;
     }
 
   }
 
   ul {
+    max-width: 400px;
     background-color: #f5f5f5;
     padding: 10px;
     border-radius: 10px;

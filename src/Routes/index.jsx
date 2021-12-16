@@ -7,7 +7,7 @@ import Activities from "../Components/Activities";
 import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
 import Groups from "../Pages/Groups";
-import GoalsModalPage from "../Pages/GoalsModalPage/index";
+
 function Routes() {
   const history = useHistory();
 
@@ -33,9 +33,6 @@ function Routes() {
       </Route>
       <Route exact path="/goals">
         <Goals history={history} />
-      </Route>
-      <Route path="/goals/modal">
-        <GoalsModalPage history={history} />
       </Route>
       <Route path="/groups">
         <Groups history={history} />

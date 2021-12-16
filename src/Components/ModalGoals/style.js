@@ -10,7 +10,6 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   margin-top: 30px;
   padding: 15px;
-  position: absolute;
   right: 0;
   left: 0;
   background: white;

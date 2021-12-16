@@ -10,55 +10,54 @@ import Modal from "../../Components/ModalGoals/index";
 const Goals = ({ history }) => {
   const { goalsList } = useContext(GoalsContext);
   const [toggle, setToggle] = useState(true);
-  useEffect(() => {
-    if (window.innerWidth > 900) {
-      setToggle(false);
-    }
-  });
-  // const history = useHistory();
+  const [toggleModal, setToggleModal] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
-  const onClick = () => {
-    history.push("/goals/modal");
-  };
+  window.addEventListener("resize", () => setWidth(window.innerWidth));
+
+  useEffect(() => {
+    if (width > 900) {
+      console.log(width);
+      setToggleModal(true);
+    } else {
+      setToggleModal(false);
+      console.log(width);
+    }
+  }, [width]);
 
   const addGoal = () => {
-    console.log("add");
+    setToggleModal(true);
   };
 
   return (
     <>
       <Header backgroundColor={"var(--orange)"} />
-
       <GoalsContainer>
-        {/* <div className="modal-container">
-          <Modal />
-        </div> */}
-        <div className="list-container">
-          <h1>Goals</h1>
-          <ul>
-            {goalsList.map((item) => (
-              <ItemList
-                key={item.id}
-                color={"var(--orange)"}
-                name={item.title}
-                requirementTitle={"Status"}
-                difficultyValue={item.difficulty}
-                requirementValue={item.achieved}
-              />
-            ))}
-          </ul>
-        </div>
+        <h1>Goals</h1>
+        {toggleModal && (
+          <>
+            <Modal />
+          </>
+        )}
+        {toggle && (
+          <div className="list-container">
+            <ul>
+              {goalsList.map((item) => (
+                <ItemList
+                  key={item.id}
+                  color={"var(--orange)"}
+                  name={item.title}
+                  requirementTitle={"Status"}
+                  difficultyValue={item.difficulty}
+                  requirementValue={item.achieved}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <button onClick={addGoal}>teste</button>
       </GoalsContainer>
-      {toggle ? (
-        <>
-          <Button onClick={onClick} width={`${322}px`} />;
-          <img className="footer" src={vector} alt="goals-footer" />;
-        </>
-      ) : (
-        <>
-          <Button onClick={addGoal} />
-        </>
-      )}
     </>
   );
 };

@@ -2,16 +2,16 @@ import ActivityPage from "./style";
 import Yoga from "../../assets/img/Yoga.png";
 import { BsClipboardPlus } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
-import Header from "../Header";
+import Header from "../../Components/Header";
 import { useContext, useState, useEffect } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
-import MyModal from "./MyModal";
+import MyModal from "./ModalActivies";
 import Vetor from "../../assets/img/Vector-activities.png";
 import { LoginContext } from "../../Provider/Login/Login";
-import Button from "../Button";
+import Button from "../../Components/Button";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import api from "../../Services/api";
-import ItemList from "../ItemList";
+import ItemList from "../../Components/ItemList";
 
 function Activities() {
   const { openModal, setOpenModal, activity, setActivity } =

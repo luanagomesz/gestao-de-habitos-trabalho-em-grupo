@@ -34,7 +34,6 @@ const Goals = ({ history }) => {
     api
       .delete(`/goals/${id}/`, authorization)
       .then((response) => {
-        console.log(response);
         showList();
       })
       .catch((err) => console.log(err));

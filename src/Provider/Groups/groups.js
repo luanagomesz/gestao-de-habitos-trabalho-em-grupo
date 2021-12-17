@@ -30,7 +30,6 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -42,7 +41,6 @@ export const GroupsProvider = ({ children }) => {
           authorization
         )
         .then((response) => {
-          //console.log(response);
           setgroups(response.data.results);
           setNext(response.data.next);
         });
@@ -64,7 +62,6 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const joinGroup = (group, id) => {
-    //console.log(authorization);
     axios
       .post(
         `https://kenzie-habits.herokuapp.com/groups/${id}/subscribe/`,
@@ -72,8 +69,6 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        //console.log(response);
-
         toast(`${username} Joined ${group}`);
       })
       .catch((err) => toast(`${username} Already is in ${group}`));
@@ -91,8 +86,6 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        console.log(response);
-
         toast(`${userInput.name} created`);
       })
       .catch((err) => toast(`error `));
@@ -105,7 +98,6 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        console.log(response);
         setuserGroups(response.data);
       })
       .catch((err) => toast(`error `));
@@ -118,8 +110,6 @@ export const GroupsProvider = ({ children }) => {
         authorization
       )
       .then((response) => {
-        console.log(id);
-        console.log(response);
         toast(`You have left ${groupName}`);
       })
       .catch((err) => toast(`error `));

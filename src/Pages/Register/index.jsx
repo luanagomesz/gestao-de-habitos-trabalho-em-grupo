@@ -42,7 +42,6 @@ function Register({ history }) {
       .post("https://kenzie-habits.herokuapp.com/users/", user)
       .then((_) => {
         history.push("/login");
-        console.log(user);
       })
       .catch((err) => console.log(err));
   };

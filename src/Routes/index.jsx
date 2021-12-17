@@ -3,7 +3,7 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Dashboard from "../Pages/Dashboard";
-import Activities from "../Components/Activities";
+import Activities from "../Pages/Activities";
 import Goals from "../Pages/Goals";
 import Habits from "../Pages/Habits";
 import Groups from "../Pages/Groups";
@@ -31,7 +31,7 @@ function Routes() {
       <Route path="/activities">
         <Activities history={history} />
       </Route>
-      <Route exact path="/goals">
+      <Route path="/goals">
         <Goals history={history} />
       </Route>
       <Route path="/groups">

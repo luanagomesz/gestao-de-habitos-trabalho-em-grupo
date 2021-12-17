@@ -61,7 +61,6 @@ function Habits() {
     api
       .delete(`/habits/${id}/`, authorization)
       .then((response) => {
-        console.log(response);
         showHabits();
       })
       .catch((err) => console.log(err));

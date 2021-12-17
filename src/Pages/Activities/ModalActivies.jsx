@@ -1,6 +1,6 @@
 import ModalContainer from "./MyModal.Style";
 import { IoIosArrowBack } from "react-icons/io";
-import Button from "../Button";
+import Button from "../../Components/Button";
 import * as yup from "yup";
 import { useContext } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
@@ -11,8 +11,7 @@ import { LoginContext } from "../../Provider/Login/Login";
 import { GroupsContext } from "../../Provider/Groups/groups";
 
 const MyModal = ({ history }) => {
-  const { setOpenModal, activity, setActivity } =
-    useContext(ActivitiesContext);
+  const { setOpenModal, activity, setActivity } = useContext(ActivitiesContext);
   const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
 

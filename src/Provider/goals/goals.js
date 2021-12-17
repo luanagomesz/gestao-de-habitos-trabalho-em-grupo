@@ -12,11 +12,12 @@ export const GoalsProvider = ({ children }) => {
   const { GroupId } = useContext(GroupsContext);
 
   const showList = () => {
-    api.get(`/goals/?group=${GroupId}`, "", authorization).then((response) => {
-      console.log(response);
-      setGoalsList(response.data.results);
-    })
-    .catch((err) => console.log(err));
+    api
+      .get(`/goals/?group=${GroupId}`, "", authorization)
+      .then((response) => {
+        setGoalsList(response.data.results);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -29,9 +30,16 @@ export const GoalsProvider = ({ children }) => {
     // eslint-disable-next-line
   }, [goalsControl]);
 
-
   return (
-    <GoalsContext.Provider value={{ setGoalsList, goalsList, showList, goalsControl, setGoalsControl }}>
+    <GoalsContext.Provider
+      value={{
+        setGoalsList,
+        goalsList,
+        showList,
+        goalsControl,
+        setGoalsControl,
+      }}
+    >
       {children}
     </GoalsContext.Provider>
   );

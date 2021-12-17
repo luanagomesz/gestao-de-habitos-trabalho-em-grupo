@@ -40,10 +40,9 @@ const ModalHabits = ({ category, setToggle, setToggleMenu, setToggleList }) => {
         authorization
       )
       .then((response) => {
-        console.log(response.data);
         setToggle(false);
         setToggleMenu(false);
-        setToggleList(true)
+        setToggleList(true);
       })
       .catch((err) => console.log(err));
     setHabitsControl(!habitsControl);

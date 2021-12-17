@@ -1,14 +1,14 @@
+import { RegisterContainer, HeaderContainer } from "./style";
 import { IoIosArrowBack } from "react-icons/io";
 import { yupResolver } from "@hookform/resolvers/yup";
-/* import { Redirect } from "react-router"; */
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import * as yup from "yup";
 import Button from "../../Components/Button";
-import { RegisterContainer, HeaderContainer } from "./style";
 import image1 from "../../assets/img/image-signup.png";
 import image2 from "../../assets/img/vector-signup.png";
+import { toast } from "react-toastify";
+import * as yup from "yup";
 
 function Register({ history }) {
   const schema = yup.object().shape({
@@ -43,8 +43,9 @@ function Register({ history }) {
       .then((_) => {
         history.push("/login");
         console.log(user);
+        toast.success("Register Success");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error("Invalid register"));
   };
 
   /* if (auth) {

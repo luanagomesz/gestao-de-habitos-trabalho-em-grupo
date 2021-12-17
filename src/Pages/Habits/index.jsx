@@ -6,18 +6,19 @@ import imgGoZen from "../../assets/img/image-habits/image-habits-goZen.png";
 import imgHobbies from "../../assets/img/image-habits/image-habits-hobbies.png";
 import imgHomeCare from "../../assets/img/image-habits/image-habits-homeCare.png";
 import imgFooter from "../../assets/img/image-habits/vector-habits.png";
-import { useState, useEffect } from "react";
 import { useContext } from "react";
+import { LoginContext } from "../../Provider/Login/Login";
 import { HabitsContext } from "../../Provider/Habits/habits";
+import { AiOutlineClose } from "react-icons/ai";
+import { useState, useEffect } from "react";
 import {
   MainContainer,
   ContainerMenuCategory,
   ContainerList,
   Footer,
 } from "./style";
-import { AiOutlineClose } from "react-icons/ai";
 import api from "../../Services/api";
-import { LoginContext } from "../../Provider/Login/Login";
+
 function Habits() {
   const [newCategory, setNewCategory] = useState("");
   const [toggle, setToggle] = useState(false);
@@ -141,7 +142,7 @@ function Habits() {
                     </div>
                   );
                 })}
-                <button onClick={buttonFunction}>add</button>
+                <button onClick={buttonFunction}>Add new habit</button>
               </>
             )}
           </div>

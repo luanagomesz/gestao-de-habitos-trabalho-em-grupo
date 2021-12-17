@@ -60,7 +60,7 @@ export const LoginProvider = ({ children }) => {
         history.push("/dashboard");
         console.log(authorization);
       })
-      .catch((err) => toast.error("Invalid email or password"));
+      .catch((err) => toast.error("Invalid username or password"));
   };
 
   const clearLocalStorage = () => {

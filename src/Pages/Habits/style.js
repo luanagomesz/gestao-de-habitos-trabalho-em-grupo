@@ -9,14 +9,13 @@ export const MainContainer = styled.main`
 export const ContainerList = styled.div`
   position: absolute;
   background-color: white;
-  top: 150px;
+  top: 87px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50%;
-
-  
+  height: 90vh;
 
   .close {
     position: relative;
@@ -34,8 +33,12 @@ export const ContainerList = styled.div`
   }
 
   button {
-    border: 2px solid black;
-    width: 100px;
+    background-color: var(--orange);
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+    color: white;
+    margin: 0 auto;
   }
 
   @media (min-width: 900px) {
@@ -43,18 +46,21 @@ export const ContainerList = styled.div`
     height: 700px;
     top: 80px;
 
-    .list{
-    background-color: black;
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-    
-  }
+    .list {
+      background-color: var(--grey-0);
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      overflow-y: scroll;
+      height: 400px;
+      padding: 10px;
+    }
 
     .imgRight {
       display: block;
       position: absolute;
-      bottom: 0;
+      bottom: -106px;
       right: 0;
       margin: 0 50px 20px 0;
       width: 300px;
@@ -156,7 +162,7 @@ export const ContainerMenuCategory = styled.div`
 
   @media (min-width: 900px) {
     width: 50%;
-    height: 700px;
+    height: 90vh;
     left: 0;
     top: 80px;
     background-color: #fdf0f0;

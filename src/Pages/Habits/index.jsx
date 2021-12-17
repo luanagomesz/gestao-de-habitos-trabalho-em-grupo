@@ -14,6 +14,7 @@ import {
   ContainerMenuCategory,
   ContainerList,
   Footer,
+  ContainerAll,
 } from "./style";
 import { AiOutlineClose } from "react-icons/ai";
 import api from "../../Services/api";
@@ -25,6 +26,9 @@ function Habits() {
   const [toggleList, setToggleList] = useState(true);
   const { authorization } = useContext(LoginContext);
   const { habitsList, showHabits } = useContext(HabitsContext);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  window.addEventListener("resize", () => setWidth(window.innerWidth));
 
   const onClickFunction = (category) => {
     setToggle(true);
@@ -32,15 +36,19 @@ function Habits() {
   };
 
   const buttonFunction = () => {
-    setToggleMenu(true)
-    setToggleList(false)
-  }
+    setToggleMenu(true);
+    setToggleList(false);
+  };
 
   useEffect(() => {
-    if (window.innerWidth > 900) {
+    if (width > 900) {
       setToggleMenu(true);
+      setToggleList(true);
+    } else if (window.innerWidth < 900) {
+      setToggleMenu(false);
+      setToggleList(true);
     }
-  });
+  }, [width]);
 
   const deleteHabit = (id) => {
     api
@@ -53,16 +61,15 @@ function Habits() {
   };
 
   return (
-    <>
-      {
-        <Header
-          backgroundColor={"var(--red)"}
-          page1={"Dashboard"}
-          page2={"Groups"}
-          history1={"dashboard"}
-          history2={"groups"}
-        />
-      }
+    <ContainerAll>
+      <Header
+        backgroundColor={"var(--red)"}
+        page1={"Dashboard"}
+        page2={"Groups"}
+        history1={"dashboard"}
+        history2={"groups"}
+      />
+
       {toggle && (
         <ModalHabits
           className="modal"
@@ -74,51 +81,59 @@ function Habits() {
       )}
 
       <MainContainer>
-        {toggleMenu && (
-          <>
-            <ContainerMenuCategory>
-              <h1>Habits</h1>
-              <h3>Choose a category and add a new habit</h3>
-              <section>
-                <div
-                  className="button1"
-                  onClick={() => onClickFunction("Workout")}
-                >
-                  <img src={imgWorkout} alt="imgWorkout" />
-                  <p>Workout</p>
-                </div>
+        {toggleMenu === true ? (
+          <ContainerMenuCategory>
+            <h1>Habits</h1>
+            <h3>Choose a category and add a new habit</h3>
+            <section>
+              <div
+                className="button1"
+                onClick={() => onClickFunction("Workout")}
+              >
+                <img src={imgWorkout} alt="imgWorkout" />
+                <p>Workout</p>
+              </div>
 
-                <div
-                  className="button2"
-                  onClick={() => onClickFunction("Go Zen")}
-                >
-                  <img src={imgGoZen} alt="imgGoZen" />
-                  <p>Go Zen</p>
-                </div>
+              <div
+                className="button2"
+                onClick={() => onClickFunction("Go Zen")}
+              >
+                <img src={imgGoZen} alt="imgGoZen" />
+                <p>Go Zen</p>
+              </div>
 
-                <div
-                  className="button3"
-                  onClick={() => onClickFunction("Hobbies")}
-                >
-                  <img src={imgHobbies} alt="imgHobbies" />
-                  <p>Hobbies</p>
-                </div>
-                <div
-                  className="button4"
-                  onClick={() => onClickFunction("Home Care")}
-                >
-                  <img src={imgHomeCare} alt="imgHomeCare" />
-                  <p>Home Care</p>
-                </div>
-              </section>
-            </ContainerMenuCategory>
-          </>
+              <div
+                className="button3"
+                onClick={() => onClickFunction("Hobbies")}
+              >
+                <img src={imgHobbies} alt="imgHobbies" />
+                <p>Hobbies</p>
+              </div>
+              <div
+                className="button4"
+                onClick={() => onClickFunction("Home Care")}
+              >
+                <img src={imgHomeCare} alt="imgHomeCare" />
+                <p>Home Care</p>
+              </div>
+              <button
+                className="renderButton"
+                onClick={() => {
+                  setToggleMenu(false);
+                  setToggleList(true);
+                }}
+              >
+                My Habits
+              </button>
+            </section>
+          </ContainerMenuCategory>
+        ) : (
+          ""
         )}
-
-        <ContainerList>
-          <div className="list">
-            {toggleList && (
-              <>
+        {toggleList === true ? (
+          <ContainerList>
+            <div className="list">
+              <div className="habits">
                 {habitsList.map((habit) => {
                   return (
                     <div>
@@ -134,24 +149,27 @@ function Habits() {
                       <AiOutlineClose
                         className="close"
                         id={habit.id}
-                        color={"var(--orange"}
                         size={20}
                         onClick={() => deleteHabit(habit.id)}
                       />
                     </div>
                   );
                 })}
-                <button onClick={buttonFunction}>add</button>
-              </>
-            )}
-          </div>
-          <img src={imgWorkout} alt="imgWorkout" className="imgRight" />
-        </ContainerList>
+                <button className="renderButton" onClick={buttonFunction}>
+                  Add new Habit
+                </button>
+              </div>
+            </div>
+            <img src={imgWorkout} alt="imgWorkout" className="imgRight" />
+          </ContainerList>
+        ) : (
+          ""
+        )}
         <Footer>
           <img className="vector" src={imgFooter} alt="vector-habits" />
         </Footer>
       </MainContainer>
-    </>
+    </ContainerAll>
   );
 }
 

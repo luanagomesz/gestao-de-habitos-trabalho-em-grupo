@@ -10,6 +10,7 @@ const ModalContainer = styled.div`
   flex-direction: column;
   margin-top: 30px;
   padding: 12px;
+  background:var(--grey-0);
 
 
   input {
@@ -24,23 +25,7 @@ const ModalContainer = styled.div`
   p {
     margin-top: 1px;
     color: red;
-  }
-  .modalBody{
-    height:28vh;
-
-    h4{
-      margin-top:7px;
-    }
-  }
-
-  .ButtonAdd {
-    display: flex;
-  
- 
-    button {
-     width: 280px;
-  }
-  }
+  } 
 
   .modal-header {
     min-width: 240px;
@@ -52,19 +37,77 @@ const ModalContainer = styled.div`
       font-size: 30px;
     }
   }
+
+  .modalBody{
+    height:300px;
+
+    h4{
+      margin-top:7px;
+    }
+  }
+
+.date{
+
+}
+
+.ButtonAdd {
+    display: flex;
+    margin-top:50px;
+  
  
+    button {
+     width: 280px;
+  }
+  }
 
 
   @media (min-width: 900px) {
     width: 560px;
+    display:flex;
 
     input {
       width: 530px;
       margin
     }
 
+    .modal-header{
+
+    }
+
+    .modalBody{ 
+
+    }
+
+    .newActivity{
+      
+    }
+
+    .addDate{
+    
+
+    }
+    
+    .addActivity{
+   
+
+    }
+
+    .date{
+      position:relative;
+
+    }
+
+    .buttonReturn{
+      display:none; 
+    }
+
     .ButtonAdd {
       width: 530px;
+      button{
+        margin:70px auto;
+      
+      }
+      
     }
   }
 `;

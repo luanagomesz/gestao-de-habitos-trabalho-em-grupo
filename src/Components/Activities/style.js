@@ -1,72 +1,31 @@
 import styled from "styled-components";
 
 const ActivityPage = styled.div`
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 900px) {
-    display: flex;
-    flex-direction: row;
+  .modalContainer {
   }
-
-  /* .PrincipalContainer {
-    display: flex;
-    width: 305px;
-    height: 350px;
-    border: solid var(--grey-50) 1px;
-    border-radius: 10px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    padding: 12px;
-    background: var(--grey-0);
-    overflow: auto;
-
-    li {
-      width: 270px;
-      height: 70px;
-    }
-  
-  } */
 
   .listContainer {
     height: 420px;
     margin-top: 20px;
-    /* position: absolute; */
-    overflow-y: auto;
-    background-color: var(--grey-0);
     border: none;
     border-radius: 10px;
-
-    @media (min-width: 900px) {
-      right: 0;
-    }
   }
 
-  .listContainer img {
-    display: none;
-  }
-
-  .modalContainer {
-    @media (min-width: 900px) {
-      left: 0;
-    }
-  }
-
-  .img-container {
-    width: 50%;
-    border: solid orange 2px;
-  }
-
-  .mainContainer {
-    border: 2px solid black;
+  .activitiesContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
   }
 
   .activitiesHeader {
@@ -88,21 +47,29 @@ const ActivityPage = styled.div`
     }
   }
 
-  .activitiesContainer {
+  .activitList {
+    display: flex;
+    width: 305px;
+    height: 350px;
+    border: solid var(--grey-50) 1px;
+    border-radius: 10px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+    margin-top: 30px;
+    padding: 12px;
+    background: var(--grey-0);
+    overflow: auto;
+
+    li {
+      width: 270px;
+      height: 70px;
+    }
   }
-  /* 
-  .PrincipalBody {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  } */
+
+  .btn-container {
+    margin-top: 20px;
+  }
 
   .Wave {
     opacity: 1;
@@ -112,58 +79,106 @@ const ActivityPage = styled.div`
     left: 0;
   }
 
-  .btn-container {
-    margin-top: 20px;
+  .img-container {
+    display: none;
   }
 
-  .ButtonCreate {
-    display: none;
+  .modules {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: flex-start;
 
-    width: 500px;
-    margin: 15px auto;
+    div {
+      margin: 0 auto;
+      width: 250px;
+      height: 40px;
+      p{
+        margin:0;
+      }
+    }
+
+    button {
+      background: none;
+      font-size: 25px;
+      top:15px;
+    }
+
+    li {
+      height: 35px;
+      margin-bottom:75px;
+      width: 70%;
+    }
   }
 
   @media (min-width: 900px) {
-    display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-    .activitiesHeader {
-      display: none;
+    .Modal {
+      background: #a66a8c47;
+      width: 50vw;
+      height: 100vh;
     }
 
-    .PrincipalContainer {
-      width: 700px;
-      margin-bottom: 82px;
-      background: var(--grey-0);
+    .List {
+      width: 50vw;
+      height: 100vh;
     }
-
-    .PrincipalBody {
-      width: 560px;
-      align-items: flex-start;
+    .modalContainer {
+      margin: 17vh auto;
     }
-    .Modules {
+    .modules {
       display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: flex-start;
+      width: 100vh;
+      padding: 5px;
 
       p {
-        width: 295px;
-        font-size: 20px;
-        margin: 15px 20px 15px 20px;
+        width: 10vw;
       }
+
+      div {
+        margin: 0 auto;
+        width: 350px;
+        height: 35px;
+      }
+
+      button {
+        background: none;
+        font-size: 25px;
+      }
+
+      li {
+        height: 60px;
+        width: 70%;
+      }
+    }
+
+    .listContainer {
+      margin: 10vh auto;
+    }
+
+    .activitiesContainer {
+      margin: 10vh auto;
+    }
+
+    .activitList {
+      width: 750px;
+      height: 28vh;
+    }
+
+    .btn-container {
+      display: none;
     }
 
     .Wave {
       display: none;
     }
 
-    .ButtonCreate {
+    .img-container {
       display: flex;
-
-      button {
-        width: 300px;
-      }
+      margin: 15px;
     }
   }
 `;

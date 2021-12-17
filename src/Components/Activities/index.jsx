@@ -81,13 +81,12 @@ function Activities() {
         <div className="List">
           <div className="listContainer">
             <div className="activitiesContainer">
+              <h2>Activities</h2>
               <div className="activitList">
-                <div className="activitiesHeader">
-                  <h2>Activities</h2>
-                </div>
+                <div className="activitiesHeader"></div>
                 {activity.length > 0 &&
                   activity.map((item, index) => (
-                    <span className="modules">
+                    <div className="modules">
                       <button onClick={() => deleteActivity(item.id)}>
                         <RiDeleteBinLine />
                       </button>
@@ -99,7 +98,7 @@ function Activities() {
                         isVisible={"false"}
                         requirementTitle={"Realization Time"}
                       />
-                    </span>
+                    </div>
                   ))}
               </div>
               <div className="btn-container">

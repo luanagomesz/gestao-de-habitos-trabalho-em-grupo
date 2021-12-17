@@ -30,20 +30,14 @@ export const ContainerList = styled.div`
   @media (max-width: 900px) {
     margin-top: 30px;
   }
-  .habits {
-    overflow-y: auto;
-    overflow-x: hidden;
-    .close {
-      position: relative;
-      left: 280px;
-      top: -85px;
-
-      cursor: pointer;
-      :hover {
+  .list{
+      h2 {
+        margin-bottom: 10px;
+        margin-left: 100px;
         color: var(--orange);
+        font-weight: normal;
       }
-    }
-    .renderButton {
+      .renderButton {
       background-color: var(--orange);
       margin-top: 30px;
       color: white;
@@ -65,21 +59,111 @@ export const ContainerList = styled.div`
         z-index: 5;
       }
     }
+    }
+  .habits {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 200px;
+    max-height: 300px;
+    min-width: 300px;
+    max-width: 460px;
+    width: 100%;
+    background-color: var(--grey-0);
+    border-radius: 10px;
+  
+     @media (max-width: 900px){
+      max-height: 350px;
+     }
+    .card {
+      background-color: var(--grey-0);
+      display: flex;
+      align-items: center;
+      justify-content: baseline;
+      list-style: none;
+      text-decoration: none;
+      @media (max-width: 900px){
+        margin-top: 10px;
+
+      }
+
+
+      .requirementContainer,
+      .valueContainer {
+        gap: 50px;
+      }
+      .headerItem {
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 35px;
+        width: 180px;
+        @media (max-width: 900px){
+          height: 34px;
+          width: 100%;
+        }
+        p {
+          font-size: 15px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          
+        }
+       
+      }
+      .containerLeft {
+        width: 260px;
+        margin-left: 10px;
+      }
+
+      .close {
+        position: relative;
+        z-index: 3;
+        margin-left: 135px;
+        margin-bottom: 30px;
+        cursor: pointer;
+        :hover {
+          color: var(--orange);
+        }
+        @media (max-width: 900px){
+       margin-left: -10px;
+       margin-bottom: 70px;
+       position: relative;
+      }
+      }
+     
+    }
+
+ 
   }
 
   .imgRight {
     display: none;
   }
-
+ 
   @media (min-width: 900px) {
-    right: 0;
+    width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     .list {
-      width: 500px;
+      width: 80%
       display: flex;
       flex-direction: column;
       background-color: white;
+      align-items: center;
+     
+      h2 {
+        margin-bottom: 10px;
+        margin-left: 20px;
+        color: var(--orange);
+        font-weight: normal;
+      }
     }
 
     .imgRight {
@@ -204,6 +288,7 @@ export const ContainerMenuCategory = styled.div`
   @media (min-width: 900px) {
     width: 50%;
     height: 100%;
+    margin-top: 0px;
 
     background-color: #fdf0f0;
 

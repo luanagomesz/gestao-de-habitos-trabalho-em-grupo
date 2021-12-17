@@ -71,9 +71,7 @@ export const LoginProvider = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.pathname);
-    console.log(authorization);
-    if (authorization === "") {
+    if (!window.localStorage.getItem("authToken")) {
       if (
         location.pathname !== "/" ||
         location.pathname !== "/login" ||

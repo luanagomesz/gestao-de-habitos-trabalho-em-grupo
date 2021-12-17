@@ -44,6 +44,13 @@ function Habits() {
     if (width > 900) {
       setToggleMenu(true);
       setToggleList(true);
+    }
+  });
+
+  useEffect(() => {
+    if (width > 900) {
+      setToggleMenu(true);
+      setToggleList(true);
     } else if (window.innerWidth < 900) {
       setToggleMenu(false);
       setToggleList(true);
@@ -58,6 +65,14 @@ function Habits() {
         showHabits();
       })
       .catch((err) => console.log(err));
+  };
+
+  const fixVeryHard = (difficulty) => {
+    if (difficulty === "very_hard") {
+      return "very hard";
+    } else {
+      return difficulty;
+    }
   };
 
   return (
@@ -133,15 +148,16 @@ function Habits() {
         {toggleList === true ? (
           <ContainerList>
             <div className="list">
+              <h2>Habits</h2>
               <div className="habits">
                 {habitsList.map((habit) => {
                   return (
-                    <div>
+                    <ul className="card">
                       <ItemList
                         name={habit.title}
                         requirementTitle={"Frequency"}
                         requirementValue={habit.frequency}
-                        difficultyValue={habit.difficulty}
+                        difficultyValue={fixVeryHard(habit.difficulty)}
                         category={habit.category}
                         color={"var(--orange)"}
                         className="list"
@@ -152,13 +168,13 @@ function Habits() {
                         size={20}
                         onClick={() => deleteHabit(habit.id)}
                       />
-                    </div>
+                    </ul>
                   );
                 })}
-                <button className="renderButton" onClick={buttonFunction}>
-                  Add new Habit
-                </button>
               </div>
+              <button className="renderButton" onClick={buttonFunction}>
+                Add new Habit
+              </button>
             </div>
             <img src={imgWorkout} alt="imgWorkout" className="imgRight" />
           </ContainerList>

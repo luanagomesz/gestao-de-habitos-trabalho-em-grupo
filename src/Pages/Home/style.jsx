@@ -1,42 +1,50 @@
 import styled from "styled-components";
 
 export const HeaderHome = styled.header`
-  width: 100vw;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
   align-items: center;
-  background-color: var(--ligthblue);
-  color: var(--white);
-  height: 70px;
+  height: 80px;
+  width: 100%;
+  background-color: #8782d6;
+  padding: 10px;
 
-  @media (max-width: 900px) {
-    height: 70px;
-  }
-
-  aside {
-    margin-right: 50px;
-    padding: 0;
-  }
-  button {
-    /* margin-right: 100px; */
-
-    color: var(--white);
-    font-size: 20px;
-    margin: 50px;
+  .logo img {
+    width: 80%;
   }
 
-  .Logo {
-    display: flex;
-    align-items: center;
-    margin: 100px;
+  .btn-container {
+    marging-left: 50px;
   }
-  .Logo img {
-    height: 70px;
-  }
+
   h1 {
-    margin-left: 10px;
-    font-size: 30px;
-    font-weight: lighter;
+    display: none;
+
+    @media (min-width: 900px) {
+      display: block;
+      color: var(--white);
+      position: absolute;
+      left: 80px;
+    }
+  }
+
+  button {
+    width: 30%;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #8782d6;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+
+    @media (min-width: 900px) {
+      width: 150px;
+      height: 50px;
+      margin: 10px;
+    }
   }
 `;
 
@@ -52,6 +60,8 @@ export const BodyHome = styled.body`
   .intros {
     width: 95vw;
     height: 80vh;
+    margin-top: 150px;
+
     position: absolute;
     margin-top: 15px;
     display: flex;
@@ -149,9 +159,28 @@ export const FooterHome = styled.footer`
   width: 100vw;
   height: 70px;
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: var(--grey-50);
   font-size: 1rem;
+  position: absolute;
+
+  @media (min-width:900px){
+      bottom: 0;
+    }
+
+  span{
+    color: var(--white);
+    font-weight: bold;
+    font-size: 0.8rem;
+
+    @media (min-width:900px){
+      margin-right: 70px;
+      font-size: 1.2rem;
+    }
+
+   
+  }
 
   ul {
     list-style: none;
@@ -160,8 +189,7 @@ export const FooterHome = styled.footer`
     text-align: center;
     margin: 0 60px 0 60px;
     justify-content: center;
-    color: var(--white);
-    font-weight: bold;
+ 
     flex-wrap: wrap;
-  }
+  } */
 `;

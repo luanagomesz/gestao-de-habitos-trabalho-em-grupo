@@ -4,17 +4,7 @@ export const ListContainer = styled.li`
   width: 300px;
   height: 90px;
   list-style: none;
-<<<<<<< HEAD
-  .close {
-    position: absolute;
-    right: 110px;
-    margin-top: 6px;
-  }
-=======
-  background-color: var(--grey-0);
-  align-items: center;
 
->>>>>>> 57fd86c5c0b81d6089330dea94971170f21bde03
   .headerItem {
     display: flex;
     justify-content: space-between;

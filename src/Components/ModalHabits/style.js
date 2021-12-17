@@ -16,12 +16,14 @@ export const ModalContainer = styled.div`
   top: 130px;
   background: white;
   z-index: 2;
+  
   .close {
     cursor: pointer;
     :hover {
       color: var(--orange);
     }
   }
+  
   h3 {
     color: var(--grey-100);
     font-weight: 400;

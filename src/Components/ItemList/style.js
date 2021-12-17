@@ -4,6 +4,8 @@ export const ListContainer = styled.li`
   width: 300px;
   height: 90px;
   list-style: none;
+  background-color: var(--grey-0);
+  align-items: center;
 
   .headerItem {
     display: flex;

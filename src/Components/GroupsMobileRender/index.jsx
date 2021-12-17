@@ -1,9 +1,9 @@
 import { ContainerContent, ContainerGroups, ContainerCreate } from "./style";
 import { GroupsContext } from "../../Provider/Groups/groups";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import GroupsImg from "../../assets/img/GroupsImg.png";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import { useState } from "react/cjs/react.development";
+
 import Vector from "../../assets/img/VectorDashboard.png";
 function GroupsMobileContent({ history }) {
   const {

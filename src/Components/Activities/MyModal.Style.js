@@ -104,7 +104,7 @@ const ModalContainer = styled.div`
     .ButtonAdd {
       width: 530px;
       button{
-        margin:70px auto;
+        margin:15px auto;
       
       }
       

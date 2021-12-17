@@ -48,10 +48,6 @@ function Register({ history }) {
       .catch((err) => toast.error("Invalid register"));
   };
 
-  /* if (auth) {
-    return <Redirect to="/dashboard" />;
-  } */
-
   return (
     <>
       <HeaderContainer>

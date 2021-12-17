@@ -1,6 +1,7 @@
 import ActivityPage from "./style";
 import Yoga from "../../assets/img/Yoga.png";
 import { BsClipboardPlus } from "react-icons/bs";
+import { RiDeleteBinLine } from "react-icons/ri";
 import Header from "../Header";
 import { useContext, useState, useEffect } from "react";
 import { ActivitiesContext } from "../../Provider/Activities/activities";
@@ -19,17 +20,27 @@ function Activities() {
   const { authorization } = useContext(LoginContext);
   const { GroupId } = useContext(GroupsContext);
   const [width, setWidth] = useState(window.innerWidth);
-  const [toggleModal, setToggleModal] = useState(false);
 
   window.addEventListener("resize", () => setWidth(window.innerWidth));
 
   useEffect(() => {
     if (width > 900) {
-      setToggleModal(true);
+      setOpenModal(true);
     } else {
-      setToggleModal(false);
+      setOpenModal(false);
     }
   }, [width]);
+
+  const deleteActivity = (id) => {
+    api
+      .delete(`/activities/${id}/`, authorization)
+      .then((response) => {
+        getItem();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     api
@@ -39,6 +50,15 @@ function Activities() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const getItem = () => {
+    api
+      .get(`/activities/?group=${GroupId}`, authorization)
+      .then((response) => {
+        setActivity(response.data.results);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -53,52 +73,54 @@ function Activities() {
       />
 
       <ActivityPage>
-        <div className="modalContainer">
-          {toggleModal && <MyModal title={"New Activity"} />}
+        <div className="Modal">
+          <div className="modalContainer">
+            {openModal && <MyModal title={"New Activity"} />}
+          </div>
         </div>
-        <div className="test">
+        <div className="List">
           <div className="listContainer">
-            {/* <img src={Yoga} alt="yoga-girl" /> */}
-
             <div className="activitiesContainer">
-              <div className="activitiesHeader">
-                <h2>Activities</h2>
-                <button onClick={() => setOpenModal(true)}>
-                  <BsClipboardPlus />
-                </button>
+              <div className="activitList">
+                <div className="activitiesHeader">
+                  <h2>Activities</h2>
+                </div>
+                {activity.length > 0 &&
+                  activity.map((item, index) => (
+                    <span className="modules">
+                      <button onClick={() => deleteActivity(item.id)}>
+                        <RiDeleteBinLine />
+                      </button>
+                      <ItemList
+                        key={index}
+                        color={"var(--purple)"}
+                        name={item.title}
+                        realizationTime={item.realization_time}
+                        isVisible={"false"}
+                        requirementTitle={"Realization Time"}
+                      />
+                    </span>
+                  ))}
               </div>
-
-              {activity.length > 0 &&
-                activity.map((item, index) => (
-                  <ItemList
-                    key={index}
-                    color={"var(--purple)"}
-                    name={item.title}
-                    realizationTime={item.realization_time}
-                    isVisible={"false"}
-                    requirementTitle={"Realization Time"}
-                  />
-                ))}
+              <div className="btn-container">
+                <Button
+                  onClick={() => setOpenModal(true)}
+                  background={"var(--purple)"}
+                  width={"230px"}
+                >
+                  Add a new activity
+                </Button>
+              </div>
+              <div className="img-container">
+                <img src={Yoga} alt={"activities-img"} />
+              </div>
             </div>
           </div>
 
-          <div className="btn-container">
-            <Button
-              onClick={() => setOpenModal(true)}
-              background={"var(--purple)"}
-              width={"230px"}
-            >
-              Add a new activity
-            </Button>
-            {/* <div className="img-container">
-              <img src={Yoga} alt={"activities-img"} />
-            </div> */}
-          </div>
+          <footer>
+            {!openModal && <img className="Wave" src={Vetor} alt="vetor" />}
+          </footer>
         </div>
-
-        <footer>
-          <img className="Wave" src={Vetor} alt="vetor" />
-        </footer>
       </ActivityPage>
     </>
   );

@@ -44,7 +44,7 @@ const MyModal = ({ history }) => {
         authorization
       )
       .then((response) => {
-        setOpenModal(false);
+        // setOpenModal(false);
         setActivity([...activity, response.data]);
       })
       .catch((err) => console.log(err));

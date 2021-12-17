@@ -8,20 +8,30 @@ export const GoalsContext = createContext([]);
 export const GoalsProvider = ({ children }) => {
   const [goalsList, setGoalsList] = useState([]);
   const { authorization } = useContext(LoginContext);
+  const [goalsControl, setGoalsControl] = useState(false);
   const { GroupId } = useContext(GroupsContext);
-
-  useEffect(() => {
-    showList();
-  }, []);
 
   const showList = () => {
     api.get(`/goals/?group=${GroupId}`, "", authorization).then((response) => {
+      console.log(response);
       setGoalsList(response.data.results);
-    });
+    })
+    .catch((err) => console.log(err));
   };
 
+  useEffect(() => {
+    showList();
+    // eslint-disable-next-line
+  }, [authorization]);
+
+  useEffect(() => {
+    showList();
+    // eslint-disable-next-line
+  }, [goalsControl]);
+
+
   return (
-    <GoalsContext.Provider value={{ setGoalsList, goalsList, showList }}>
+    <GoalsContext.Provider value={{ setGoalsList, goalsList, showList, goalsControl, setGoalsControl }}>
       {children}
     </GoalsContext.Provider>
   );

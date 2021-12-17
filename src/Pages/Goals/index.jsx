@@ -6,9 +6,12 @@ import { useContext, useEffect, useState } from "react";
 import vector from "../../assets/img/image-goals/Vector 1.png";
 import Modal from "../../Components/ModalGoals/index";
 import goalsImg from "../../assets/img/image-goals/Personal goals-amico 1.png";
-
+import { AiOutlineClose } from "react-icons/ai";
+import api from "../../Services/api";
+import { LoginContext } from "../../Provider/Login/Login";
 const Goals = ({ history }) => {
-  const { goalsList } = useContext(GoalsContext);
+  const { goalsList, showList } = useContext(GoalsContext);
+  const { authorization } = useContext(LoginContext);
   const [toggle, setToggle] = useState(true);
   const [toggleModal, setToggleModal] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -27,9 +30,27 @@ const Goals = ({ history }) => {
     setToggleModal(true);
   };
 
+  const deleteGoals = (id) => {
+    api
+      .delete(`/goals/${id}/`, authorization)
+      .then((response) => {
+        console.log(response);
+        showList();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
-      <Header backgroundColor={"var(--orange)"} />
+      <Header
+        backgroundColor={"var(--orange)"}
+        page1={"Habits"}
+        page2={"Dashboard"}
+        page3={"Groups"}
+        history1={"habits"}
+        history2={"dashboard"}
+        history3={"groups"}
+      />
       <GoalsContainer>
         {toggleModal && (
           <div className="modal-container">
@@ -41,17 +62,25 @@ const Goals = ({ history }) => {
             <h1>Goals</h1>
             <ul>
               {goalsList.map((item) => (
-                <ItemList
-                  key={item.id}
-                  color={"var(--red)"}
-                  name={item.title}
-                  requirementTitle={"Status"}
-                  difficultyValue={item.difficulty}
-                  requirementValue={item.achieved}
-                />
+                <div>
+                  <ItemList
+                    key={item.id}
+                    color={"var(--red)"}
+                    name={item.title}
+                    requirementTitle={"Status"}
+                    difficultyValue={item.difficulty}
+                    requirementValue={item.achieved}
+                  />
+                  <AiOutlineClose
+                    onClick={() => deleteGoals(item.id)}
+                    className="close"
+                  />
+                </div>
               ))}
             </ul>
-            <button onClick={addGoal}>Add New Goal</button>
+            <button className="btn-add" onClick={addGoal}>
+              Add New Goal
+            </button>
             <div className="img-container">
               <img src={goalsImg} alt="goals" />
             </div>

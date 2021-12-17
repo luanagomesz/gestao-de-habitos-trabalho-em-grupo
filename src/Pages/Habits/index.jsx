@@ -31,6 +31,11 @@ function Habits() {
     setNewCategory(category);
   };
 
+  const buttonFunction = () => {
+    setToggleMenu(true)
+    setToggleList(false)
+  }
+
   useEffect(() => {
     if (window.innerWidth > 900) {
       setToggleMenu(true);
@@ -111,31 +116,35 @@ function Habits() {
         )}
 
         <ContainerList>
-          {toggleList && (
-            <>
-              {habitsList.map((habit) => {
-                return (
-                  <div>
-                    <ItemList
-                      name={habit.title}
-                      requirementTitle={"Frequency"}
-                      requirementValue={habit.frequency}
-                      difficultyValue={habit.difficulty}
-                      category={habit.category}
-                      color={"var(--orange)"}
-                      className="list"
-                    ></ItemList>
-                    <AiOutlineClose
-                      className="close"
-                      id={habit.id}
-                      onClick={() => deleteHabit(habit.id)}
-                    />
-                  </div>
-                );
-              })}
-              <button onClick={() => setToggleMenu(true)}>add</button>
-            </>
-          )}
+          <div className="list">
+            {toggleList && (
+              <>
+                {habitsList.map((habit) => {
+                  return (
+                    <div>
+                      <ItemList
+                        name={habit.title}
+                        requirementTitle={"Frequency"}
+                        requirementValue={habit.frequency}
+                        difficultyValue={habit.difficulty}
+                        category={habit.category}
+                        color={"var(--orange)"}
+                        className="list"
+                      ></ItemList>
+                      <AiOutlineClose
+                        className="close"
+                        id={habit.id}
+                        color={"var(--orange"}
+                        size={20}
+                        onClick={() => deleteHabit(habit.id)}
+                      />
+                    </div>
+                  );
+                })}
+                <button onClick={buttonFunction}>add</button>
+              </>
+            )}
+          </div>
           <img src={imgWorkout} alt="imgWorkout" className="imgRight" />
         </ContainerList>
         <Footer>

@@ -1,5 +1,5 @@
 import { ListContainer } from "./style";
-
+import { AiOutlineClose } from "react-icons/ai";
 const ItemList = ({
   requirementTitle,
   name,

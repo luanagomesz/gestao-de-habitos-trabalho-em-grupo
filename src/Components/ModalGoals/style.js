@@ -2,17 +2,21 @@ import styled from "styled-components";
 
 export const ModalContainer = styled.div`
   width: 300px;
-  height: 250px;
+  height: 300px;
   border: solid var(--grey-50) 1px;
   border-radius: 10px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
-  padding: 15px;
+  padding: 20px;
   right: 0;
   left: 0;
   background: white;
+  /* position: absolute; */
+
+  @media (min-width: 900px) {
+  }
 
   h3 {
     color: var(--grey-100);

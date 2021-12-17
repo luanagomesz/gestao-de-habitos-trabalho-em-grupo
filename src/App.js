@@ -5,7 +5,6 @@ import { HabitsProvider } from "./Provider/Habits/habits";
 import { GroupsProvider } from "./Provider/Groups/groups";
 import { GoalsProvider } from "./Provider/goals/goals";
 import { LoginProvider } from "./Provider/Login/Login";
-
 import Routes from "./Routes";
 function App() {
   return (

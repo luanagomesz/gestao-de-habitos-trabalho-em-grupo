@@ -4,12 +4,17 @@ import { ModalContainer } from "./style.js";
 import { useContext } from "react";
 import { GroupsContext } from "../../Provider/Groups/groups.js";
 import { LoginContext } from "../../Provider/Login/Login.js";
+import { GoalsContext } from "../../Provider/goals/goals";
+
 import * as yup from "yup";
 import api from "../../Services/api";
 
 const Modal = () => {
   const { GroupId } = useContext(GroupsContext);
   const { authorization } = useContext(LoginContext);
+
+  const { goalsControl, setGoalsControl } = useContext(GoalsContext);
+
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -29,6 +34,7 @@ const Modal = () => {
       how_much_achieved: 0,
       group: 1,
     }; */
+    console.log(data);
     api
       .post(
         "/goals/",
@@ -43,6 +49,7 @@ const Modal = () => {
       )
       .then((_) => {
         console.log(data);
+        setGoalsControl(!goalsControl);
       })
       .catch((err) => console.log(err));
   };

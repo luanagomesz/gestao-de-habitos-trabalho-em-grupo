@@ -25,12 +25,12 @@ body{
     background: var(---grey-0);
     color: var(---grey-100);
 }
-h1,h2, h3, h4, span, button, div, input{
-  //font-family: Fonte não esta definida ainda;
+p,span, button, div, input{
+    font-family: 'Lato', sans-serif;  
 } 
 
 h1,h2, h3, h4{
-    font-weight:bold;
+    font-family: 'Fredoka One', cursive;
 }
 
 button{
@@ -40,7 +40,7 @@ button{
     font-weight: 600;
     font-size: 16px;
 }
-a{
+a{  font-family: 'Lato', sans-serif;
     text-decoration: none;
 }
 `;

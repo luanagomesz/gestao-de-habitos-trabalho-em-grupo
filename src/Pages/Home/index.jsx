@@ -53,6 +53,10 @@ function Home({ history }) {
             <p>Scrum Master</p>
           </span>
           <span>
+            <p>Luana Gomes</p>
+            <p>Tech Leader</p>
+          </span>
+          <span>
             <p>Ian Kuntz</p>
             <p>Quality Assurance</p>
           </span>

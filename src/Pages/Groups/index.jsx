@@ -5,16 +5,13 @@ import {
   ContainerGroups,
   ContainerCreate,
 } from "./style";
-import searchImg from "../../assets/img/PesquisaGroups.png";
+
 import GroupsImg from "../../assets/img/GroupsImg.png";
-import { LoginContext } from "../../Provider/Login/Login";
 import { useContext, useEffect, useState } from "react";
 import { GroupsContext } from "../../Provider/Groups/groups";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import { set } from "react-hook-form";
+
 import GroupsMobileContent from "../../Components/GroupsMobileRender";
 
 function Groups({ history }) {

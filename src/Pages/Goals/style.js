@@ -40,6 +40,7 @@ export const GoalsContainer = styled.div`
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
   }
 
     .img-container {
@@ -66,8 +67,8 @@ export const GoalsContainer = styled.div`
     }
 
     ul {
-      overflow-y: auto;
-      width: 300px;
+      overflow-y: scroll;
+      width: 320px;
       height: 420px;
       background-color: #f5f5f5;
       padding: 10px;
@@ -75,7 +76,7 @@ export const GoalsContainer = styled.div`
       margin-bottom: 20px;
 
       @media (min-width:900px){
-        width: 500px;
+        width: 600px;
     
       }
     

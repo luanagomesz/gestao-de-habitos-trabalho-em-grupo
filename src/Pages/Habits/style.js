@@ -4,28 +4,66 @@ export const MainContainer = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 900px) {
+    height: 90vh;
+    width: 100vw;
+  }
 `;
+export const ContainerAll = styled.div`
+  @media (min-width: 900px) {
+    width: 100vw;
+    height: 100vh;
+  }
 
+  display: flex;
+
+  flex-direction: column;
+`;
 export const ContainerList = styled.div`
-  position: absolute;
   background-color: white;
-  top: 150px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50%;
+  @media (max-width: 900px) {
+    margin-top: 30px;
+  }
+  .habits {
+    overflow-y: auto;
+    overflow-x: hidden;
+    .close {
+      position: relative;
+      left: 280px;
+      top: -85px;
 
-  
+      cursor: pointer;
+      :hover {
+        color: var(--orange);
+      }
+    }
+    .renderButton {
+      background-color: var(--orange);
+      margin-top: 30px;
+      color: white;
+      width: 200px;
+      padding: 10px 10px;
+      border-radius: 8px;
+      border: none;
+      margin-left: 50px;
 
-  .close {
-    position: relative;
-    left: 300px;
-    top: -85px;
-
-    cursor: pointer;
-    :hover {
-      color: var(--orange);
+      cursor: pointer;
+      z-index: 5;
+      :hover {
+        background-color: white;
+        color: var(--orange);
+        border: 1px solid var(--orange);
+        z-index: 5;
+      }
+      @media (max-width: 900px) {
+        z-index: 5;
+      }
     }
   }
 
@@ -33,33 +71,22 @@ export const ContainerList = styled.div`
     display: none;
   }
 
-  button {
-    border: 2px solid black;
-    width: 100px;
-  }
-
   @media (min-width: 900px) {
     right: 0;
-    height: 700px;
-    top: 80px;
+    height: 100%;
 
-    .list{
-    background-color: black;
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-    
-  }
+    .list {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+    }
 
     .imgRight {
-      display: block;
       position: absolute;
-      bottom: 0;
-      right: 0;
-      margin: 0 50px 20px 0;
+
       width: 300px;
       opacity: 0.8;
-      z-index: 0;
     }
 
     button {
@@ -75,7 +102,7 @@ export const Footer = styled.footer`
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: -10;
   }
 
   @media (min-width: 900px) {
@@ -86,15 +113,32 @@ export const Footer = styled.footer`
 `;
 
 export const ContainerMenuCategory = styled.div`
-  position: absolute;
-  z-index: 1;
-  background-color: white;
   top: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  margin-top: 30px;
+
+  .renderButton {
+    background-color: var(--orange);
+    margin-top: 30px;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 5;
+    :hover {
+      background-color: white;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+    }
+    @media (min-width: 900px) {
+      display: none;
+    }
+  }
 
   button {
     background: transparent;
@@ -123,6 +167,9 @@ export const ContainerMenuCategory = styled.div`
     text-align: center;
     color: var(--orange);
     margin-bottom: 20px;
+    @media (max-width: 900px) {
+      width: 80%;
+    }
   }
 
   .button1,
@@ -156,9 +203,8 @@ export const ContainerMenuCategory = styled.div`
 
   @media (min-width: 900px) {
     width: 50%;
-    height: 700px;
-    left: 0;
-    top: 80px;
+    height: 100%;
+
     background-color: #fdf0f0;
 
     .button1,
@@ -182,7 +228,7 @@ export const ContainerMenuCategory = styled.div`
 
     section {
       width: 600px;
-      gap: 40px;
+
       justify-content: space-around;
       margin: 10px 0;
     }

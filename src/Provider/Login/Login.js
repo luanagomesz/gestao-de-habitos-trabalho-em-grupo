@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
-  const [authorization, setAuthorization] = useState({});
+  const [authorization, setAuthorization] = useState("");
   const [token, setToken] = useState("");
   const [username, setUserName] = useState("");
   useEffect(() => {
@@ -66,6 +67,22 @@ export const LoginProvider = ({ children }) => {
   const clearLocalStorage = () => {
     window.localStorage.clear();
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+    console.log(authorization);
+    if (authorization === "") {
+      if (
+        location.pathname !== "/" ||
+        location.pathname !== "/login" ||
+        location.pathname !== "/register"
+      ) {
+        history.push("/");
+      }
+    }
+  }, []);
 
   return (
     <LoginContext.Provider

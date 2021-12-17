@@ -150,7 +150,7 @@ const ActivityPage = styled.div`
       }
 
       li {
-        height: 60px;
+        height: 0px;
         width: 70%;
       }
     }
